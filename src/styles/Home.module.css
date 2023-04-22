@@ -227,3 +227,56 @@
     transform: rotate(0deg);
   }
 }
+
+
+.flexboxContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  margin: .25rem;
+}
+
+.logo {
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.cart {
+  align-self: center;
+  margin: 1rem;
+}
+
+.mainLinksContainer {
+  display: flex;
+  flex-direction: row;
+}
+/* end of navbar styles */
+
+.footer {
+  position: relative;
+  min-height: 20vh;
+  margin-top: 5rem;
+  padding-top: 3rem;
+  left: 0;
+  right: 0;
+}
+.footerLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: .5rem 1rem .5rem 1rem;
+}
+.footerText:hover {
+  color: "primary.dark";
+  text-decoration: none;
+}

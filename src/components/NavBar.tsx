@@ -2,45 +2,42 @@ import React from "react";
 import {
   Box,
   Text,
+  Flex,
   Image,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { GrCart } from "react-icons/gr";
 
 export default function Navbar() {
   return (
-    <Box bg="gray.50" minH={20}>
-      <div className="flexboxContainer">
+    <Box minH={20}>
+      <Flex className="flexboxContainer" p={3} align="center" justify="space-between">
+        <Flex align="center" >
         <Link href="/" className="landingPage">
-          <Image src="/favicon.jpg" alt="language blog logo" w="50px" />
+          <Image src="/favicon.jpg" alt="vegan boxing gloves logo" w="50px" />
         </Link>
         <Link href="/" className="logo">
-          <Text fontSize="2xl" color="primary.main">
+          <Text fontSize="2xl" ml={3} color="primary.main">
             Vegan Boxing Gloves
           </Text>
         </Link>
-        <div className="mainLinksContainer">
-          <Link href="/listening" className="links">
+        </Flex>
+        <Flex align="center" gap={5} className="mainLinksContainer">
+          <Link href="/shop" className="links">
             <Text fontSize="xl" color="secondary.dark">
-              Listening
+              Shop
             </Text>
           </Link>
-          <Link href="/speaking" className="links">
+          <Link href="/about" className="links">
             <Text fontSize="xl" color="secondary.dark">
-              Speaking
+              About
             </Text>
           </Link>
-          <Link href="/grammar" className="links">
-            <Text fontSize="xl" color="secondary.dark">
-              Grammar
-            </Text>
+          <Link href="/cart" className="links">
+            <GrCart className="cart" size={25} color="red" />
           </Link>
-          <Link href="/vocab" className="links">
-            <Text fontSize="xl" color="secondary.dark">
-              Vocabulary
-            </Text>
-          </Link>
-        </div>
-      </div>
+        </Flex>
+      </Flex>
     </Box>
   );
 }
