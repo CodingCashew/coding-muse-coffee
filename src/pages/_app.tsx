@@ -9,15 +9,30 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 const theme = extendTheme({
   colors: {
     primary: {
-      light: "#C53030",
-      main: "#9B2C2C",
-      dark: "#822727",
+      light: "#ED64A6",
+      main: "#D53F8C",
+      dark: "#97266D",
     },
     secondary: {
       light: "#ECC94B",
       main: "#D69E2E",
-      dark: "#B7791F",
+      dark: "#ED8936",
     },
+    tertiary: {
+      light: "#9F7AEA",
+      main: "#805AD5",
+      dark: "#553C9A"
+    },
+    // primary: {
+    //   light: "#C53030",
+    //   main: "#9B2C2C",
+    //   dark: "#822727",
+    // },
+    // secondary: {
+    //   light: "#ECC94B",
+    //   main: "#D69E2E",
+    //   dark: "#B7791F",
+    // },
   },
 });
 

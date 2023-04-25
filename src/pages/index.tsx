@@ -9,14 +9,14 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Vegan Boxing Gloves</title>
+        <title>American English for Devs</title>
         <meta name="description" content="Cruelty-Free Martial Arts" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.jpg" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
-          <h1>Welcome to Vegan Boxing Gloves</h1>
+          <h1>Welcome to American English for Devs</h1>
         </div>
       </main>
     </>
