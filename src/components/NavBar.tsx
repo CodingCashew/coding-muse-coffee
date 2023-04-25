@@ -23,9 +23,9 @@ export default function Navbar() {
         </Link>
         </Flex>
         <Flex align="center" gap={5} className="mainLinksContainer">
-          <Link href="/course" className="links">
+          <Link href="/courses" className="links">
             <Text fontSize="xl" color="secondary.dark">
-              Course
+              Courses
             </Text>
           </Link>
           <Link href="/about" className="links">
@@ -36,6 +36,11 @@ export default function Navbar() {
           <Link href="/faq" className="links">
             <Text fontSize="xl" color="secondary.dark">
               FAQ
+            </Text>
+          </Link>
+          <Link href="/contact" className="links">
+            <Text fontSize="xl" color="secondary.dark">
+              Contact
             </Text>
           </Link>
           <Link href="/cart" className="links">
