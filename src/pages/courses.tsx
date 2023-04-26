@@ -9,6 +9,7 @@ import {
   ListItem,
   Button,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 export default function Courses() {
   return (
@@ -28,12 +29,16 @@ export default function Courses() {
             </UnorderedList>
             <audio controls src="/dummy-audio.m4a" />
           </Container>
-          <Button color="white" bgColor="primary.dark" width="28%">
-            Buy Now
-          </Button>
-          <Button color="white" ml={3} bgColor="secondary.main" width="28%">
-            Add to Cart
-          </Button>
+          <Link href="/checkout">
+            <Button color="white" bgColor="primary.dark" width="28%">
+              Buy Now
+            </Button>
+          </Link>
+          <Link href="/cart">
+            <Button color="white" ml={3} bgColor="secondary.main" width="28%">
+              Add to Cart
+            </Button>
+          </Link>
         </Container>
         <Image
           src="/henry-be-bAFiBDMeiVI-unsplash.jpg"
@@ -62,12 +67,16 @@ export default function Courses() {
             </UnorderedList>
             <audio controls src="/dummy-audio.m4a" />
           </Container>
-          <Button color="white" bgColor="primary.dark" width="30%">
-            Buy Now
-          </Button>
-          <Button color="white" ml={3} bgColor="secondary.main" width="30%">
-            Add to Cart
-          </Button>
+          <Link href="/checkout">
+            <Button color="white" bgColor="primary.dark" width="30%">
+              Buy Now
+            </Button>
+          </Link>
+          <Link href="/cart">
+            <Button color="white" ml={3} bgColor="secondary.main" width="30%">
+              Add to Cart
+            </Button>
+          </Link>
         </Container>
       </Flex>
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />
@@ -87,12 +96,15 @@ export default function Courses() {
             </UnorderedList>
             <audio controls src="/dummy-audio.m4a" />
           </Container>
-          <Button color="white" bgColor="primary.dark" width="30%">
-            Buy Now
-          </Button>
-          <Button color="white" ml={3} bgColor="secondary.main" width="30%">
-            Add to Cart
-          </Button>
+          <Link href="/checkout">
+            <Button color="white" bgColor="primary.dark" width="30%">
+              Buy Now
+            </Button>
+            <Link href="/cart"></Link>
+            <Button color="white" ml={3} bgColor="secondary.main" width="30%">
+              Add to Cart
+            </Button>
+          </Link>
         </Container>
         <Image
           src="/henry-be-bAFiBDMeiVI-unsplash.jpg"
@@ -119,12 +131,16 @@ export default function Courses() {
             </UnorderedList>
             <audio controls src="/dummy-audio.m4a" />
           </Container>
-          <Button color="white" bgColor="primary.dark" width="30%">
-            Buy Now
-          </Button>
-          <Button color="white" ml={3} bgColor="secondary.main" width="30%">
-            Add to Cart
-          </Button>
+          <Link href="/checkout">
+            <Button color="white" bgColor="primary.dark" width="30%">
+              Buy Now
+            </Button>
+          </Link>
+          <Link href="/cart">
+            <Button color="white" ml={3} bgColor="secondary.main" width="30%">
+              Add to Cart
+            </Button>
+          </Link>
         </Container>
       </Flex>
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />
