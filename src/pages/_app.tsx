@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 // import Footer from "../components/footer";
 
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ShoppingCartProvider } from "@/context/ShoppingCartContext";
 
 const theme = extendTheme({
   colors: {
@@ -23,25 +24,17 @@ const theme = extendTheme({
       main: "#805AD5",
       dark: "#553C9A"
     },
-    // primary: {
-    //   light: "#C53030",
-    //   main: "#9B2C2C",
-    //   dark: "#822727",
-    // },
-    // secondary: {
-    //   light: "#ECC94B",
-    //   main: "#D69E2E",
-    //   dark: "#B7791F",
-    // },
   },
 });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
+      <ShoppingCartProvider>
       <Navbar />
       <Component {...pageProps} />
       {/* <Footer /> */}
+      </ShoppingCartProvider>
     </ChakraProvider>
   )
 }
