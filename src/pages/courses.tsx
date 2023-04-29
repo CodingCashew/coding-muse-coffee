@@ -34,9 +34,12 @@ export default function Courses() {
               Buy Now
             </Button>
           </Link>
-          <Link href="/cart">
-            <Button color="white" ml={3} bgColor="secondary.main" width="28%">
-              Add to Cart
+          <Button color="white" ml={3} bgColor="secondary.main" width="28%">
+            Add to Cart
+          </Button>
+          <Link href="/courses/course1">
+            <Button color="white" ml={3} bgColor="tertiary.dark" width="28%">
+              Course Details
             </Button>
           </Link>
         </Container>
@@ -72,11 +75,10 @@ export default function Courses() {
               Buy Now
             </Button>
           </Link>
-          <Link href="/cart">
-            <Button color="white" ml={3} bgColor="secondary.main" width="30%">
-              Add to Cart
-            </Button>
-          </Link>
+
+          <Button color="white" ml={3} bgColor="secondary.main" width="30%">
+            Add to Cart
+          </Button>
         </Container>
       </Flex>
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />
@@ -100,11 +102,10 @@ export default function Courses() {
             <Button color="white" bgColor="primary.dark" width="30%">
               Buy Now
             </Button>
-            <Link href="/cart"></Link>
-            <Button color="white" ml={3} bgColor="secondary.main" width="30%">
-              Add to Cart
-            </Button>
           </Link>
+          <Button color="white" ml={3} bgColor="secondary.main" width="30%">
+            Add to Cart
+          </Button>
         </Container>
         <Image
           src="/henry-be-bAFiBDMeiVI-unsplash.jpg"
@@ -136,11 +137,9 @@ export default function Courses() {
               Buy Now
             </Button>
           </Link>
-          <Link href="/cart">
-            <Button color="white" ml={3} bgColor="secondary.main" width="30%">
-              Add to Cart
-            </Button>
-          </Link>
+          <Button color="white" ml={3} bgColor="secondary.main" width="30%">
+            Add to Cart
+          </Button>
         </Container>
       </Flex>
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />
