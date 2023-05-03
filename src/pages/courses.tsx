@@ -10,8 +10,10 @@ import {
   Button,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { useShoppingCart } from "@/context/ShoppingCartContext";
 
 export default function Courses() {
+  const { getItemQty, increment, decrement, removeItem } = useShoppingCart();
   return (
     <Container minW="5xl">
       <Flex p={8} minH="sm" align="center">
@@ -30,11 +32,11 @@ export default function Courses() {
             <audio controls src="/dummy-audio.m4a" />
           </Container>
           <Link href="/checkout">
-            <Button color="white" bgColor="primary.dark" width="28%">
+            <Button color="white" bgColor="primary.dark" width="28%" onClick={() => increment(1)}>
               Buy Now
             </Button>
           </Link>
-          <Button color="white" ml={3} bgColor="secondary.main" width="28%">
+          <Button color="white" ml={3} bgColor="secondary.main" width="28%" onClick={() => increment(1)}>
             Add to Cart
           </Button>
           <Link href="/courses/course1">
@@ -71,14 +73,19 @@ export default function Courses() {
             <audio controls src="/dummy-audio.m4a" />
           </Container>
           <Link href="/checkout">
-            <Button color="white" bgColor="primary.dark" width="30%">
+            <Button color="white" bgColor="primary.dark" width="30%" onClick={() => increment(2)}>
               Buy Now
             </Button>
           </Link>
 
-          <Button color="white" ml={3} bgColor="secondary.main" width="30%">
+          <Button color="white" ml={3} bgColor="secondary.main" width="30%" onClick={() => increment(2)}>
             Add to Cart
           </Button>
+          <Link href="/courses/course2">
+            <Button color="white" ml={3} bgColor="tertiary.dark" width="28%">
+              Course Details
+            </Button>
+          </Link>
         </Container>
       </Flex>
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />
@@ -99,13 +106,18 @@ export default function Courses() {
             <audio controls src="/dummy-audio.m4a" />
           </Container>
           <Link href="/checkout">
-            <Button color="white" bgColor="primary.dark" width="30%">
+            <Button color="white" bgColor="primary.dark" width="30%" onClick={() => increment(3)}>
               Buy Now
             </Button>
           </Link>
-          <Button color="white" ml={3} bgColor="secondary.main" width="30%">
+          <Button color="white" ml={3} bgColor="secondary.main" width="30%" onClick={() => increment(3)}>
             Add to Cart
           </Button>
+          <Link href="/courses/course3">
+            <Button color="white" ml={3} bgColor="tertiary.dark" width="28%">
+              Course Details
+            </Button>
+          </Link>
         </Container>
         <Image
           src="/henry-be-bAFiBDMeiVI-unsplash.jpg"
@@ -133,13 +145,18 @@ export default function Courses() {
             <audio controls src="/dummy-audio.m4a" />
           </Container>
           <Link href="/checkout">
-            <Button color="white" bgColor="primary.dark" width="30%">
+            <Button color="white" bgColor="primary.dark" width="30%" onClick={() => increment(4)}>
               Buy Now
             </Button>
           </Link>
-          <Button color="white" ml={3} bgColor="secondary.main" width="30%">
+          <Button color="white" ml={3} bgColor="secondary.main" width="30%" onClick={() => increment(4)}>
             Add to Cart
           </Button>
+          <Link href="/courses/course4">
+            <Button color="white" ml={3} bgColor="tertiary.dark" width="28%">
+              Course Details
+            </Button>
+          </Link>
         </Container>
       </Flex>
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />

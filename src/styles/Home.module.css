@@ -263,12 +263,13 @@
 /* end of navbar styles */
 
 .footer {
-  position: relative;
+  /* position: relative; */
+  justify-content: center;
   min-height: 20vh;
   margin-top: 5rem;
   padding-top: 3rem;
-  left: 0;
-  right: 0;
+  left: auto;
+  right: auto;
 }
 .footerLinks {
   display: flex;

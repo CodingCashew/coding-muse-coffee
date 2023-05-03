@@ -46,6 +46,9 @@ export default function Navbar() {
           <Link href="/cart" className="links">
             <GrCart className="cart" size={25} color="red" />
           </Link>
+          <Link href="/checkout" className="links">
+            <GrCart className="cart" size={25} color="red" />
+          </Link>
         </Flex>
       </Flex>
     </Box>

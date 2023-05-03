@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Navbar from "../components/NavBar";
 import { Inter } from 'next/font/google'
-// import Footer from "../components/footer";
+import Footer from "../components/Footer";
 
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { ShoppingCartProvider } from "@/context/ShoppingCartContext";
@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ShoppingCartProvider>
       <Navbar />
       <Component {...pageProps} />
-      {/* <Footer /> */}
+      <Footer />
       </ShoppingCartProvider>
     </ChakraProvider>
   )

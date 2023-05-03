@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Text, Button, Link, Flex, Stack } from "@chakra-ui/react";
+import { Container, Text, Button, Link, Stack } from "@chakra-ui/react";
 import {
   useShoppingCart,
   ShoppingCartProvider,
@@ -13,8 +13,8 @@ export default function Cart() {
       <Stack>
         {cartItems.map((item, index) => (
           <>
-            <Text key={index}>Item Id: {item.id}</Text>
-            <Text key={index*100}>Item Qty: {item.quantity}</Text>
+            <Text key={item.id}>Item Id: {item.id}</Text>
+            <Text key={item.id}>Item Qty: {item.quantity}</Text>
           </>
         ))}
       </Stack>
