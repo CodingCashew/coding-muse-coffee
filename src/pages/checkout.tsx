@@ -4,17 +4,20 @@ import {
   useShoppingCart,
   ShoppingCartProvider,
 } from "../context/ShoppingCartContext";
+import Head from "next/head";
 
 export default function Checkout() {
   const { cartItems } = useShoppingCart();
   return (
-    <Container>
-      <Text>Time to pay!</Text>
+    <Container minH="xl">
+      <Head>
+        <title>Checkout</title>
+      </Head>
       <Stack>
         {cartItems.map((item, index) => (
           <>
             <Text key={index}>Item Id: {item.id}</Text>
-            <Text key={index*100}>Item Qty: {item.quantity}</Text>
+            <Text key={index * 100}>Item Qty: {item.quantity}</Text>
           </>
         ))}
       </Stack>

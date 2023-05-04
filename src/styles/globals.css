@@ -1,7 +1,7 @@
 * {
   text-decoration: none;
-  /* font-family: 'Courier New', Courier, monospace; */
-  font-family: 'Lato';
+  font-family: 'Source Code Pro', monospace, 'Courier New', Courier, monospace;
+  /* font-family: 'Lato'; */
   font-weight: bold;
   /* background-color: black; */
 }

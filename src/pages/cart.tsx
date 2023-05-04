@@ -4,12 +4,15 @@ import {
   useShoppingCart,
   ShoppingCartProvider,
 } from "../context/ShoppingCartContext";
+import Head from "next/head";
 
 export default function Cart() {
   const { cartItems } = useShoppingCart();
   return (
-    <Container>
-      <Text>This is a list of the items you want to buy</Text>
+    <Container minH="xl">
+      <Head>
+        <title>Cart</title>
+      </Head>
       <Stack>
         {cartItems.map((item, index) => (
           <>

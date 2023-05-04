@@ -1,14 +1,30 @@
 import React from "react";
-import { CardHeader, Container, Text, Card, CardBody, Flex, UnorderedList, ListItem, Link, Button, Image } from "@chakra-ui/react";
+import {
+  CardHeader,
+  Container,
+  Text,
+  Card,
+  CardBody,
+  Flex,
+  UnorderedList,
+  ListItem,
+  Link,
+  Button,
+  Image,
+} from "@chakra-ui/react";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
+import Head from 'next/head'
 
 export default function CourseOne() {
   const id = 1;
   const { getItemQty, increment, decrement, removeItem } = useShoppingCart();
-  const quantity = getItemQty(id)
+  const quantity = getItemQty(id);
 
   return (
-    <Container minW="5xl">
+    <Container minW="5xl" minH="xl">
+      <Head>
+        <title>Interview Vocabulary</title>
+      </Head>
       <Flex p={8} minH="sm" align="center">
         <Container p={8}>
           <Text fontSize="2xl">Interview Vocabulary</Text>
@@ -25,20 +41,28 @@ export default function CourseOne() {
             <audio controls src="/dummy-audio.m4a" />
           </Container>
           <Link href="/checkout">
-            <Button color="white" bgColor="primary.dark" width="28%" onClick={() => increment(id)}>
+            <Button
+              color="white"
+              bgColor="primary.dark"
+              width="28%"
+              onClick={() => increment(id)}
+            >
               Buy Now
             </Button>
           </Link>
           <Link href="/checkout">
-          <Button>
-            go directly to checkout
-          </Button>
           </Link>
-            <Button color="white" ml={3} bgColor="secondary.main" width="28%" onClick={() => increment(id)}>
-              Add to Cart
-            </Button>
+          <Button
+            color="white"
+            ml={3}
+            bgColor="secondary.main"
+            width="28%"
+            onClick={() => increment(id)}
+          >
+            Add to Cart
+          </Button>
           <Link href="/courses">
-            <Button color="white" ml={3} bgColor="tertiary.dark" width="28%">
+            <Button color="white" ml={3} bgColor="tertiary.main" width="28%">
               Back to Courses
             </Button>
           </Link>
