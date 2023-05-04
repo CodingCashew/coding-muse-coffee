@@ -15,6 +15,7 @@ type ShoppingCartContext = {
   decrement: (id: number) => void;
   removeItem: (id: number) => void;
   cartItems: CartItem[];
+  numOfItems: () => number;
 };
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -30,7 +31,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   function getItemQty(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
-
+  
   function increment(id: number) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {
@@ -70,9 +71,17 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     });
   }
 
+  const numOfItems = () => {
+    let sum = 0;
+    for (let item of cartItems) {
+      sum += item.quantity
+    }
+    return sum;
+  }
+
   return (
     <ShoppingCartContext.Provider
-      value={{ getItemQty, increment, decrement, removeItem, cartItems }}
+      value={{ getItemQty, increment, decrement, removeItem, cartItems, numOfItems }}
     >
       {children}
     </ShoppingCartContext.Provider>
