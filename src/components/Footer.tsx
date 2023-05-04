@@ -58,11 +58,11 @@ export default function Footer() {
             Contact
           </Text>
         </Link>
-        <Link href="/newsletter" className="footerLinks">
+        {/* <Link href="/newsletter" className="footerLinks">
           <Text fontSize="lg" className="footerText">
             Newsletter
           </Text>
-        </Link>
+        </Link> */}
         <Link href="/privacy-policy" className="footerLinks">
           <Text fontSize="lg" className="footerText">
             Privacy Policy

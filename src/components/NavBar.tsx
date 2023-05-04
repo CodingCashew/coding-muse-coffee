@@ -34,17 +34,17 @@ export default function Navbar() {
             </Text>
           </Link>
         </Flex>
-        <Flex align="center" gap={5} className="mainLinksContainer">
+        <Flex align="center" gap={8} className="mainLinksContainer">
           <Link href="/courses" className="links">
             <Text fontSize="xl" color="secondary.dark">
               Courses
             </Text>
           </Link>
-          <Link href="/about" className="links">
+          {/* <Link href="/about" className="links">
             <Text fontSize="xl" color="secondary.dark">
               About
             </Text>
-          </Link>
+          </Link> */}
           <Link href="/faq" className="links">
             <Text fontSize="xl" color="secondary.dark">
               FAQ

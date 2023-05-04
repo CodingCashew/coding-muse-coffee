@@ -20,6 +20,7 @@ export default function Courses() {
       <Head>
         <title>Courses</title>
       </Head>
+      <Text fontSize="2xl" color="primary.dark" mt={5} align="center">Audio Courses</Text>
       <Flex p={8} minH="sm" align="center">
         <Container p={8}>
           <Text fontSize="2xl">Interview Vocabulary</Text>
@@ -55,7 +56,7 @@ export default function Courses() {
             Add to Cart
           </Button>
           <Link href="/courses/course1">
-            <Button color="white" ml={3} bgColor="tertiary.main" width="28%">
+            <Button color="white" ml={3} bgColor="tertiary.main" width="34%">
               Course Details
             </Button>
           </Link>
@@ -108,7 +109,7 @@ export default function Courses() {
             Add to Cart
           </Button>
           <Link href="/courses/course2">
-            <Button color="white" ml={3} bgColor="tertiary.main" width="28%">
+            <Button color="white" ml={3} bgColor="tertiary.main" width="34%">
               Course Details
             </Button>
           </Link>
@@ -151,7 +152,7 @@ export default function Courses() {
             Add to Cart
           </Button>
           <Link href="/courses/course3">
-            <Button color="white" ml={3} bgColor="tertiary.main" width="28%">
+            <Button color="white" ml={3} bgColor="tertiary.main" width="34%">
               Course Details
             </Button>
           </Link>
@@ -201,7 +202,7 @@ export default function Courses() {
             Add to Cart
           </Button>
           <Link href="/courses/course4">
-            <Button color="white" ml={3} bgColor="tertiary.main" width="28%">
+            <Button color="white" ml={3} bgColor="tertiary.main" width="34%">
               Course Details
             </Button>
           </Link>

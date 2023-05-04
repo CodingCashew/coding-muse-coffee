@@ -21,24 +21,24 @@ const questions: faq[] = [
     answer: "Not only is the target material specific to your needs, it would save you dozens of hours trying to compile separate materials from various sources. In addition, the audio is all recorded in a standard American accent, so you can be confident and clearly communicate with others.",
   },
   {
-    question: "",
-    answer: "",
+    question: "How will I receive the audio files?",
+    answer: "After you pay, the audio files are sent directly to the email address that you entered during checkout.",
   },
   {
-    question: "",
-    answer: "",
+    question: "How long is each lesson?",
+    answer: "Each lesson is around 15-20 minutes, which is the ideal amount of time for learning. You can listen to a lesson on the way to work, during lunch, or getting ready in the morning.",
   },
   {
-    question: "",
-    answer: "",
+    question: "Can't I just learn this by myself?",
+    answer: "Of course you can; however, it will take you much more time to compile the materials, listen to or watch advertisements. As a developer, your time is valueable. Don't waste your precious time having to search for the next lesson when you could have the ease and convenience of high quality materials ready to learn.",
   },
   {
-    question: "",
-    answer: "",
+    question: "Which lesson should I start with?",
+    answer: "If you have already found a position as a software engineer, you might want to start with Standups. Otherwise, you should probably start with the Technical Interview English Prep.",
   },
   {
-    question: "",
-    answer: "",
+    question: "Do these courses teach me to program?",
+    answer: "No, the point of these courses is not to teach you to code or debug, but to be able to communicate with your software development team or technical interviewer. You are already an amazing developer. It's time to be able to be able to communicate your thoughts clearly and confidently.",
   },
   {
     question: "",
@@ -56,13 +56,13 @@ const questions: faq[] = [
 
 export default function Faq() {
   return (
-    <Container minW="6xl" minH="xl">
+    <Container minW="6xl" minH="xl" mb={10}>
       <Head>
         <title>FAQs</title>
       </Head>
-      <Text fontSize="2xl" color="primary.dark">Frequently Asked Questions</Text>
+      <Text fontSize="2xl" color="primary.dark" mt={5} align="center">Frequently Asked Questions</Text>
       {questions.map((faq: faq, index) => (
-        <Container key={index} minW="4xl" mt={5}>
+        <Container key={index} minW="4xl" mt={10}>
           <Text fontSize="2xl" color="secondary.light">{faq.question}</Text>
           <Text fontSize="xl">{faq.answer}</Text>
         </Container>

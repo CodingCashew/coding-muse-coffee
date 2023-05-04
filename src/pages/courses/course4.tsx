@@ -60,7 +60,7 @@ export default function CoursFour() {
             Add to Cart
           </Button>
           <Link href="/courses">
-            <Button color="white" ml={3} bgColor="tertiary.main" width="28%">
+            <Button color="white" ml={3} bgColor="tertiary.main" width="34%">
               Back to Courses
             </Button>
           </Link>

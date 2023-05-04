@@ -35,10 +35,15 @@ const theme = extendTheme({
     //   dark: "#ED8936",
     // },
     tertiary: {
-      light: "#805AD5",
-      main: "#6B46C1",
-      dark: "#553C9A"
+      light: "#4299e1",
+      main: "#2b6cb0",
+      dark: "#2c5282"
     },
+    // tertiary: {
+    //   light: "#805AD5",
+    //   main: "#6B46C1",
+    //   dark: "#553C9A"
+    // },
   },
 });
 
