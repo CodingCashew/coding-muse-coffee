@@ -15,6 +15,7 @@ import Head from "next/head";
 
 export default function Courses() {
   const { getItemQty, increment, decrement, removeItem } = useShoppingCart();
+  
   return (
     <Container minW="5xl" minH="xl">
       <Head>

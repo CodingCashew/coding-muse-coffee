@@ -14,7 +14,7 @@ export default function Cart() {
         <title>Cart</title>
       </Head>
       <Stack>
-        {cartItems.map((item, index) => (
+        {cartItems && cartItems.map((item, index) => (
           <>
             <Text key={item.id}>Item Id: {item.id}</Text>
             <Text key={item.id}>Item Qty: {item.quantity}</Text>

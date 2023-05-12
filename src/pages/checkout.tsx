@@ -14,7 +14,7 @@ export default function Checkout() {
         <title>Checkout</title>
       </Head>
       <Stack>
-        {cartItems.map((item, index) => (
+        {cartItems && cartItems.map((item, index) => (
           <>
             <Text key={index}>Item Id: {item.id}</Text>
             <Text key={index * 100}>Item Qty: {item.quantity}</Text>

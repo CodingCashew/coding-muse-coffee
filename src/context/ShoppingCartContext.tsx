@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 type ShoppingCartProviderProps = {
   children: ReactNode;
@@ -24,14 +30,28 @@ export function useShoppingCart() {
   return useContext(ShoppingCartContext);
 }
 
-export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+let cartFromLocalStorage: CartItem[];
 
+export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
+  useEffect(() => {
+    
+    cartFromLocalStorage = JSON.parse(
+      localStorage.getItem("cartItems") || "[]"
+    );
+    console.log(cartFromLocalStorage);
+  }, []);
+  const [cartItems, setCartItems] = useState<CartItem[]>(
+    cartFromLocalStorage || []
+  );
+  console.log(cartItems)
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify([cartItems]));
+  }, [cartItems]);
 
   function getItemQty(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
-  
+
   function increment(id: number) {
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id) == null) {
@@ -50,6 +70,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
 
   function decrement(id: number) {
+    if (!cartItems) return;
     setCartItems((currItems) => {
       if (currItems.find((item) => item.id === id)?.quantity === 1) {
         return currItems.filter((item) => item.id !== id);
@@ -73,15 +94,24 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   const numOfItems = () => {
     let sum = 0;
-    for (let item of cartItems) {
-      sum += item.quantity
+    if (cartItems) {
+      for (let item of cartItems) {
+        sum += item.quantity;
+      }
     }
     return sum;
-  }
+  };
 
   return (
     <ShoppingCartContext.Provider
-      value={{ getItemQty, increment, decrement, removeItem, cartItems, numOfItems }}
+      value={{
+        getItemQty,
+        increment,
+        decrement,
+        removeItem,
+        cartItems,
+        numOfItems,
+      }}
     >
       {children}
     </ShoppingCartContext.Provider>
