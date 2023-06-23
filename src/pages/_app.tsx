@@ -14,16 +14,22 @@ const theme = extendTheme({
       dark: "#0987A0",
       main: "#086F83",
     },
-    // secondary: {
-    //   light: "#68D391",
-    //   main: "#48BB78",
-    //   dark: "#38A169",
-    // },
     secondary: {
       light: "#4FD1C5",
       main: "#38B2AC",
       dark: "#319795",
     },
+    tertiary: {
+      light: "#4299e1",
+      main: "#2b6cb0",
+      dark: "#2c5282"
+    },
+    // secondary: {
+    //   light: "#68D391",
+    //   main: "#48BB78",
+    //   dark: "#38A169",
+    // },
+
     // primary: {
     //   light: "#ED64A6",
     //   main: "#D53F8C",
@@ -34,16 +40,11 @@ const theme = extendTheme({
     //   main: "#D69E2E",
     //   dark: "#ED8936",
     // },
-    tertiary: {
-      light: "#4299e1",
-      main: "#2b6cb0",
-      dark: "#2c5282"
-    },
     // tertiary: {
-    //   light: "#805AD5",
-    //   main: "#6B46C1",
+    //   light: "#9F7AEA",
+    //   main: "#805AD5",
     //   dark: "#553C9A"
-    // },
+    // }
   },
 });
 

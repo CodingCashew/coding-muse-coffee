@@ -10,7 +10,10 @@ import {
   UnorderedList,
   ListItem,
   Button,
+  Link,
+  Box,
 } from "@chakra-ui/react";
+import { ArrowRightIcon } from "@chakra-ui/icons";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,58 +27,106 @@ export default function Home() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main>
-        <Container minH="xl" minW="8xl" bgColor="primary.main">
-          <Text>Someone coding </Text>
-          <Text>You know how to code</Text>
-        </Container>
-        <Container minH="xl" minW="8xl" bgColor="white">
-          <Text>People talking in team</Text>
-          <Text>
-            But you struggle to communicate your ideas effectively in English
-          </Text>
-        </Container>
-        <Container minH="xl" minW="8xl" bgColor="tertiary.dark">
-          <Text>
-            American English for Devs solves this problem and helps you to be
-            able to confidently speak with your manager, co-worker, team lead,
-            or technical interviewer
-          </Text>
-        </Container>
-        <Container minH="xl" minW="8xl" bgColor="white">
-          <Text>
+        {/* <Container  width="100%"> */}
+        <Image
+          width="100%"
+          src="/landingPage/nubelson-fernandes-gTs2w7bu3Qo-unsplash.jpg"
+          alt="software developer"
+        />
+        {/* </Container> */}
+        <Box
+          width="100%"
+          minHeight="md"
+          bgColor="tertiary.main"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Text fontSize="3xl" color="white" padding="2rem">
             Work on just the vocabulary you need, and practice sentences that
-            you would use in real life on the job
+            you would use in real life on the job.
           </Text>
-        </Container>
-        <Container minH="xl" minW="8xl" bgColor="secondary.light">
+          <Image
+            height="xl"
+            src="/landingPage/windows-6G6akT8biLg-unsplash.jpg"
+            alt="software developer"
+          />
+        </Box>
+        <Image
+          width="100%"
+          src="/landingPage/linkedin-sales-solutions-1LyBcHrH4J8-unsplash.jpg"
+          alt="software developer"
+        />
+        <Box
+          width="100%"
+          minHeight="md"
+          bgGradient="linear(to-b, primary.light, tertiary.dark)"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Image
+            width="30%"
+            src="/landingPage/procreator-ux-design-studio-VzJjPuk53sk-unsplash.jpg"
+            alt="software developer"
+          />
+          <Container display="flex column" maxW="3xl">
+            <Text fontSize="3xl" color="white" padding="2rem">
+              Save valuable time by having everything compiled for you!
+            </Text>
+            <Text fontSize="3xl" color="white" padding="2rem">
+              Short, content-rich lessons that fit into your busy schedule
+            </Text>
+          </Container>
+        </Box>
+
+        <Container  minW="8xl" bgColor="white">
+          <Text>Communicate your ideas effectively in English</Text>
+          <Text>
+            American English for Devs helps you to be able to confidently speak
+            with your manager, co-worker, team lead, or technical interviewer
+          </Text>
           <Text>Icons showing benefits</Text>
-          <Text>Save valuable time by having everything compiled for you</Text>
           <Text>
             Convenient and efficient to have mp3 instead of scrolling youtube
             and listening to ads
           </Text>
           <Text>
-            Short, content-rich lessons that fit into your busy schedule
-          </Text>
-          <Text>
-            Native American accent so you can avoid criticism from assholes
+            Native American(?) accent so you can avoid criticism from assholes
           </Text>
           <Text>Confidently show your skills</Text>
-        </Container>
-        <Container minH="xl" minW="8xl" bgColor="white">
           <Text>Here is what people are saying about the course:</Text>
-        </Container>
-        <Container minH="xl" minW="8xl" bgColor="primary.main">
           <Text>
             Risk free! If you are not completely rocked, get 110% of your money
             back.
           </Text>
+          <Text>Icons of each course linking to details page</Text>
+          <Text>Save photos the way that medium author said-websomething?</Text>
         </Container>
-        <Container minH="xl" minW="8xl" bgColor="white">
-          <Text>
-            Icons of each course linking to details page
+
+        <Box
+          width="100%"
+          minHeight="md"
+          bgGradient="linear(to-r, primary.dark, secondary.light)"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Text fontSize="3xl" color="white" padding="2rem">
+            Join Our English-learning Community for Devs!
           </Text>
-        </Container>
+          <Button
+            bgColor="primary.dark"
+            color="white"
+            justifyContent="center"
+            paddingX="3em"
+            paddingY="1.35em"
+          >
+            <Link href="/signup">
+              <ArrowRightIcon marginRight=".5rem" /> Create a New Account
+            </Link>
+          </Button>
+        </Box>
       </main>
     </>
   );

@@ -12,16 +12,42 @@ type ShoppingCartProviderProps = {
 
 type CartItem = {
   id: number;
+  name: string;
+  description: string;
+  roast: string;
+  region: string;
+  price: number;
+  size: string;
+  imagePath: string;
   quantity: number;
 };
 
 type ShoppingCartContext = {
   getItemQty: (id: number) => number;
-  increment: (id: number) => void;
-  decrement: (id: number) => void;
+  increment: (
+    id: number,
+    name: string,
+    description: string,
+    roast: string,
+    region: string,
+    price: number,
+    size: string,
+    imagePath: string
+  ) => void;
+  decrement: (
+    id: number,
+    name: string,
+    description: string,
+    roast: string,
+    region: string,
+    price: number,
+    size: string,
+    imagePath: string
+  ) => void;
   removeItem: (id: number) => void;
   cartItems: CartItem[];
   numOfItems: () => number;
+  subtotal: () => number;
 };
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -30,36 +56,54 @@ export function useShoppingCart() {
   return useContext(ShoppingCartContext);
 }
 
-let cartFromLocalStorage: CartItem[];
-
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
   useEffect(() => {
-    
-    cartFromLocalStorage = JSON.parse(
-      localStorage.getItem("cartItems") || "[]"
-    );
-    console.log(cartFromLocalStorage);
+    const data = window.localStorage.getItem("cart");
+    if (data !== "undefined") {
+      // console.log("data: ", data);
+      setCartItems(JSON.parse(data!));
+    }
   }, []);
-  const [cartItems, setCartItems] = useState<CartItem[]>(
-    cartFromLocalStorage || []
-  );
-  console.log(cartItems)
+
   useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify([cartItems]));
+    window.localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
   function getItemQty(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   }
 
-  function increment(id: number) {
-    setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id) == null) {
-        return [...currItems, { id, quantity: 1 }];
+  function increment(
+    id: number,
+    name: string,
+    description: string,
+    roast: string,
+    region: string,
+    price: number,
+    size: string,
+    imagePath: string
+  ) {
+    setCartItems((currItems: any) => {
+      if (currItems.find((item: any) => item.id === id) == null) {
+        return [
+          ...currItems,
+          {
+            id,
+            name,
+            description,
+            roast,
+            region,
+            price,
+            size,
+            imagePath,
+            quantity: 1,
+          },
+        ];
       } else {
-        return currItems.map((item) => {
+        return currItems.map((item: any) => {
           if (item.id === id) {
-            // return { ...item };
             return { ...item, quantity: item.quantity + 1 };
           } else {
             return item;
@@ -69,15 +113,25 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     });
   }
 
-  function decrement(id: number) {
+  function decrement(
+    id: number,
+    name: string,
+    description: string,
+    roast: string,
+    region: string,
+    price: number,
+    size: string,
+    imagePath: string
+  ) {
     if (!cartItems) return;
-    setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id)?.quantity === 1) {
-        return currItems.filter((item) => item.id !== id);
+    setCartItems((currItems:any) => {
+      if (currItems.find((item:any) => item.id === id)?.quantity === 1) {
+        return cartItems;
+        // return currItems.filter((item) => item.id !== id);
       } else {
-        return currItems.map((item) => {
+        return currItems.map((item:any) => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity - 1 };
+            return { ...item, name, quantity: item.quantity - 1 };
           } else {
             return item;
           }
@@ -102,15 +156,25 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     return sum;
   };
 
+  const subtotal = (): number => {
+    let currTotal = 0;
+    if (!cartItems.length) return 0;
+    for (let item of cartItems) {
+      currTotal += item.quantity * item.price;
+    }
+    return currTotal;
+  };
+
   return (
     <ShoppingCartContext.Provider
       value={{
         getItemQty,
-        increment,
-        decrement,
         removeItem,
         cartItems,
+        subtotal,
         numOfItems,
+        increment,
+        decrement,
       }}
     >
       {children}

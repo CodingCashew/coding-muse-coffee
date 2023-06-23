@@ -63,7 +63,7 @@ export default function Courses() {
           </Link>
         </Container>
         <Image
-          src="/henry-be-bAFiBDMeiVI-unsplash.jpg"
+          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
           alt="man listening to American English for Devs course on street"
           w="50%"
         />
@@ -71,7 +71,7 @@ export default function Courses() {
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />
       <Flex p={8} minH="sm" align="center">
         <Image
-          src="/henry-be-bAFiBDMeiVI-unsplash.jpg"
+          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
           alt="man listening to American English for Devs course on street"
           w="50%"
         />
@@ -159,7 +159,7 @@ export default function Courses() {
           </Link>
         </Container>
         <Image
-          src="/henry-be-bAFiBDMeiVI-unsplash.jpg"
+          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
           alt="man listening to American English for Devs course on street"
           w="50%"
         />
@@ -167,7 +167,7 @@ export default function Courses() {
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />
       <Flex p={8} minH="sm" align="center">
         <Image
-          src="/henry-be-bAFiBDMeiVI-unsplash.jpg"
+          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
           alt="man listening to American English for Devs course on street"
           w="50%"
         />

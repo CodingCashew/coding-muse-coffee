@@ -68,7 +68,7 @@ export default function CourseOne() {
           </Link>
         </Container>
         <Image
-          src="/henry-be-bAFiBDMeiVI-unsplash.jpg"
+          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
           alt="man listening to American English for Devs course on street"
           w="50%"
         />
