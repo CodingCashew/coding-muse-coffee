@@ -13,7 +13,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
-import Head from 'next/head'
+import Head from "next/head";
 
 export default function SpeakingOne() {
   const id = 1;
@@ -23,46 +23,40 @@ export default function SpeakingOne() {
   return (
     <Container minW="5xl" minH="xl">
       <Head>
-        <title>Speaking Practice</title>
+        <title>Speaking Practice 1</title>
       </Head>
-      <Flex p={8} minH="sm" align="center">
-        <Container p={8}>
-          <Text fontSize="2xl">Speaking Practice for Interview Questions</Text>
-          <Text pt={2}>
-            Practice some common phrases used when answering interview questions
-          </Text>
-          <Container p={5}>
-            <UnorderedList mb={5}>
-              <ListItem>Over 5 hours of audio content</ListItem>
-              <ListItem>Immersive speaking practice</ListItem>
-              <ListItem>Printable Vocab Study Sheet Included</ListItem>
-              <ListItem>Excel in tech interviews</ListItem>
-            </UnorderedList>
-            <audio controls src="/dummy-audio.m4a" />
-          </Container>
-          
-          <Link href="/checkout">
-          </Link>
-          <Button
-            color="white"
-            ml={3}
-            bgColor="secondary.main"
-            width="28%"
-            onClick={() => increment(id)}
-          >
-            Add to Cart
-          </Button>
-          <Link href="/courses">
-            <Button color="white" ml={3} bgColor="tertiary.main" width="34%">
-              Back to Courses
-            </Button>
-          </Link>
-        </Container>
+      <Flex width="6xl" alignItems="center" justifyContent="center" >
         <Image
-          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
-          alt="man listening to American English for Devs course on street"
-          w="50%"
+          width="40%"
+          src="/practice/emmanuel-ikwuegbu-Gy_G8PMkPSc-unsplash.jpg"
+          alt="software developer"
         />
+        <Container width="2xl">
+          <Text fontSize="2xl">Practice Answering Interview Questions</Text>
+          <Text fontSize="xl">10 phrases you MUST know</Text>
+        </Container>
+      </Flex>
+      <Flex direction="column" alignItems="center" mt={5} mb={5}>
+        <Flex align="center" gap={4} mt={5}>
+          <audio controls src="/speaking1audio/1Q.DescribeEnvironment.mp3" />
+          <Text>This is the script for this audio</Text>
+        </Flex>
+        <Flex align="center" gap={4} mt={5}>
+          <audio controls src="/speaking1audio/1Q.DescribeEnvironment.mp3" />
+          <Text>This is the script for this audio</Text>
+        </Flex>
+        <Flex align="center" gap={4} mt={5}>
+          <audio controls src="/speaking1audio/1Q.DescribeEnvironment.mp3" />
+          <Text>This is the script for this audio</Text>
+        </Flex>
+        <Flex align="center" gap={4} mt={5}>
+          <audio controls src="/speaking1audio/1Q.DescribeEnvironment.mp3" />
+          <Text>This is the script for this audio</Text>
+        </Flex>
+        <Flex align="center" gap={4} mt={5}>
+          <audio controls src="/speaking1audio/1Q.DescribeEnvironment.mp3" />
+          <Text>This is the script for this audio</Text>
+        </Flex>
       </Flex>
     </Container>
   );
