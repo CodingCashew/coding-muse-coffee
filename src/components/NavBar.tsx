@@ -26,6 +26,7 @@ export default function Navbar() {
               src="/favicon.png"
               alt="American English for Devs logo"
               w="50px"
+              m={3}
             />
           </Link>
           <Link href="/" className="logo">
@@ -36,22 +37,27 @@ export default function Navbar() {
         </Flex>
         <Flex align="center" gap={8} className="mainLinksContainer">
           <Link href="/speaking" className="links">
-            <Text fontSize="xl" color="secondary.dark">
-              Practice
+            <Text fontSize="xl" color="secondary.dark" className="link">
+              Speaking
+            </Text>
+          </Link>
+          <Link href="/listening" className="links">
+            <Text fontSize="xl" color="secondary.dark" className="link">
+              Listening
             </Text>
           </Link>
           <Link href="/courses" className="links">
-            <Text fontSize="xl" color="secondary.dark">
+            <Text fontSize="xl" color="secondary.dark" className="link">
               Courses
             </Text>
           </Link>
-          <Link href="/faq" className="links">
-            <Text fontSize="xl" color="secondary.dark">
+          {/* <Link href="/faq" className="links">
+            <Text fontSize="xl" color="secondary.dark" className="link">
               FAQ
             </Text>
-          </Link>
+          </Link> */}
           <Link href="/contact" className="links">
-            <Text fontSize="xl" color="secondary.dark">
+            <Text fontSize="xl" color="secondary.dark" className="link">
               Contact
             </Text>
           </Link>

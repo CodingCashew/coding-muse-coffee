@@ -251,6 +251,10 @@
   padding: 1rem;
 }
 
+.link:hover {
+  color: "red";
+}
+
 .cart {
   align-self: center;
   margin: 1rem;

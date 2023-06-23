@@ -79,31 +79,6 @@ export default function Home() {
             </Text>
           </Container>
         </Box>
-
-        <Container  minW="8xl" bgColor="white">
-          <Text>Communicate your ideas effectively in English</Text>
-          <Text>
-            American English for Devs helps you to be able to confidently speak
-            with your manager, co-worker, team lead, or technical interviewer
-          </Text>
-          <Text>Icons showing benefits</Text>
-          <Text>
-            Convenient and efficient to have mp3 instead of scrolling youtube
-            and listening to ads
-          </Text>
-          <Text>
-            Native American(?) accent so you can avoid criticism from assholes
-          </Text>
-          <Text>Confidently show your skills</Text>
-          <Text>Here is what people are saying about the course:</Text>
-          <Text>
-            Risk free! If you are not completely rocked, get 110% of your money
-            back.
-          </Text>
-          <Text>Icons of each course linking to details page</Text>
-          <Text>Save photos the way that medium author said-websomething?</Text>
-        </Container>
-
         <Box
           width="100%"
           minHeight="md"
