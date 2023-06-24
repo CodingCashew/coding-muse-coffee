@@ -54,7 +54,7 @@ export default function Home() {
         </Box>
         <Image
           width="100%"
-          src="/landingPage/linkedin-sales-solutions-1LyBcHrH4J8-unsplash.jpg"
+          src="/landingPage/linkedin-sales-solutions-1LyBcHrH4J8-unsplash.webp"
           alt="software developer"
         />
         <Box

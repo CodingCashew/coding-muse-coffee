@@ -7,11 +7,12 @@ export default function ListeningOne() {
     <Container minW="5xl" minH="xl">
       <Head>
         <title>Duplicate Speaking Practice 1</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <Flex width="6xl" alignItems="center" justifyContent="center">
         <Image
           width="40%"
-          src="/speaking/emmanuel-ikwuegbu-Gy_G8PMkPSc-unsplash.jpg"
+          src="/speaking/emmanuel-ikwuegbu-Gy_G8PMkPSc-unsplash.webp"
           alt="software developer"
         />
         <Container width="2xl">

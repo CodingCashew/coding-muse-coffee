@@ -10,40 +10,17 @@ type ShoppingCartProviderProps = {
   children: ReactNode;
 };
 
-type CartItem = {
+export interface CartItem {
   id: number;
   name: string;
   description: string;
-  roast: string;
-  region: string;
   price: number;
-  size: string;
+  length: string;
   imagePath: string;
-  quantity: number;
-};
+}
 
 type ShoppingCartContext = {
-  getItemQty: (id: number) => number;
-  increment: (
-    id: number,
-    name: string,
-    description: string,
-    roast: string,
-    region: string,
-    price: number,
-    size: string,
-    imagePath: string
-  ) => void;
-  decrement: (
-    id: number,
-    name: string,
-    description: string,
-    roast: string,
-    region: string,
-    price: number,
-    size: string,
-    imagePath: string
-  ) => void;
+  addItem: (courseInfo: CartItem) => void;
   removeItem: (id: number) => void;
   cartItems: CartItem[];
   numOfItems: () => number;
@@ -71,72 +48,11 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     window.localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  function getItemQty(id: number) {
-    return cartItems.find((item) => item.id === id)?.quantity || 0;
-  }
-
-  function increment(
-    id: number,
-    name: string,
-    description: string,
-    roast: string,
-    region: string,
-    price: number,
-    size: string,
-    imagePath: string
-  ) {
+  function addItem(newItem: CartItem) {
     setCartItems((currItems: any) => {
-      if (currItems.find((item: any) => item.id === id) == null) {
-        return [
-          ...currItems,
-          {
-            id,
-            name,
-            description,
-            roast,
-            region,
-            price,
-            size,
-            imagePath,
-            quantity: 1,
-          },
-        ];
-      } else {
-        return currItems.map((item: any) => {
-          if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 };
-          } else {
-            return item;
-          }
-        });
-      }
-    });
-  }
-
-  function decrement(
-    id: number,
-    name: string,
-    description: string,
-    roast: string,
-    region: string,
-    price: number,
-    size: string,
-    imagePath: string
-  ) {
-    if (!cartItems) return;
-    setCartItems((currItems:any) => {
-      if (currItems.find((item:any) => item.id === id)?.quantity === 1) {
-        return cartItems;
-        // return currItems.filter((item) => item.id !== id);
-      } else {
-        return currItems.map((item:any) => {
-          if (item.id === id) {
-            return { ...item, name, quantity: item.quantity - 1 };
-          } else {
-            return item;
-          }
-        });
-      }
+      if (currItems.find((currItem: any) => currItem.id === newItem.id) == null) {
+        return [...currItems, newItem];
+      } else return currItems;
     });
   }
 
@@ -147,20 +63,14 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   }
 
   const numOfItems = () => {
-    let sum = 0;
-    if (cartItems) {
-      for (let item of cartItems) {
-        sum += item.quantity;
-      }
-    }
-    return sum;
+    return cartItems.length
   };
 
   const subtotal = (): number => {
     let currTotal = 0;
     if (!cartItems.length) return 0;
     for (let item of cartItems) {
-      currTotal += item.quantity * item.price;
+      currTotal += item.price;
     }
     return currTotal;
   };
@@ -168,13 +78,11 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   return (
     <ShoppingCartContext.Provider
       value={{
-        getItemQty,
         removeItem,
         cartItems,
         subtotal,
         numOfItems,
-        increment,
-        decrement,
+        addItem,
       }}
     >
       {children}

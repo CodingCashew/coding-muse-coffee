@@ -13,17 +13,18 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
-import Head from 'next/head'
+import Head from "next/head";
 
 export default function CoursFour() {
   const id = 4;
-  const { getItemQty, increment, decrement, removeItem } = useShoppingCart();
+  const { getItemQty, addItem, decrement, removeItem } = useShoppingCart();
   const quantity = getItemQty(id);
 
   return (
     <Container minW="5xl" minH="xl">
       <Head>
         <title>Code Review</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <Flex p={8} minH="sm" align="center">
         <Container p={8}>
@@ -38,14 +39,14 @@ export default function CoursFour() {
                 Write clear and professional code review comments
               </ListItem>
             </UnorderedList>
-            <audio controls src="/dummy-audio.m4a" />
+            <audio controls src="/dummy-audio.mp3" />
           </Container>
           <Link href="/checkout">
             <Button
               color="white"
               bgColor="primary.dark"
               width="28%"
-              onClick={() => increment(id)}
+              onClick={() => addItem(id)}
             >
               Buy Now
             </Button>
@@ -55,7 +56,7 @@ export default function CoursFour() {
             ml={3}
             bgColor="secondary.main"
             width="28%"
-            onClick={() => increment(id)}
+            onClick={() => addItem(id)}
           >
             Add to Cart
           </Button>

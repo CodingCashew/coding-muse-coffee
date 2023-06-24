@@ -59,6 +59,7 @@ function Contact() {
     <Container maxWidth="sm" minH="xl" centerContent>
       <Head>
         <title>Contact</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <form onSubmit={sendEmail}>
         <Grid mt={10}>

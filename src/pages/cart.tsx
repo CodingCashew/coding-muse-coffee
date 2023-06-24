@@ -1,5 +1,15 @@
-import React from "react";
-import { Container, Text, Button, Link, Stack } from "@chakra-ui/react";
+import React, { useState } from "react";
+import {
+  Container,
+  Text,
+  Button,
+  Link,
+  Image,
+  Stack,
+  Flex,
+  Input,
+  Divider,
+} from "@chakra-ui/react";
 import {
   useShoppingCart,
   ShoppingCartProvider,
@@ -7,25 +17,113 @@ import {
 import Head from "next/head";
 
 export default function Cart() {
-  const { cartItems } = useShoppingCart();
+  const { cartItems, numOfItems, subtotal, addItem, removeItem } =
+    useShoppingCart();
+  const [showDiscountInput, setShowDiscountInput] = useState(false);
+
+  const toggleShowDiscountInput = () => {
+    setShowDiscountInput(!showDiscountInput);
+  };
+  const handleSubmitDiscountCode = () => {
+    console.log("Discount Code Submitted!");
+  };
+
+  const orderTotal = subtotal();
   return (
-    <Container minH="xl">
+    <Container minH="xl" minW="5xl">
       <Head>
         <title>Cart</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
-      <Stack>
-        {cartItems && cartItems.map((item, index) => (
-          <>
-            <Text key={item.id}>Item Id: {item.id}</Text>
-            <Text key={item.id}>Item Qty: {item.quantity}</Text>
-          </>
-        ))}
-      </Stack>
-      <Link href="/checkout">
-        <Button color="white" bgColor="primary.dark">
-          Checkout
-        </Button>
-      </Link>
+      <Text fontSize="2xl">Cart</Text>
+      <Flex minW="2xl">
+          <Container minW="xl">
+          {!cartItems.length && (
+            <Container>
+              <Text>Cart is Empty</Text>
+              <Link href="/courses">
+                <Button color="white" bgColor="primary.main" m={3}>
+                  Keep Shopping
+                </Button>
+              </Link>
+            </Container>
+          )}
+          {cartItems &&
+            cartItems.map((item) => (
+              <Container key={Math.random() * 1000} mt={5}>
+                <Text fontSize="xl" mt={7} mb={4}>{item.name} Course</Text>
+                <Image src={item.imagePath} alt="english course" w="75%" />
+                <Text fontSize="lg" mt={3}>Price: <Text as="span" color="secondary.dark">${item.price}</Text></Text>
+                <Text fontSize="lg">Length: <Text as="span" color="secondary.dark">{item.length}</Text></Text>
+                <Text fontSize="lg">Audio or Video: <Text as="span" color="secondary.dark">audio</Text></Text>
+                <Button
+                  color="primary.main"
+                  variant="ghost"
+                  m={3}
+                  width="28%"
+                  onClick={() => removeItem(item.id)}
+                >
+                  Remove Item
+                </Button>
+                <Divider />
+              </Container>
+            ))}
+        </Container>
+        {cartItems.length > 0 && (
+          <Container>
+            <Text fontSize="xl" minW="xl" mb={5}>
+              Order Summary
+            </Text>
+            <Flex justify="space-between">
+              <Text>Number of Items</Text>
+              <Text>{numOfItems()}</Text>
+            </Flex>
+            <Button
+              mt={3}
+              mb={3}
+              variant="ghost"
+              color="primary.dark"
+              onClick={toggleShowDiscountInput}
+            >
+              Add Discount Code
+            </Button>
+            {showDiscountInput && (
+              <>
+                <Input></Input>
+                <Button variant="ghost" onClick={handleSubmitDiscountCode}>
+                  Submit
+                </Button>
+                <Button variant="ghost" onClick={toggleShowDiscountInput}>
+                  Cancel
+                </Button>
+              </>
+            )}
+
+            <Flex justify="space-between">
+              <Text>Tax</Text>
+              <Text>TBD</Text>
+            </Flex>
+            <Flex justify="space-between">
+              <Text>Order Subtotal</Text>
+              <Text>${orderTotal}</Text>
+            </Flex>
+            <Container>
+              <Link href="/checkout">
+                {!!cartItems.length && (
+                  <Button color="white" bgColor="primary.dark" m={3}>
+                    Checkout
+                  </Button>
+                )}
+              </Link>
+              <Link href="/courses">
+                <Button color="primary.dark" variant='outline' m={3}>
+                  Keep Shopping
+                </Button>
+              </Link>
+            </Container>
+          </Container>
+        )}
+      </Flex>
     </Container>
   );
 }

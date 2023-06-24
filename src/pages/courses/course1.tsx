@@ -12,18 +12,26 @@ import {
   Button,
   Image,
 } from "@chakra-ui/react";
-import { useShoppingCart } from "@/context/ShoppingCartContext";
-import Head from 'next/head'
+import { CartItem, useShoppingCart } from "@/context/ShoppingCartContext";
+import Head from "next/head";
 
 export default function CourseOne() {
   const id = 1;
-  const { getItemQty, increment, decrement, removeItem } = useShoppingCart();
-  const quantity = getItemQty(id);
-
+  const { addItem } = useShoppingCart();
+  const course1Info: CartItem = {
+    id: 1,
+    name: "Interview Vocabulary",
+    description:
+      "Confidently express your abilities during a technical interview",
+    price: 27,
+    length: "3:27:10",
+    imagePath: "/courses/henry-be-bAFiBDMeiVI-unsplash.jpg",
+  };
   return (
     <Container minW="5xl" minH="xl">
       <Head>
         <title>Interview Vocabulary</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <Flex p={8} minH="sm" align="center">
         <Container p={8}>
@@ -38,26 +46,25 @@ export default function CourseOne() {
               <ListItem>Printable Vocab Study Sheet Included</ListItem>
               <ListItem>Excel in tech interviews</ListItem>
             </UnorderedList>
-            <audio controls src="/dummy-audio.m4a" />
+            <audio controls src="/dummy-audio.mp3" />
           </Container>
           <Link href="/checkout">
             <Button
               color="white"
               bgColor="primary.dark"
               width="28%"
-              onClick={() => increment(id)}
+              onClick={() => addItem(course1Info)}
             >
               Buy Now
             </Button>
           </Link>
-          <Link href="/checkout">
-          </Link>
+          <Link href="/checkout"></Link>
           <Button
             color="white"
             ml={3}
             bgColor="secondary.main"
             width="28%"
-            onClick={() => increment(id)}
+            onClick={() => addItem(course1Info)}
           >
             Add to Cart
           </Button>

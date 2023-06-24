@@ -13,7 +13,7 @@ export default function Navbar() {
   const { cartItems, numOfItems } = useShoppingCart();
   const num: number = numOfItems();
   return (
-    <Box minH={20}>
+    <Box minH={20} className="navbar">
       <Flex
         className="flexboxContainer"
         p={3}

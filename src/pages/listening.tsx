@@ -16,12 +16,13 @@ export default function Listening() {
     <Container minW="6xl" minH="xl" mb={10}>
       <Head>
         <title>Listening Practice</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <main>
         <Flex width="6xl" alignItems="center" justifyContent="center" mt={10} mb={10}>
           <Image
             maxH="xl"
-            src="/listening/kelly-sikkema-_-TwILDnZSU-unsplash.jpg"
+            src="/listening/kelly-sikkema-_-TwILDnZSU-unsplash.webp"
             alt="practicing listening"
           />
           <Container width="2xl">

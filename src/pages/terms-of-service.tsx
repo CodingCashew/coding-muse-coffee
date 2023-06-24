@@ -7,6 +7,7 @@ export default function PrivacyPolicy() {
     <Container minH="xl">
       <Head>
         <title>Terms of Service</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <Text>
         This is the Terms of Service page for American English for Devs

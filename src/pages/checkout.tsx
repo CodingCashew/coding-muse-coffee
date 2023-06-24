@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Text, Button, Link, Stack } from "@chakra-ui/react";
+import { Container, Text, Button, Link, Stack, Flex, Divider } from "@chakra-ui/react";
 import {
   useShoppingCart,
   ShoppingCartProvider,
@@ -12,20 +12,18 @@ export default function Checkout() {
     <Container minH="xl">
       <Head>
         <title>Checkout</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <Stack>
+        <Text fontSize="2xl">Checkout</Text>
+        <Divider mb={7}/>
         {cartItems && cartItems.map((item, index) => (
-          <>
-            <Text key={index}>Item Id: {item.id}</Text>
-            <Text key={index * 100}>Item Qty: {item.quantity}</Text>
-          </>
+          <Flex key={index} gap={5}>
+            <Text fontSize="xl" color="tertiary.dark">{item.name} - </Text>
+            <Text fontSize="xl" color="tertiary.dark">${item.price}</Text>
+          </Flex>
         ))}
       </Stack>
-      <Link href="/cart">
-        <Button color="white" bgColor="secondary.main">
-          Back to Cart
-        </Button>
-      </Link>
     </Container>
   );
 }

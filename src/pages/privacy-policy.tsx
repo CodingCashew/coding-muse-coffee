@@ -7,6 +7,7 @@ export default function PrivacyPolicy() {
     <Container minH="xl">
       <Head>
         <title>Privacy Policy</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <Text>This is the Privacy Policy page for American English for Devs</Text>
     </Container>

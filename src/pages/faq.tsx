@@ -59,6 +59,7 @@ export default function Faq() {
     <Container minW="6xl" minH="xl" mb={10}>
       <Head>
         <title>FAQs</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <Text fontSize="2xl" color="primary.dark" mt={5} align="center">Frequently Asked Questions</Text>
       {questions.map((faq: faq, index) => (

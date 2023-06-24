@@ -24,7 +24,7 @@ export default function Speaking() {
         <Flex width="6xl" alignItems="center" justifyContent="center" mt={10} mb={10}>
           <Image
             width="40%"
-            src="/speaking/emmanuel-ikwuegbu-Gy_G8PMkPSc-unsplash.jpg"
+            src="/speaking/emmanuel-ikwuegbu-Gy_G8PMkPSc-unsplash.webp"
             alt="practicing speaking"
           />
           <Container width="2xl">
@@ -49,7 +49,7 @@ export default function Speaking() {
           </Container>
           <Image
             width="40%"
-            src="/speaking/linkedin-sales-solutions-Be5aVKFv9ho-unsplash.jpg"
+            src="/speaking/linkedin-sales-solutions-Be5aVKFv9ho-unsplash.webp"
             alt="having an online job interview"
           />
         </Flex>
