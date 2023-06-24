@@ -43,7 +43,7 @@ export default function Cart() {
               <Text>Cart is Empty</Text>
               <Link href="/courses">
                 <Button color="white" bgColor="primary.main" m={3}>
-                  Keep Shopping
+                  Back to Courses
                 </Button>
               </Link>
             </Container>
@@ -117,7 +117,7 @@ export default function Cart() {
               </Link>
               <Link href="/courses">
                 <Button color="primary.dark" variant='outline' m={3}>
-                  Keep Shopping
+                  Back to Courses
                 </Button>
               </Link>
             </Container>

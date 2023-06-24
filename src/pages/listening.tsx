@@ -47,7 +47,7 @@ export default function Listening() {
           </Container>
           <Image
             width="40%"
-            src="/listening/soundtrap-C-2Wky-LT7k-unsplash.jpg"
+            src="/listening/soundtrap-C-2Wky-LT7k-unsplash.webp"
             alt="having an online job interview"
           />
         </Flex>

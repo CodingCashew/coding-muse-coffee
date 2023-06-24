@@ -27,12 +27,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      {/* <Script src="https://www.paypal.com/sdk/js?client-id=process.env.PAYPAL_CLIENT_ID" defer></Script> */}
       <main >
         {/* <Container  width="100%"> */}
         <Image mt={20}
           width="100%"
-          src="/landingPage/nubelson-fernandes-gTs2w7bu3Qo-unsplash.jpg"
+          src="/landingPage/nubelson-fernandes-gTs2w7bu3Qo-unsplash.webp"
           alt="software developer"
         />
         {/* </Container> */}
@@ -50,7 +49,7 @@ export default function Home() {
           </Text>
           <Image
             height="xl"
-            src="/landingPage/windows-6G6akT8biLg-unsplash.jpg"
+            src="/landingPage/windows-6G6akT8biLg-unsplash.webp"
             alt="software developer"
           />
         </Box>
@@ -69,7 +68,7 @@ export default function Home() {
         >
           <Image
             width="30%"
-            src="/landingPage/procreator-ux-design-studio-VzJjPuk53sk-unsplash.jpg"
+            src="/landingPage/procreator-ux-design-studio-VzJjPuk53sk-unsplash.webp"
             alt="software developer"
           />
           <Container display="flex column" maxW="3xl">

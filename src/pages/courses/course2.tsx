@@ -12,13 +12,20 @@ import {
   Button,
   Image,
 } from "@chakra-ui/react";
-import { useShoppingCart } from "@/context/ShoppingCartContext";
+import { CartItem, useShoppingCart } from "@/context/ShoppingCartContext";
 import Head from "next/head";
 
 export default function CourseTwo() {
-  const id = 2;
-  const { getItemQty, addItem, decrement, removeItem } = useShoppingCart();
-  const quantity = getItemQty(id);
+  const course2: CartItem = {
+    id: 2,
+    name: "Standup Vocabulary",
+    description:
+      "Confidently express yourself during standup",
+    price: 37,
+    length: "4:17:44",
+    imagePath: "/courses/dylan-gillis-KdeqA3aTnBY-unsplash.webp",
+  };
+  const { addItem, removeItem } = useShoppingCart();
 
   return (
     <Container minW="5xl" minH="xl">
@@ -28,9 +35,9 @@ export default function CourseTwo() {
       </Head>
       <Flex p={8} minH="sm" mt={20} align="center">
         <Container p={8}>
-          <Text fontSize="2xl">Standup Vocabulary</Text>
+          <Text fontSize="2xl">{course2.name} </Text>
           <Text pt={2}>
-            Sound knowledgeable and competent talking about the work you did
+            {course2.description}
           </Text>
           <Container p={5}>
             <UnorderedList mb={5}>
@@ -48,7 +55,7 @@ export default function CourseTwo() {
               color="white"
               bgColor="primary.dark"
               width="28%"
-              onClick={() => addItem(id)}
+              onClick={() => addItem(course2)}
             >
               Buy Now
             </Button>
@@ -58,7 +65,7 @@ export default function CourseTwo() {
             ml={3}
             bgColor="secondary.main"
             width="28%"
-            onClick={() => addItem(id)}
+            onClick={() => addItem(course2)}
           >
             Add to Cart
           </Button>
@@ -69,8 +76,8 @@ export default function CourseTwo() {
           </Link>
         </Container>
         <Image
-          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
-          alt="man listening to American English for Devs course on street"
+          src={course2.imagePath}
+          alt="dev team during stand up meeting"
           w="50%"
         />
       </Flex>

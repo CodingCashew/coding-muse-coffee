@@ -12,13 +12,20 @@ import {
   Button,
   Image,
 } from "@chakra-ui/react";
-import { useShoppingCart } from "@/context/ShoppingCartContext";
+import { CartItem, useShoppingCart } from "@/context/ShoppingCartContext";
 import Head from "next/head";
 
 export default function CourseThree() {
-  const id = 3;
-  const { getItemQty, addItem, decrement, removeItem } = useShoppingCart();
-  const quantity = getItemQty(id);
+  const course3: CartItem = {
+    id: 3,
+    name: "Pair Programming",
+    description:
+    "Be able to smoothly communicate your ideas and get along well with your partner",
+    price: 29,
+    length: "3:39:38",
+    imagePath: "/courses/alvaro-reyes-fSWOVc3e06w-unsplash.webp",
+  };
+  const { addItem, removeItem } = useShoppingCart();
 
   return (
     <Container minW="5xl" minH="xl">
@@ -28,14 +35,13 @@ export default function CourseThree() {
       </Head>
       <Flex p={8} minH="sm" mt={20} align="center">
         <Container p={8}>
-          <Text fontSize="2xl">Pair Programming Practice</Text>
+          <Text fontSize="2xl">{course3.name}</Text>
           <Text pt={2}>
-            Be able to smoothly communicate your ideas and get along well with
-            your partner
+            {course3.description}
           </Text>
           <Container p={5}>
             <UnorderedList mb={5}>
-              <ListItem>Over 5 hours of audio content</ListItem>
+              <ListItem>{course3.length} of audio content</ListItem>
               <ListItem>Immersive speaking practice</ListItem>
               <ListItem>Printable Vocab Study Sheet Included</ListItem>
               <ListItem>
@@ -49,7 +55,7 @@ export default function CourseThree() {
               color="white"
               bgColor="primary.dark"
               width="28%"
-              onClick={() => addItem(id)}
+              onClick={() => addItem(course3)}
             >
               Buy Now
             </Button>
@@ -59,7 +65,7 @@ export default function CourseThree() {
             ml={3}
             bgColor="secondary.main"
             width="28%"
-            onClick={() => addItem(id)}
+            onClick={() => addItem(course3)}
           >
             Add to Cart
           </Button>
@@ -70,8 +76,8 @@ export default function CourseThree() {
           </Link>
         </Container>
         <Image
-          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
-          alt="man listening to American English for Devs course on street"
+          src={course3.imagePath}
+          alt="developers working together"
           w="50%"
         />
       </Flex>

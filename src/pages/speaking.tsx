@@ -49,7 +49,7 @@ export default function Speaking() {
           </Container>
           <Image
             width="40%"
-            src="/speaking/linkedin-sales-solutions-Be5aVKFv9ho-unsplash.webp"
+            src="/speaking/surface-HJgaV1qjHS0-unsplash.jpg"
             alt="having an online job interview"
           />
         </Flex>

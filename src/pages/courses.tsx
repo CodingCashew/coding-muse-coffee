@@ -22,26 +22,26 @@ export default function Courses() {
       "Confidently express your abilities during a technical interview",
     price: 27,
     length: "3:27:10",
-    imagePath: "/courses/henry-be-bAFiBDMeiVI-unsplash.jpg",
+    imagePath: "/courses/linkedin-sales-solutions-Be5aVKFv9ho-unsplash.webp",
   };
   const course2Info: CartItem = {
     id: 2,
     name: "Standup Vocabulary",
     description:
-      "Confidently express your abilities during a technical interview",
+      "Confidently express yourself during standup",
     price: 37,
     length: "4:17:44",
-    imagePath: "/courses/henry-be-bAFiBDMeiVI-unsplash.jpg",
+    imagePath: "/courses/dylan-gillis-KdeqA3aTnBY-unsplash.webp",
   };
 
   const course3Info: CartItem = {
     id: 3,
     name: "Pair Programming",
     description:
-      "Confidently express your abilities during a technical interview",
+      "Be able to smoothly communicate your ideas and get along well with your partner",
     price: 29,
     length: "3:39:38",
-    imagePath: "/courses/henry-be-bAFiBDMeiVI-unsplash.jpg",
+    imagePath: "/courses/alvaro-reyes-fSWOVc3e06w-unsplash.webp",
   };
   const course4Info: CartItem = {
     id: 4,
@@ -50,7 +50,7 @@ export default function Courses() {
       "Confidently express your abilities during a technical interview",
     price: 34,
     length: "4:13:25",
-    imagePath: "/courses/henry-be-bAFiBDMeiVI-unsplash.jpg",
+    imagePath: "/courses/sigmund-AQTA5E6mCNU-unsplash.webp",
   };
 
   return (
@@ -103,7 +103,7 @@ export default function Courses() {
           </Link>
         </Container>
         <Image
-          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
+          src={course1Info.imagePath}
           alt="man listening to American English for Devs course on street"
           w="50%"
         />
@@ -111,7 +111,7 @@ export default function Courses() {
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />
       <Flex p={8} minH="sm" align="center">
         <Image
-          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
+          src={course2Info.imagePath}
           alt="man listening to American English for Devs course on street"
           w="50%"
         />
@@ -199,7 +199,7 @@ export default function Courses() {
           </Link>
         </Container>
         <Image
-          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
+          src={course3Info.imagePath}
           alt="man listening to American English for Devs course on street"
           w="50%"
         />
@@ -207,7 +207,7 @@ export default function Courses() {
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />
       <Flex p={8} minH="sm" align="center">
         <Image
-          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
+          src={course4Info.imagePath}
           alt="man listening to American English for Devs course on street"
           w="50%"
         />

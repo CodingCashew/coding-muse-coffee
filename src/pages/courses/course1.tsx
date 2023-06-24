@@ -18,14 +18,14 @@ import Head from "next/head";
 export default function CourseOne() {
   const id = 1;
   const { addItem } = useShoppingCart();
-  const course1Info: CartItem = {
+  const course1: CartItem = {
     id: 1,
     name: "Interview Vocabulary",
     description:
       "Confidently express your abilities during a technical interview",
     price: 27,
     length: "3:27:10",
-    imagePath: "/courses/henry-be-bAFiBDMeiVI-unsplash.jpg",
+    imagePath: "/courses/linkedin-sales-solutions-Be5aVKFv9ho-unsplash.webp",
   };
   return (
     <Container minW="5xl" minH="xl">
@@ -35,9 +35,9 @@ export default function CourseOne() {
       </Head>
       <Flex p={8} minH="sm" mt={20} align="center">
         <Container p={8}>
-          <Text fontSize="2xl">Interview Vocabulary</Text>
+          <Text fontSize="2xl">{course1.name}</Text>
           <Text pt={2}>
-            Confidently express your abilities during a technical interview
+            {course1.description}
           </Text>
           <Container p={5}>
             <UnorderedList mb={5}>
@@ -53,7 +53,7 @@ export default function CourseOne() {
               color="white"
               bgColor="primary.dark"
               width="28%"
-              onClick={() => addItem(course1Info)}
+              onClick={() => addItem(course1)}
             >
               Buy Now
             </Button>
@@ -64,7 +64,7 @@ export default function CourseOne() {
             ml={3}
             bgColor="secondary.main"
             width="28%"
-            onClick={() => addItem(course1Info)}
+            onClick={() => addItem(course1)}
           >
             Add to Cart
           </Button>
@@ -75,7 +75,7 @@ export default function CourseOne() {
           </Link>
         </Container>
         <Image
-          src="/courses/henry-be-bAFiBDMeiVI-unsplash.jpg"
+          src={course1.imagePath}
           alt="man listening to American English for Devs course on street"
           w="50%"
         />
