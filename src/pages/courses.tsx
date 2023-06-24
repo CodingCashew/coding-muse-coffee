@@ -59,7 +59,7 @@ export default function Courses() {
         <title>Courses</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Text fontSize="2xl" color="primary.dark" mt={5} align="center">
+      <Text fontSize="2xl" color="primary.dark" mt={20} align="center">
         Audio Courses
       </Text>
       <Flex p={8} minH="sm" align="center">

@@ -23,28 +23,7 @@ const theme = extendTheme({
       light: "#4299e1",
       main: "#2b6cb0",
       dark: "#2c5282"
-    },
-    // secondary: {
-    //   light: "#68D391",
-    //   main: "#48BB78",
-    //   dark: "#38A169",
-    // },
-
-    // primary: {
-    //   light: "#ED64A6",
-    //   main: "#D53F8C",
-    //   dark: "#97266D",
-    // },
-    // secondary: {
-    //   light: "#ECC94B",
-    //   main: "#D69E2E",
-    //   dark: "#ED8936",
-    // },
-    // tertiary: {
-    //   light: "#9F7AEA",
-    //   main: "#805AD5",
-    //   dark: "#553C9A"
-    // }
+    }
   },
 });
 

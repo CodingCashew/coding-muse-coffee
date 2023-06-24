@@ -244,10 +244,17 @@
 }
 
 .navbar {
-  position: fixed;
-  z-index: 1;
+  position: sticky !important;
+  top: 0 !important;
+  box-shadow: 5px 10px;
+  /* z-index: 1;
   top: 0;
-  overflow: hidden;
+  overflow: hidden; */
+}
+
+.component {
+  top: 20;
+  margin-top: 50px;
 }
 
 .links {

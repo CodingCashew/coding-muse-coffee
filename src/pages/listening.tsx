@@ -19,7 +19,7 @@ export default function Listening() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main>
-        <Flex width="6xl" alignItems="center" justifyContent="center" mt={10} mb={10}>
+        <Flex width="6xl" alignItems="center" justifyContent="center" mt={20} mb={10}>
           <Image
             maxH="xl"
             src="/listening/kelly-sikkema-_-TwILDnZSU-unsplash.webp"

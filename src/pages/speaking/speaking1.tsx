@@ -15,7 +15,7 @@ export default function SpeakingOne() {
         <title>Speaking Practice 1</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Flex width="6xl" alignItems="center" justifyContent="center">
+      <Flex width="6xl" mt={20} alignItems="center" justifyContent="center">
         <Image
           width="40%"
           src="/practice/emmanuel-ikwuegbu-Gy_G8PMkPSc-unsplash.webp"

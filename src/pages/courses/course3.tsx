@@ -26,7 +26,7 @@ export default function CourseThree() {
         <title>Pair Programming</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Flex p={8} minH="sm" align="center">
+      <Flex p={8} minH="sm" mt={20} align="center">
         <Container p={8}>
           <Text fontSize="2xl">Pair Programming Practice</Text>
           <Text pt={2}>

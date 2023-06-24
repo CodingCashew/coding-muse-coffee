@@ -13,10 +13,19 @@ export default function Navbar() {
   const { cartItems, numOfItems } = useShoppingCart();
   const num: number = numOfItems();
   return (
-    <Box minH={20} className="navbar">
+    // <Box minH={20} className="navbar">
+
+    <Flex bgColor="white">
       <Flex
-        className="flexboxContainer"
+        as="header"
+        position="fixed"
+        top="0"
+        backgroundColor="white"
+        w="100%"
+        className="navbar flexboxContainer"
+        mb={20}
         p={3}
+        bgColor="white"
         align="center"
         justify="space-between"
       >
@@ -63,12 +72,12 @@ export default function Navbar() {
           </Link>
           <Container>
             <Link href="/cart" className="links">
-              <NotificationBadge count={num} effect={Effect.Custome}/>
-              <GrCart className="cart" size={25} color="red"/>
+              <NotificationBadge count={num} effect={Effect.Custome} />
+              <GrCart className="cart" size={25} color="red" />
             </Link>
           </Container>
         </Flex>
       </Flex>
-    </Box>
+    </Flex>
   );
 }

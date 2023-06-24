@@ -35,7 +35,7 @@ export default function Cart() {
         <title>Cart</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Text fontSize="2xl">Cart</Text>
+      <Text fontSize="2xl" mt={20}>Cart</Text>
       <Flex minW="2xl">
           <Container minW="xl">
           {!cartItems.length && (

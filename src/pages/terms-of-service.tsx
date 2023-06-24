@@ -9,9 +9,11 @@ export default function PrivacyPolicy() {
         <title>Terms of Service</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Text>
-        This is the Terms of Service page for American English for Devs
-      </Text>
+      <Container mt={20}>
+        <Text>
+          This is the Terms of Service page for American English for Devs
+        </Text>
+      </Container>
     </Container>
   );
 }

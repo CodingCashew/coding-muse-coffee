@@ -9,7 +9,7 @@ export default function ListeningOne() {
         <title>Duplicate Speaking Practice 1</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Flex width="6xl" alignItems="center" justifyContent="center">
+      <Flex width="6xl" alignItems="center" mt={20} justifyContent="center">
         <Image
           width="40%"
           src="/speaking/emmanuel-ikwuegbu-Gy_G8PMkPSc-unsplash.webp"

@@ -26,9 +26,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <main>
+      <main >
         {/* <Container  width="100%"> */}
-        <Image
+        <Image mt={20}
           width="100%"
           src="/landingPage/nubelson-fernandes-gTs2w7bu3Qo-unsplash.jpg"
           alt="software developer"

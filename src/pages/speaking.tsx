@@ -21,7 +21,7 @@ export default function Speaking() {
         <title>Speaking Practice</title>
       </Head>
       <main>
-        <Flex width="6xl" alignItems="center" justifyContent="center" mt={10} mb={10}>
+        <Flex width="6xl" alignItems="center" justifyContent="center" mt={20} mb={10}>
           <Image
             width="40%"
             src="/speaking/emmanuel-ikwuegbu-Gy_G8PMkPSc-unsplash.webp"

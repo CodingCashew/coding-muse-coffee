@@ -9,7 +9,11 @@ export default function PrivacyPolicy() {
         <title>Privacy Policy</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Text>This is the Privacy Policy page for American English for Devs</Text>
+      <Container mt={20}>
+        <Text>
+          This is the Privacy Policy page for American English for Devs
+        </Text>
+      </Container>
     </Container>
   );
 }

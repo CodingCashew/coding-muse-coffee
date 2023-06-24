@@ -26,7 +26,7 @@ export default function CoursFour() {
         <title>Code Review</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Flex p={8} minH="sm" align="center">
+      <Flex p={8} minH="sm" mt={20} align="center">
         <Container p={8}>
           <Text fontSize="2xl">Code Review Practice</Text>
           <Text pt={2}>Write professional and clear reviews</Text>

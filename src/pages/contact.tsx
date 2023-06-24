@@ -61,8 +61,8 @@ function Contact() {
         <title>Contact</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <form onSubmit={sendEmail}>
-        <Grid mt={10}>
+      <form onSubmit={sendEmail} >
+        <Grid mt={20}>
           <Text fontSize="xl" color="secondary.dark">
             Questions? Comments? Suggestions?
           </Text>
