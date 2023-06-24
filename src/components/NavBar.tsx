@@ -55,6 +55,11 @@ export default function Navbar() {
               Listening
             </Text>
           </Link>
+          <Link href="/vocab" className="links">
+            <Text fontSize="xl" color="secondary.dark" className="link">
+              Vocab
+            </Text>
+          </Link>
           <Link href="/courses" className="links">
             <Text fontSize="xl" color="secondary.dark" className="link">
               Courses
