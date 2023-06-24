@@ -7,6 +7,11 @@ import Footer from "../components/Footer";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { ShoppingCartProvider } from "@/context/ShoppingCartContext";
 
+// const config = {
+//   initialColorMode: 'dark',
+//   useSystemColorMode: true,
+// }
+
 const theme = extendTheme({
   colors: {
     primary: {
@@ -25,6 +30,10 @@ const theme = extendTheme({
       dark: "#2c5282"
     }
   },
+  // config: {
+  //   initialColorMode: 'dark',
+  //   useSystemColorMode: true,
+  // }
 });
 
 export default function App({ Component, pageProps }: AppProps) {
