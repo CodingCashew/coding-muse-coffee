@@ -14,6 +14,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { ArrowRightIcon } from "@chakra-ui/icons";
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
       </Head>
+      {/* <Script src="https://www.paypal.com/sdk/js?client-id=process.env.PAYPAL_CLIENT_ID" defer></Script> */}
       <main >
         {/* <Container  width="100%"> */}
         <Image mt={20}
