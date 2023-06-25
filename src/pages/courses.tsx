@@ -27,8 +27,7 @@ export default function Courses() {
   const course2Info: CartItem = {
     id: 2,
     name: "Standup Vocabulary",
-    description:
-      "Confidently express yourself during standup",
+    description: "Confidently express yourself during standup",
     price: 37,
     length: "4:17:44",
     imagePath: "/courses/dylan-gillis-KdeqA3aTnBY-unsplash.webp",

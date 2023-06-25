@@ -41,6 +41,9 @@ export default function Footer() {
             color="primary.main"
           />
         </Link>
+        <Link href="https://www.buymeacoffee.com/fyhenglish" className="footerLinks">
+          <SiBuymeacoffee className="search" size={35} color="primary.main" />
+        </Link>
         <Link href="https://www.youtube.com/channel/0" className="footerLinks">
           <FaYoutube className="search" size={35} color="primary.main" />
         </Link>
