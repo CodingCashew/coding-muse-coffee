@@ -62,8 +62,8 @@ export default function Vocab() {
         </Text>
 
         {isShowingBack && (
-          <Container mb={10} align="center">
-            <Text fontSize="3xl" color="primary.dark" p={5}>
+          <Container mb={10} minH="200px" align="center">
+            <Text fontSize="3xl" color="secondary.light" p={5}>
               {cards[index].back}
             </Text>
             <audio controls src={cards[index].audioPath} />
@@ -75,18 +75,18 @@ export default function Vocab() {
         {index + 1}/{cards.length}
       </Text>
       <Flex justify="center" gridGap={3} mb={10}>
-        {index > 0 && <Button onClick={getPrevious} bgColor="primary.main" color="white">
+        <Button onClick={getPrevious}  color="white" colorScheme={ index > 0  ? "teal" : ''}>
           <ChevronLeftIcon mr={2} />
           Previous
-        </Button>}
-        <Button onClick={showBack} bgColor="secondary.main" color="white">
+        </Button>
+        <Button onClick={showBack} bgColor="primary.main" color="white">
           <ViewIcon mr={2} />
           {isShowingBack ? 'Hide' : 'Show'}
         </Button>
-        {index < cards.length - 1 && <Button onClick={getNext} bgColor="primary.main" color="white">
+        <Button onClick={getNext} color="white" colorScheme={index < cards.length - 1 ? "teal" : ''} >
           Next
           <ChevronRightIcon ml={2} />
-        </Button>}
+        </Button>
       </Flex>
     </Flex>
     </Container>

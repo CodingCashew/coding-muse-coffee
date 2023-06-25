@@ -15,6 +15,7 @@ import {
   ShoppingCartProvider,
 } from "../context/ShoppingCartContext";
 import Head from "next/head";
+import { ArrowRightIcon } from "@chakra-ui/icons";
 
 export default function Cart() {
   const { cartItems, numOfItems, subtotal, addItem, removeItem } =
@@ -39,11 +40,11 @@ export default function Cart() {
       <Flex minW="2xl">
           <Container minW="xl">
           {!cartItems.length && (
-            <Container>
-              <Text>Cart is Empty</Text>
+            <Container >
+              <Text mt={20} mb={5}>Your cart is empty :/</Text>
               <Link href="/courses">
                 <Button color="white" bgColor="primary.main" m={3}>
-                  Back to Courses
+                  Add a Course <ArrowRightIcon ml={3} />
                 </Button>
               </Link>
             </Container>

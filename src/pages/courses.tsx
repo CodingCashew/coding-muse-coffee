@@ -61,6 +61,11 @@ export default function Courses() {
       <Text fontSize="2xl" color="primary.dark" mt={20} align="center">
         Audio Courses
       </Text>
+      <Container align="center">
+      <Link href="/faq">
+          <Button variant="ghost" size="sm" color="tertiary.main">Visit our FAQ Page</Button>
+      </Link>
+      </Container>
       <Flex minH="sm" align="center" wrap={{base: 'wrap-reverse', lg: 'nowrap'}}>
         <Container p={8} >
           <Text fontSize="2xl">Interview Vocabulary</Text>

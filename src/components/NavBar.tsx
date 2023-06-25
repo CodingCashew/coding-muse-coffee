@@ -18,10 +18,11 @@ import {
   useShoppingCart,
   ShoppingCartProvider,
 } from "../context/ShoppingCartContext";
-import NotificationBadge from "react-notification-badge";
-import { Effect } from "react-notification-badge";
+// import NotificationBadge from "react-notification-badge";
+// import { Effect } from "react-notification-badge";
 import { ColorModeScript } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
+import { BsPersonCircle } from "react-icons/bs";
 
 export default function Navbar() {
   const { cartItems, numOfItems } = useShoppingCart();
@@ -67,9 +68,9 @@ export default function Navbar() {
                 Practice
               </Text>
             </MenuButton>
-            <MenuList sx={{'z-index': '99999', 'position': 'fixed'}}>
-              <MenuItem>
-                <Link href="/speaking">
+            <MenuList sx={{ "z-index": "99999", position: "fixed" }}>
+              <MenuItem width="100%">
+                <Link href="/speaking" >
                   <Text fontSize="lg" color="primary.main" className="link">
                     Speaking
                   </Text>
@@ -118,16 +119,17 @@ export default function Navbar() {
               Contact
             </Text>
           </Link>
-          <Flex align="center" mr={3}>
-            <Button onClick={toggleColorMode} color="tertiary.dark" size="lg">
-              {colorMode === "dark" ? (
-                <SunIcon marginRight=".5rem" color="primary.main" />
-              ) : (
-                <MoonIcon marginRight=".5rem" color="primary.main" />
-              )}
-            </Button>
+          <Flex align="center" mr={3} gap={3}>
+            {colorMode === "dark" ? (
+              <SunIcon color="primary.main" onClick={toggleColorMode} />
+            ) : (
+              <MoonIcon color="primary.main" onClick={toggleColorMode} />
+            )}
+            <Link href="/account" className="links">
+              <BsPersonCircle size={25}  />
+            </Link>
             <Link href="/cart" className="links">
-              <NotificationBadge count={num} effect={Effect.Custome} />
+              {/* <NotificationBadge count={num} effect={Effect.Custome} /> */}
               <GrCart className="cart" size={25} />
             </Link>
           </Flex>

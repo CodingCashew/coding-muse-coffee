@@ -56,14 +56,14 @@ const questions: faq[] = [
 
 export default function Faq() {
   return (
-    <Container minW="6xl" minH="xl" mb={10}>
+    <Container maxW="6xl" minH="xl" mb={10}>
       <Head>
         <title>FAQs</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Text fontSize="2xl" color="primary.dark" mt={20} align="center">Frequently Asked Questions</Text>
       {questions.map((faq: faq, index) => (
-        <Container key={index} minW="4xl" mt={10}>
+        <Container key={index} maxW="4xl" mt={10}>
           <Text fontSize="2xl" color="secondary.light">{faq.question}</Text>
           <Text fontSize="xl">{faq.answer}</Text>
         </Container>

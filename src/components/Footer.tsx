@@ -10,11 +10,11 @@ import { Box, Text, Link, Container, Flex } from "@chakra-ui/react";
 
 export default function Footer() {
   return (
-    <Box bg="gray.50" className="footer"  minW="8xl">
+    <Box bg="gray.50" className="footer" minW="100%">
       <Flex
         className="flexboxContainer"
         // maxW="8xl"
-        minW="7xl"
+        // minW="7xl"
         gap={5}
         justify="center"
         p={3}
@@ -51,9 +51,10 @@ export default function Footer() {
       <Flex
         className="flexboxContainer"
         // maxW="6xl"
-        minW="7xl"
+        // minW="7xl"
         gap={7}
         justify="center"
+        align="center"
         p={3}
       >
         <Link href="/contact" className="footerLinks">
