@@ -7,6 +7,10 @@ import {
   Container,
   Button,
   useColorMode,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { GrCart } from "react-icons/gr";
@@ -27,7 +31,7 @@ export default function Navbar() {
   return (
     // <Box minH={20} className="navbar">
 
-    <Flex bgColor="white" sx={{'z-index':'9999'}} className="navbar">
+    <Flex bgColor="white" sx={{ "z-index": "9999" }} className="navbar">
       <Flex
         as="header"
         position="fixed"
@@ -57,26 +61,43 @@ export default function Navbar() {
           </Link>
         </Flex>
         <Flex align="center" gap={8} className="mainLinksContainer">
-          <Link href="/speaking" className="links">
-            <Text fontSize="xl" color="secondary.dark" className="link">
-              Speaking
-            </Text>
-          </Link>
-          <Link href="/listening" className="links">
-            <Text fontSize="xl" color="secondary.dark" className="link">
-              Listening
-            </Text>
-          </Link>
-          <Link href="/vocab" className="links">
-            <Text fontSize="xl" color="secondary.dark" className="link">
-              Vocab
-            </Text>
-          </Link>
-          <Link href="/grammar" className="links">
-            <Text fontSize="xl" color="secondary.dark" className="link">
-              Grammar
-            </Text>
-          </Link>
+          <Menu isLazy>
+            <MenuButton className="links">
+              <Text fontSize="xl" color="secondary.dark">
+                Practice
+              </Text>
+            </MenuButton>
+            <MenuList sx={{'z-index': '99999', 'position': 'fixed'}}>
+              <MenuItem>
+                <Link href="/speaking">
+                  <Text fontSize="lg" color="primary.main" className="link">
+                    Speaking
+                  </Text>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link href="/listening">
+                  <Text fontSize="lg" color="primary.main" className="link">
+                    Listening
+                  </Text>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link href="/vocab">
+                  <Text fontSize="lg" color="primary.main" className="link">
+                    Vocabulary
+                  </Text>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link href="/grammar">
+                  <Text fontSize="lg" color="primary.main" className="link">
+                    Grammar
+                  </Text>
+                </Link>
+              </MenuItem>
+            </MenuList>
+          </Menu>
           <Link href="/articles" className="links">
             <Text fontSize="xl" color="secondary.dark" className="link">
               Articles
