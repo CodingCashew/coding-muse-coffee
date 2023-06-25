@@ -6,7 +6,6 @@ const handler = async (req, res) => {
     const db = client.db("Langship");
 
     const listening = await db.collection("Listening").find({}).toArray();
-
     res.json(listening);
   } catch (e) {
     console.error(e);

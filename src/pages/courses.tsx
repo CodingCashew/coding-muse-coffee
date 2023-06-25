@@ -53,21 +53,31 @@ export default function Courses() {
   };
 
   return (
-    <Container minW={{base: "sm", sm: "xl", md: "3xl", lg: "5xl"}} minH="xl" alignContent="center">
+    <Container
+      minW={{ base: "sm", sm: "xl", md: "3xl", lg: "5xl" }}
+      minH="xl"
+      alignContent="center"
+    >
       <Head>
         <title>Courses</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
+      <Flex align="center" direction="column">
       <Text fontSize="2xl" color="primary.dark" mt={20} align="center">
         Audio Courses
       </Text>
-      <Container align="center">
-      <Link href="/faq">
-          <Button variant="ghost" size="sm" color="tertiary.main">Visit our FAQ Page</Button>
-      </Link>
-      </Container>
-      <Flex minH="sm" align="center" wrap={{base: 'wrap-reverse', lg: 'nowrap'}}>
-        <Container p={8} >
+        <Link href="/faq">
+          <Button variant="ghost" size="sm" color="tertiary.main">
+            Visit our FAQ Page
+          </Button>
+        </Link>
+      </Flex>
+      <Flex
+        minH="sm"
+        align="center"
+        wrap={{ base: "wrap-reverse", lg: "nowrap" }}
+      >
+        <Container p={8}>
           <Text fontSize="2xl">Interview Vocabulary</Text>
           <Text pt={2}>
             Confidently express your abilities during a technical interview
@@ -106,7 +116,7 @@ export default function Courses() {
             </Button>
           </Link>
         </Container>
-        <Container >
+        <Container>
           <Image
             src={course1Info.imagePath}
             alt="man listening to American English for Devs course on street"
@@ -115,7 +125,12 @@ export default function Courses() {
         </Container>
       </Flex>
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />
-      <Flex p={8} minH="sm" align="center" wrap={{base: 'wrap', lg: 'nowrap'}}>
+      <Flex
+        p={8}
+        minH="sm"
+        align="center"
+        wrap={{ base: "wrap", lg: "nowrap" }}
+      >
         <Container>
           <Image
             src={course2Info.imagePath}
@@ -165,7 +180,12 @@ export default function Courses() {
         </Container>
       </Flex>
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />
-      <Flex p={8} minH="sm" align="center" wrap={{base: 'wrap-reverse', lg: 'nowrap'}}>
+      <Flex
+        p={8}
+        minH="sm"
+        align="center"
+        wrap={{ base: "wrap-reverse", lg: "nowrap" }}
+      >
         <Container p={8}>
           <Text fontSize="2xl">Pair Programming Practice</Text>
           <Text pt={2}>
@@ -215,7 +235,12 @@ export default function Courses() {
         </Container>
       </Flex>
       <Divider w="100%" alignSelf="center" bgColor="black" m={3} />
-      <Flex p={8} minH="sm" align="center" wrap={{base: 'wrap', lg: 'nowrap'}}>
+      <Flex
+        p={8}
+        minH="sm"
+        align="center"
+        wrap={{ base: "wrap", lg: "nowrap" }}
+      >
         <Container>
           <Image
             src={course4Info.imagePath}

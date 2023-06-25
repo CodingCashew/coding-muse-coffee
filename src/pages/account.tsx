@@ -11,8 +11,6 @@ export default function Account() {
       password: '2394231fzxcxxc',
     },
     dob: {date: '12/12/1980'}
-    // password: ''
-    // password: ''
   }
   let [avatar, setAvatar] = useState("");
   let [user, setUser] = useState(initialDummyUser);
@@ -20,7 +18,7 @@ export default function Account() {
     fetch("https://randomuser.me/api/")
       .then((res) => res.json())
       .then((data) => {
-        console.log("data.results:", data.results[0]);
+        // console.log("data.results:", data.results[0]);
         setAvatar(data.results[0].picture.large);
         setUser(data.results[0]);
       })

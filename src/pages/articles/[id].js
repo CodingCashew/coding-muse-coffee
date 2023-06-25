@@ -121,7 +121,6 @@ export default function Article({ article, numOfArticles }) {
         "Content-Type": "application/json",
       },
     });
-    console.log("res: ", res);
     const data = await res.json();
     setComments([currentComment, ...comments]);
     setCurrentComment(initialCommentValues);

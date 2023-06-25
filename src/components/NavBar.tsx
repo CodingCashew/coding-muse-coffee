@@ -64,7 +64,7 @@ export default function Navbar() {
         <Flex align="center" gap={8} className="mainLinksContainer">
           <Menu isLazy>
             <MenuButton className="links">
-              <Text fontSize="xl" color="secondary.dark">
+              <Text fontSize="xl" color="primary.dark">
                 Practice
               </Text>
             </MenuButton>
