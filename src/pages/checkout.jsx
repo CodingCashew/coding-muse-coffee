@@ -22,22 +22,28 @@ export default function Checkout() {
   const total = subtotal()
 
   useEffect(() => {
-    if (window.paypal) {
+    if (window.paypal && total) {
 
       window.paypal.Buttons({
         createOrder: (data, actions, err) => {
           return actions.order.create({
-            intent: "CAPTURE",
+            // intent: "CAPTURE",
             purchase_units: [
               {
                 description: "American English Course for Devs",
                 amount: {
-                  currency_code: "USD",
-                  value: Number(total.toFixed(2)) -.01
+                  value: total
                 }
               }
             ]
           })
+          // .then(res => {
+          //   if (res.ok) return res.json()
+          //   return res.json().then(json => Promise.reject(json))
+          // }).then(({id}) => {
+          //   return orderId;
+          //   // return id;
+          // }).catch(e => console.error(e.error))
         },
         onApprove: async (data, actions) => {
           const order = await (actions.order.capture())
@@ -48,7 +54,7 @@ export default function Checkout() {
         }
       }).render(paypal.current)
     }
-  }, [])
+  }, [total])
 
   return (
     <Container minH="xl">
@@ -60,7 +66,6 @@ export default function Checkout() {
       <Stack mt={20}>
         <Text fontSize="2xl" mt={10}>Checkout</Text>
         <Divider mb={7} />
-        <Text color="red" fontSize="3xl">{'total HEEERE: ' + total}</Text>
         {cartItems &&
           cartItems.map((item, index) => (
             <Flex key={index} gap={5}>
