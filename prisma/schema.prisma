@@ -7,30 +7,40 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("PG_URI")
+  url      = env("DATABASE_URL")
 }
 
-model Course {
-  id            Int     @id @default
+
+model orders {
+  order_id Int @id @default(autoincrement())
+  email String,
+  phoneNumber String?,
+  userName String?,
+  firstName String?,
+  lastName String?,
+  product_id_1 Int,
+  product_name_1 String,
+  product_price_1 Int,
+  product_id_2 Int?,
+  product_name_2 String?,
+  product_price_2 Int?,
+  product_id_3 Int?,
+  product_name_3 Int?,
+  product_price_3 Int?,
+  product_id_4 Int?,
+  product_name_4 String?,
+  product_price_4 Int?,
+  total Int,
+}
+
+model course {
+  id            Int     @id @default(autoincrement())
   name          String  @unique
-  description   String
+  description   String?
   price           Int
   length            String
   imagePath       String
   created_at      String?
   modified_at     String?
   deleted_at      String?
-}
-
-model Order {
-  orderNumber Int     @id @default(autoincrement())
-  firstName   String
-  lastName  String
-  email   String
-  phoneNumber   String?
-  item1Id   Int
-  item2Id   Int?
-  item3Id   Int?
-  item4Id   Int?
-  submittedAt DateTime @default(now())
 }

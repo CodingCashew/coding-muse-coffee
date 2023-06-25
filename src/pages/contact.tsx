@@ -36,10 +36,10 @@ function Contact() {
     e.preventDefault();
     emailjs
       .sendForm(
-        "service_ugudpwn",
-        "template_5qqdpo5",
+        "service_jo3giqp",
+        "template_idwgknc",
         e.target,
-        "aJ8y1lQv6jkGNKCCn"
+        "lfS3piNP6e7SskUcv"
       )
       .then((response: any) => {
         console.log("SUCCESS!", response.status, response.text);

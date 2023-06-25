@@ -21,12 +21,12 @@ export default function CourseFour() {
     id: 4,
     name: "General Tech Conversation",
     description:
-      "Confidently express your abilities during a technical interview",
+      "Be able to keep up with the latest tech news and share ideas",
     price: 34,
     length: "4:13:25",
     imagePath: "/courses/sigmund-AQTA5E6mCNU-unsplash.webp",
   };
-  const { addItem, removeItem } = useShoppingCart();
+  const { addItem } = useShoppingCart();
 
   return (
     <Container minW="5xl" minH="xl">

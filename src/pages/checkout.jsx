@@ -20,6 +20,7 @@ export default function Checkout() {
   const paypal = useRef();
 
   const total = subtotal()
+
   useEffect(() => {
     if (window.paypal) {
 
@@ -32,7 +33,7 @@ export default function Checkout() {
                 description: "American English Course for Devs",
                 amount: {
                   currency_code: "USD",
-                  value: total
+                  value: Number(total.toFixed(2)) -.01
                 }
               }
             ]
@@ -59,7 +60,7 @@ export default function Checkout() {
       <Stack mt={20}>
         <Text fontSize="2xl" mt={10}>Checkout</Text>
         <Divider mb={7} />
-        {/* {'subtotal: ' + subtotal} */}
+        <Text color="red" fontSize="3xl">{'total HEEERE: ' + total}</Text>
         {cartItems &&
           cartItems.map((item, index) => (
             <Flex key={index} gap={5}>
