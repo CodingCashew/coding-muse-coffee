@@ -12,6 +12,8 @@ import {
   useShoppingCart,
   ShoppingCartProvider,
 } from "../context/ShoppingCartContext";
+import { ArrowRightIcon } from "@chakra-ui/icons";
+
 import Head from "next/head";
 
 export default function Checkout() {
@@ -86,15 +88,21 @@ export default function Checkout() {
             </Flex>
           ))}
         <Divider mb={7} />
-        <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>
+        {subtotal > 0 && <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>}
+        {subtotal == 0 && <Flex mt={20} direction="column "><Text fontSize="2xl">Nothing in Cart</Text>
+        <Link href="/courses">
+        <Button color="white" bgColor="primary.main" m={3}>
+          Add a Course <ArrowRightIcon ml={3} />
+        </Button>
+      </Link></Flex>}
         <Container ref={paypal} mt={5}></Container>
       </Stack>}
-      {!isCheckingOut && <Container mt={20}>
-        <Text mt={20}>Thank you for your purchase!</Text>
+      {!isCheckingOut && <Flex mt={20} minH="sm" direction="column" >
+        <Text mt={20} mb={5}>Thank you for your purchase!</Text>
         <Link href="/">
           <Button bgColor="tertiary.dark">Back to Home </Button>
         </Link>
-        </Container>
+        </Flex>
       }
     </Container>
   );

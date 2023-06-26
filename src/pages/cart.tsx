@@ -31,17 +31,21 @@ export default function Cart() {
 
   const orderTotal = subtotal();
   return (
-    <Container minH="xl" minW="5xl">
+    <Container minH="xl" minW={{ base: "xs", sm: "sm", md: "3xl", lg: "5xl" }}>
       <Head>
         <title>Cart</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Text fontSize="2xl" mt={20}>Cart</Text>
-      <Flex minW="2xl">
-          <Container minW="xl">
+      <Text fontSize="2xl" mt={20}>
+        Cart
+      </Text>
+      <Flex wrap={{base: 'wrap', lg: 'nowrap'}} justify="center">
+        <Container minW="xl">
           {!cartItems.length && (
-            <Container >
-              <Text mt={20} mb={5}>Your cart is empty :/</Text>
+            <Container>
+              <Text mt={20} mb={5}>
+                Your cart is empty :/
+              </Text>
               <Link href="/courses">
                 <Button color="white" bgColor="primary.main" m={3}>
                   Add a Course <ArrowRightIcon ml={3} />
@@ -51,12 +55,29 @@ export default function Cart() {
           )}
           {cartItems &&
             cartItems.map((item) => (
-              <Container key={Math.random() * 1000} mt={5}>
-                <Text fontSize="xl" mt={7} mb={4}>{item.name} Course</Text>
-                <Image src={item.imagePath} alt="english course" w="75%" />
-                <Text fontSize="lg" mt={3}>Price: <Text as="span" color="secondary.dark">${item.price}</Text></Text>
-                <Text fontSize="lg">Length: <Text as="span" color="secondary.dark">{item.length}</Text></Text>
-                <Text fontSize="lg">Audio or Video: <Text as="span" color="secondary.dark">audio</Text></Text>
+              <Container key={Math.random() * 1000} mt={5} maxW={{base: "xs", sm: "sm", md: "md", xl: "lg"}}>
+                <Text fontSize="xl" mt={7} mb={4}>
+                  {item.name} Course
+                </Text>
+                <Image src={item.imagePath} alt="english course" w="100%" />
+                <Text fontSize="lg" mt={3}>
+                  Price:{" "}
+                  <Text as="span" color="secondary.dark">
+                    ${item.price}
+                  </Text>
+                </Text>
+                <Text fontSize="lg">
+                  Length:{" "}
+                  <Text as="span" color="secondary.dark">
+                    {item.length}
+                  </Text>
+                </Text>
+                <Text fontSize="lg">
+                  Audio or Video:{" "}
+                  <Text as="span" color="secondary.dark">
+                    audio
+                  </Text>
+                </Text>
                 <Button
                   color="primary.main"
                   variant="ghost"
@@ -66,12 +87,12 @@ export default function Cart() {
                 >
                   Remove Item
                 </Button>
-                <Divider />
+                <Divider mb={10}/>
               </Container>
             ))}
         </Container>
         {cartItems.length > 0 && (
-          <Container>
+          <Container maxW={{base: "xs", sm: "sm", md: "sm", lg: "md", xl: "lg"}}>
             <Text fontSize="xl" minW="xl" mb={5}>
               Order Summary
             </Text>
@@ -108,7 +129,7 @@ export default function Cart() {
               <Text>Order Subtotal</Text>
               <Text>${orderTotal}</Text>
             </Flex>
-            <Container>
+            <Container mb={10}>
               <Link href="/checkout">
                 {!!cartItems.length && (
                   <Button color="white" bgColor="primary.dark" m={3}>
@@ -117,7 +138,7 @@ export default function Cart() {
                 )}
               </Link>
               <Link href="/courses">
-                <Button color="primary.dark" variant='outline' m={3}>
+                <Button color="primary.dark" variant="outline" m={3}>
                   Back to Courses
                 </Button>
               </Link>

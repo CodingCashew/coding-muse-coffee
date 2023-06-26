@@ -65,7 +65,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   function resetCart() {
     setCartItems(() => {
-      return [];
+      return [] as CartItem[];
     });
   }
 
