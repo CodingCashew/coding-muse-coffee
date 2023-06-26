@@ -22,6 +22,7 @@ export interface CartItem {
 type ShoppingCartContext = {
   addItem: (courseInfo: CartItem) => void;
   removeItem: (id: number) => void;
+  resetCart: () => void;
   cartItems: CartItem[];
   numOfItems: () => number;
   subtotal: () => number;
@@ -62,6 +63,12 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     });
   }
 
+  function resetCart() {
+    setCartItems(() => {
+      return [];
+    });
+  }
+
   const numOfItems = () => {
     return cartItems.length
   };
@@ -83,6 +90,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         subtotal,
         numOfItems,
         addItem,
+        resetCart
       }}
     >
       {children}

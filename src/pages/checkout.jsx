@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Container,
   Text,
@@ -15,7 +15,8 @@ import {
 import Head from "next/head";
 
 export default function Checkout() {
-  const { cartItems, subtotal } = useShoppingCart();
+  const { cartItems, subtotal, resetCart } = useShoppingCart();
+  const [isCheckingOut, setIsCheckingOut] = useState(true)
 
   const paypal = useRef();
 
@@ -32,7 +33,8 @@ export default function Checkout() {
               {
                 description: "American English Course for Devs",
                 amount: {
-                  value: total
+                  value: '10'
+                  // value: total
                 }
               }
             ]
@@ -45,12 +47,19 @@ export default function Checkout() {
           //   // return id;
           // }).catch(e => console.error(e.error))
         },
+
+
         onApprove: async (data, actions) => {
           const order = await (actions.order.capture())
           console.log('Order:', order)
+          if (order.status == 'COMPLETED') {
+            resetCart();
+            setIsCheckingOut(false)
+          }
         },
         onError: (err) => {
           console.log('error: ', err)
+          alert('There was a problem fulfilling your order. Please try again or send a message on the Contact Tab.')
         }
       }).render(paypal.current)
     }
@@ -63,11 +72,10 @@ export default function Checkout() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <script src={`https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_CLIENT_ID}`} async></script>
-      <Stack mt={20}>
+      {isCheckingOut && cartItems && <Stack mt={20}>
         <Text fontSize="2xl" mt={10}>Checkout</Text>
         <Divider mb={7} />
-        {cartItems &&
-          cartItems.map((item, index) => (
+        {subtotal && cartItems.map((item, index) => (
             <Flex key={index} gap={5}>
               <Text fontSize="xl" color="tertiary.dark">
                 {item.name} -{" "}
@@ -80,7 +88,14 @@ export default function Checkout() {
         <Divider mb={7} />
         <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>
         <Container ref={paypal} mt={5}></Container>
-      </Stack>
+      </Stack>}
+      {!isCheckingOut && <Container mt={20}>
+        <Text mt={20}>Thank you for your purchase!</Text>
+        <Link href="/">
+          <Button bgColor="tertiary.dark">Back to Home </Button>
+        </Link>
+        </Container>
+      }
     </Container>
   );
 }

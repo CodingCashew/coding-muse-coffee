@@ -50,16 +50,16 @@ export default function Navbar() {
           <Link href="/" className="landingPage">
             <Image
               src="/favicon.png"
-              alt="American English for Devs logo"
+              alt="AEFD logo"
               w="50px"
               m={3}
             />
           </Link>
-          <Link href="/" className="logo">
+          {/* <Link href="/" className="logo">
             <Text fontSize="2xl" ml={3} color="primary.main">
               American English for Devs
             </Text>
-          </Link>
+          </Link> */}
         </Flex>
         <Flex align="center" gap={8} className="mainLinksContainer">
           <Menu isLazy>
