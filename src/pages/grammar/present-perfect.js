@@ -59,12 +59,21 @@ function PresentPerfect({ grammar, numOfExercises }) {
   };
 
   return (
-    <Container maxW="2xl" minH="md"  mt={20}>
-      <Text fontSize="xl" align="center">
+    <Container
+      minH="md"
+      mt={20}
+      maxW={{ base: "xs", sm: "xl", md: "3xl", lg: "3xl" }}
+    >
+      <Text fontSize="xl" align="center" mt={20}>
         Hardcoded Grammar Exercise
       </Text>
-      <Container>
-        <Flex maxW="2xl" direction="row" flexWrap="wrap">
+      <Container mt={20} maxW={{ base: "xs", sm: "xl", md: "3xl", lg: "3xl" }}>
+        <Flex
+          maxW={{ base: "xs", sm: "xl", md: "2xl", lg: "3xl" }}
+          wrap={{ base: "wrap" }}
+          align="flexStart"
+          gap={3}
+        >
           <Text fontSize="lg" direction="row">
             1. I
           </Text>
@@ -94,9 +103,16 @@ function PresentPerfect({ grammar, numOfExercises }) {
               </Text>
             )}
           </Flex>
-          <Text fontSize="lg">to France. (to be)</Text>
+          <Flex>
+            <Text fontSize="lg">to France. (to be)</Text>
+          </Flex>
         </Flex>
-        <Flex>
+        <Flex
+          maxW={{ base: "xs", sm: "md", md: "5xl", lg: "6xl" }}
+          wrap={{ base: "wrap" }}
+          align="flexStart"
+          gap={3}
+        >
           <Text fontSize="lg">2.</Text>
           <Flex direction="column">
             <Input
@@ -139,14 +155,14 @@ function PresentPerfect({ grammar, numOfExercises }) {
           </Flex>
           <Flex direction="row">
             <Text fontSize="lg">my keys? (you / to see)</Text>
-            </Flex>
-            </Flex>
-            {!Object.keys(corrections).length && revealAnswers && (
-              <Text color="primary.main">You got them all correct!!</Text>
-            )}
-          <Flex direction="row">
-            <Button onClick={checkAnswers}>Check Answers</Button>
-            <Button onClick={clearAnswers}>Reset Answers</Button>
+          </Flex>
+        </Flex>
+        {!Object.keys(corrections).length && revealAnswers && (
+          <Text color="primary.main">You got them all correct!!</Text>
+        )}
+        <Flex direction="row">
+          <Button onClick={checkAnswers}>Check Answers</Button>
+          <Button onClick={clearAnswers}>Reset Answers</Button>
         </Flex>
       </Container>
       <NavButtons numOfExercises={numOfExercises} section={section} />

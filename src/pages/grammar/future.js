@@ -59,13 +59,13 @@ function Future({ grammar, numOfExercises }) {
   };
 
   return (
-    <Container maxW="2xl" minH="md"  mt={20}>
+    <Container maxW={{ base: "xs", sm: "md", md: "xl", lg: "3xl" }}  minH="md"  mt={20}>
       <Text fontSize="xl" align="center">
         Talking About the Future
       </Text>
           <Text fontSize="md" p={3}>Put the words in the right order.</Text>
       <Container>
-        <Flex maxW="2xl" direction="row" flexWrap="wrap">
+        <Flex maxW={{ base: "xs", sm: "md", md: "xl", lg: "3xl" }}  wrap={{base: 'wrap'}}>
           <Text fontSize="lg" p={3}>1. Mason, </Text>
           <Text value="have" draggable="true" fontSize="lg" p={3} color="tertiary.dark">
             you
@@ -81,7 +81,7 @@ function Future({ grammar, numOfExercises }) {
         {!Object.keys(corrections).length && revealAnswers && (
           <Text color="primary.main">You got them all correct!!</Text>
         )}
-        <Flex direction="row">
+        <Flex direction="row" wrap={{base: 'wrap'}}>
           <Button onClick={checkAnswers} backgroundColor="primary.main" color="white" m={2}>Check Answers</Button>
           <Button onClick={clearAnswers} backgroundColor="secondary.main" color="white" m={2}>Reset Answers</Button>
         </Flex>

@@ -128,25 +128,26 @@ export default function Article({ article, numOfArticles }) {
   };
 
   return (
-    <Container maxW="6xl" minH="sm" pt={5} mt={20}>
+    <Container maxW={{ base: "xs", sm: "sm", md: "xl", lg: "3xl" }} minH="sm" pt={5} mt={20}>
       <Flex>
         {/* <Sidebar links={blogLinks} section={"articles"} /> */}
-        <Flex maxW="3xl" flexDirection="column" justify='center'>
-          <Card key={article.id}>
+        <Flex maxW={{ base: "xs", sm: "sm", md: "xl", lg: "3xl" }} flexDirection="column" justify='center'>
+          <Card key={article.id} >
             <CardHeader>
-              <Heading size="md" p={5}>
+              <Heading size="lg" p={5}>
                 {article.title}
               </Heading>
             </CardHeader>
             <Image
               objectFit="cover"
-              minW="sm"
+              width={{base: "100%", md: "75%", lg: "60%"}}
+              // maxW={{base: "sm", md: "lg"}}
               alignSelf="center"
               src="https://picsum.photos/300/200"
               alt="Chakra UI"
             />
             <CardBody>
-              <Text p={7}>{article.content}</Text>
+              <Text p={7} fontSize='xl'>{article.content}</Text>
             </CardBody>
             <Flex flexDirection="column">
               <Text alignSelf="flex-end" pr={6}>

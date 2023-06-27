@@ -29,19 +29,19 @@ export async function getServerSideProps(context: any) {
 
 export default function Listening({ listening }:any) {
   return (
-    <Container minW="6xl" minH="xl" mb={10}>
+    <Container maxW={{ base: "xs", sm: "sm", md: "2xl", lg: "3xl" }}  minH="xl" mb={10}>
       <Head>
         <title>Listening Practice</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main>
-        <Flex width="6xl" alignItems="center" justifyContent="center" mt={20} mb={10}>
+        <Flex maxW={{ base: "xs", sm: "sm", md: "2xl", lg: "3xl" }}  alignItems="center" justifyContent="center" mt={20} mb={10} wrap={{ base: "wrap", lg: "nowrap" }}>
           <Image
             maxH="xl"
             src="/listening/kelly-sikkema-_-TwILDnZSU-unsplash.webp"
             alt="practicing listening"
           />
-          <Container width="2xl">
+          <Container width="50%">
             <Text fontSize="2xl">Practice Listening Comprehension</Text>
             <Text fontSize="xl">Can you identify exactly what they are saying?</Text>
             {/* <Link href="/listening/listening1"> */}
@@ -51,8 +51,8 @@ export default function Listening({ listening }:any) {
             {/* </Link> */}
           </Container>
         </Flex>
-        <Flex width="6xl" alignItems="center" justifyContent="center" mt={10} mb={10}>
-          <Container width="2xl">
+        <Flex alignItems="center" justifyContent="center" mt={10} mb={10} >
+          <Container width="50%" wrap={{ base: "wrap", lg: "nowrap" }}>
           <Text fontSize="2xl">Practice Listening Comprehension</Text>
             <Text fontSize="xl">Can you identify exactly what they are saying?</Text>
             {/* <Link href="/listening/listening1" > */}
@@ -62,7 +62,7 @@ export default function Listening({ listening }:any) {
             {/* </Link> */}
           </Container>
           <Image
-            width="40%"
+            width={{base: "100%", sm: "90%", md: "75%", lg: "80%"}}
             src="/listening/soundtrap-C-2Wky-LT7k-unsplash.webp"
             alt="having an online job interview"
           />
