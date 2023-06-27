@@ -12,6 +12,7 @@ import {
   useShoppingCart,
   ShoppingCartProvider,
 } from "../context/ShoppingCartContext";
+import { PrismaClient } from "@prisma/client";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 
 import Head from "next/head";
@@ -27,7 +28,7 @@ export default function Checkout() {
     paypal_order_id: "",
     total: "",
     discount_id: "",
-    created_at: null,
+    created_at: "",
 
     product_id_1: null,
     product_name_1: "",
@@ -60,32 +61,36 @@ export default function Checkout() {
                 {
                   description: "American English Course for Devs",
                   amount: {
-                    value: "10",
+                    value: "1",
                     // value: total
                   },
                 },
               ],
-            });
+            })
             // .then(res => {
             //   if (res.ok) return res.json()
             //   return res.json().then(json => Promise.reject(json))
-            // }).then(({id}) => {
-            //   return orderId;
-            //   // return id;
-            // }).catch(e => console.error(e.error))
+            .then(({id}) => {
+              return id
+              // return id;
+            }).catch(e => console.error(e.error))
           },
 
-          onApprove: async (data, actions) => {
-            const order = await actions.order.capture();
-            console.log("Order:", order);
-            if (order.status == "COMPLETED") {
+          onApprove: function (data, actions) {
+            // const paypalOrderObj = actions.order.capture();
+            // console.log("Order object from paypal:", order);
+            return actions.order.capture().then(function (paypalOrderObj) {
+              console.log('here: ', paypalOrderObj)
+            })
+            if (paypalOrderObj.status == "COMPLETED") {
               const orderData = {
-                email: order.payer.email_address,
-                first_name: order.payer.name.given_name,
-                last_name: order.payer.name.surname,
-                total: order.purchase_units[0].amount.value,
-                paypal_order_id: order.id,
-                created_at: order.create_time,
+                email: paypalOrderObj.payer.email_address,
+                first_name: paypalOrderObj.payer.name.given_name,
+                last_name: paypalOrderObj.payer.name.surname,
+                paypal_order_id: paypalOrderObj.id,
+                total: paypalOrderObj.purchase_units[0].amount.value,
+                discount_id: "",
+                created_at: paypalOrderObj.create_time,
                 product_id_1: cartItems[0].id,
                 product_name_1: cartItems[0].name,
                 product_price_1: cartItems[0].price.toString(),
@@ -98,42 +103,40 @@ export default function Checkout() {
                 product_id_4: cartItems[3]?.id || null,
                 product_name_4: cartItems[3]?.name || "",
                 product_price_4: cartItems[3]?.price.toString() || "",
-              }
+              };
 
-              console.log('orderData: ', orderData)
+              console.log("orderData that I manually built out: ", orderData);
 
               setOrderInfo(orderData);
-              console.log('orderInfo after setting state: ', orderInfo)
-
-              const res = await fetch("/api/order", {
-                method: "POST",
-                body: JSON.stringify(order),
-              });
-              const data = await res.json();
-          
-              console.log("SUCCESS!", res.status, res.text);
-              alert("Order Submitted");
-
-
-
-
-
-
-
-              resetCart();
-              setIsCheckingOut(false);
+              // console.log("orderInfo after setting state: ", orderInfo);
+              handleSubmitOrder();
             }
           },
           onError: (err) => {
-            console.log("error: ", err);
-            alert(
-              "There was a problem fulfilling your order. Please try again or send a message on the Contact Tab."
-            );
+            console.log("descriptive error: ", err);
+            // alert(
+            //   "There was a problem fulfilling your order. Please try again or send a message on the Contact Tab."
+            // );
           },
         })
         .render(paypal.current);
     }
   }, [total]);
+
+  const handleSubmitOrder = () => {
+
+    const res = fetch("/api/order", {
+      method: "POST",
+      body: JSON.stringify(orderInfo),
+    });
+    // const data = await res.json();
+
+    // console.log("data:", data);
+    // alert("Order Submitted");
+
+    // resetCart();
+    // setIsCheckingOut(false);
+  };
 
   return (
     <Container minH="xl">
@@ -164,7 +167,7 @@ export default function Checkout() {
             ))}
           <Divider mb={7} />
           {/* {subtotal > 0 && ( */}
-            <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>
+          <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>
           {/* )} */}
           {subtotal == 0 && (
             <Flex mt={20} direction="column ">
