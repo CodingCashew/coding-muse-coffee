@@ -8,23 +8,23 @@ async function main() {
   // replace this data with new course data
 
 
-const order = await prisma.order.create({
-  data: {
-    firstName: "Pam",
-    lastName: "Poovey",
-    shippingAddressLine1: "123 Cool St.",
-    shippingAddressLine2: "",
-    shippingCity: "OKC",
-    shippingState: "OK",
-    shippingZip: "78978",
-    email: "pampage@test.io",
-    phoneNumber: "123",
-    item1Id: 2,
-    item1Qty: 3
-  }
-})
+// const order = await prisma.orders.create({
+//   data: {
+//     firstName: "Pam",
+//     lastName: "Poovey",
+//     shippingAddressLine1: "123 Cool St.",
+//     shippingAddressLine2: "",
+//     shippingCity: "OKC",
+//     shippingState: "OK",
+//     shippingZip: "78978",
+//     email: "pampage@test.io",
+//     phone_number: "123",
+//     item1Id: 2,
+//     item1Qty: 3
+//   }
+// })
 
-  console.log('order: ', order)
+//   console.log('order: ', order)
 
 
 //   const course = await prisma.course.create({

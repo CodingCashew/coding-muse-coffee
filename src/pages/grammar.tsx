@@ -40,7 +40,7 @@ export default function Grammar() {
             <Text>{exercise.title}</Text>
             <Link href={`/grammar/${exercise.path}`}>
               <Button bgColor="primary.main" m="1rem" color="white">
-                Go To Grammar Exercise ~
+                Go To Exercise
               </Button>
             </Link>
           </CardBody>

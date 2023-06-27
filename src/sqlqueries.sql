@@ -3,10 +3,10 @@
 Create TABLE orders (
   order_id serial,
   email varchar(255) NOT NULL,
-  phoneNumber varchar(255),
-  userName varchar(255),
-  firstName varchar(255),
-  lastName varchar(255),
+  phone_number varchar(255),
+  username varchar(255),
+  first_name varchar(255),
+  last_name varchar(255),
   product_id_1 int,
   product_name_1 varchar(255),
   product_price_1 decimal,
@@ -27,7 +27,7 @@ Create TABLE orders (
   PRIMARY KEY (ORDER_ID)
 );
 
-INSERT INTO orders (email, phoneNumber, userName, firstName, lastName, product_id_1, product_name_1, product_price_1, total, created_at) VALUES ('coffeeQueen@test.io', '4055555555', 'coffeeQueen', 'Bess', 'Fawkes', 2, 'Standup Vocabulary', 37, 40.09, NOW());
+INSERT INTO orders (email, phone_number, username, first_name, last_name, product_id_1, product_name_1, product_price_1, total, created_at) VALUES ('coffeeQueen@test.io', '4055555555', 'coffeeQueen', 'Bess', 'Fawkes', 2, 'Standup Vocabulary', 37, 40.09, NOW());
 
 
 -- CREATE TABLE Course (
