@@ -6,6 +6,7 @@ import {
   Link,
   Stack,
   Flex,
+  Input,
   Divider,
 } from "@chakra-ui/react";
 import {
@@ -20,6 +21,25 @@ import Head from "next/head";
 export default function Checkout() {
   const { cartItems, subtotal, resetCart } = useShoppingCart();
   const [isCheckingOut, setIsCheckingOut] = useState(true);
+  const [hasSubmittedInfo, setHasSubmittedInfo] = useState(false);
+
+  const submitUserInfo = () => {
+    setHasSubmittedInfo(true);
+  };
+
+  const initialValues = {
+    name: "",
+    email: "",
+  };
+  const [userInfo, setUserInfo] = useState(initialValues);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserInfo({
+      ...userInfo,
+      [name]: value,
+    });
+  };
 
   const blankOrder = {
     email: "",
@@ -55,33 +75,37 @@ export default function Checkout() {
       window.paypal
         .Buttons({
           createOrder: (data, actions, err) => {
-            return actions.order.create({
-              // intent: "CAPTURE",
-              purchase_units: [
-                {
-                  description: "American English Course for Devs",
-                  amount: {
-                    value: "1",
-                    // value: total
-                  },
-                },
-              ],
-            })
-            // .then(res => {
-            //   if (res.ok) return res.json()
-            //   return res.json().then(json => Promise.reject(json))
-            .then(({id}) => {
-              return id
-              // return id;
-            }).catch(e => console.error(e.error))
+            return (
+              actions.order
+                .create({
+                  // intent: "CAPTURE",
+                  purchase_units: [
+                    {
+                      description: "American English Course for Devs",
+                      amount: {
+                        value: "1",
+                        // value: total
+                      },
+                    },
+                  ],
+                })
+                // .then(res => {
+                //   if (res.ok) return res.json()
+                //   return res.json().then(json => Promise.reject(json))
+                .then(({ id }) => {
+                  return id;
+                  // return id;
+                })
+                .catch((e) => console.error(e.error))
+            );
           },
 
           onApprove: function (data, actions) {
             // const paypalOrderObj = actions.order.capture();
             // console.log("Order object from paypal:", order);
             return actions.order.capture().then(function (paypalOrderObj) {
-              console.log('here: ', paypalOrderObj)
-            })
+              console.log("here: ", paypalOrderObj);
+            });
             if (paypalOrderObj.status == "COMPLETED") {
               const orderData = {
                 email: paypalOrderObj.payer.email_address,
@@ -112,6 +136,9 @@ export default function Checkout() {
               handleSubmitOrder();
             }
           },
+          onCancel: () => {
+            console.log("order cancelled");
+          },
           onError: (err) => {
             console.log("descriptive error: ", err);
             // alert(
@@ -121,10 +148,9 @@ export default function Checkout() {
         })
         .render(paypal.current);
     }
-  }, [total]);
+  }, [total, hasSubmittedInfo]);
 
   const handleSubmitOrder = () => {
-
     const res = fetch("/api/order", {
       method: "POST",
       body: JSON.stringify(orderInfo),
@@ -166,9 +192,44 @@ export default function Checkout() {
               </Flex>
             ))}
           <Divider mb={7} />
-          {/* {subtotal > 0 && ( */}
           <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>
-          {/* )} */}
+          {
+            
+            <Container>
+                <Text>{'name ' + ' ' +  userInfo.name}</Text>
+              <Text>{'email ' +  ' ' + userInfo.email}</Text>
+                <Input
+                  placeholder="Name"
+                  name="name"
+                  value={userInfo.name}
+                  color="primary"
+                  onChange={handleChange}
+                  disabled={hasSubmittedInfo}
+                  m={3}
+                  required
+                />
+                <Input
+                  placeholder="Email"
+                  name="email"
+                  value={userInfo.email}
+                  color="primary"
+                  onChange={handleChange}
+                  disabled={hasSubmittedInfo}
+                  m={3}
+                  required
+                />
+                <Button
+                  variant="contained"
+                  type="submit"
+                  bgColor="primary.dark"
+                  color="white"
+                  mt={3}
+                  onClick={submitUserInfo}
+                >
+                  Save Info to Continue to Checkout<ArrowRightIcon ml={3} />
+                </Button>
+              </Container>
+          }
           {subtotal == 0 && (
             <Flex mt={20} direction="column ">
               <Text fontSize="2xl">Nothing in Cart</Text>
@@ -179,7 +240,7 @@ export default function Checkout() {
               </Link>
             </Flex>
           )}
-          <Container ref={paypal} mt={5}></Container>
+          {hasSubmittedInfo && <Container ref={paypal} mt={5}></Container>}
         </Stack>
       )}
       {!isCheckingOut && (

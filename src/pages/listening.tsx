@@ -29,19 +29,19 @@ export async function getServerSideProps(context: any) {
 
 export default function Listening({ listening }:any) {
   return (
-    <Container maxW={{ base: "xs", sm: "sm", md: "2xl", lg: "3xl" }}  minH="xl" mb={10}>
+    <Container maxW={{ base: "xs", sm: "md", md: "2xl", lg: "3xl" }}  minH="xl" mb={10}>
       <Head>
         <title>Listening Practice</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main>
-        <Flex maxW={{ base: "xs", sm: "sm", md: "2xl", lg: "3xl" }}  alignItems="center" justifyContent="center" mt={20} mb={10} wrap={{ base: "wrap", lg: "nowrap" }}>
+        <Flex maxW={{ base: "xs", sm: "md", md: "2xl", lg: "3xl" }}  alignItems="center" justifyContent="center" mt={20} mb={10} wrap={{ base: "wrap", lg: "nowrap" }}>
           <Image
             maxH="xl"
             src="/listening/kelly-sikkema-_-TwILDnZSU-unsplash.webp"
             alt="practicing listening"
           />
-          <Container width="50%">
+          <Container maxW={{ base: "xs", sm: "lg", md: "2xl", lg: "3xl" }}>
             <Text fontSize="2xl">Practice Listening Comprehension</Text>
             <Text fontSize="xl">Can you identify exactly what they are saying?</Text>
             {/* <Link href="/listening/listening1"> */}
@@ -51,8 +51,8 @@ export default function Listening({ listening }:any) {
             {/* </Link> */}
           </Container>
         </Flex>
-        <Flex alignItems="center" justifyContent="center" mt={10} mb={10} >
-          <Container width="50%" wrap={{ base: "wrap", lg: "nowrap" }}>
+        <Flex alignItems="center" justifyContent="center" mt={10} mb={10} maxW={{ base: "xs", sm: "sm", md: "xl", lg: "2xl" }} wrap={{ base: "wrap-reverse", lg: "nowrap" }}>
+          <Container maxW={{ base: "xs", sm: "sm", md: "2xl", lg: "3xl" }}>
           <Text fontSize="2xl">Practice Listening Comprehension</Text>
             <Text fontSize="xl">Can you identify exactly what they are saying?</Text>
             {/* <Link href="/listening/listening1" > */}
