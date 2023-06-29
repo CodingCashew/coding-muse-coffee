@@ -23,6 +23,11 @@ const sentences = [
     blank: "another",
     seenBefore: false,
   },
+  {
+    sentence: "(end of dummy sentences)",
+    blank: "dummy",
+    seenBefore: false,
+  },
 ];
 
 const words = ["sentence", "another"];
@@ -30,10 +35,18 @@ const words = ["sentence", "another"];
 export default function TestRunner() {
   const [userInput, setUserInput] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [ranTests, setRanTests] = useState([]);
+  // const [ranTests, setRanTests] = useState([
+  //   {
+  //     sentence: "I think I will put the ____ after the sentence .",
+  //     word: "word",
+  //     correct: true,
+  //   },
+  // ]);
 
   const getNewSentence = () => {
     // how to efficiently ensure shuffled but access all of them?
-    const newIndex = 0;
+    const newIndex = currentIndex + 1;
     setCurrentIndex(newIndex);
     return sentences[newIndex];
   };
@@ -50,17 +63,25 @@ export default function TestRunner() {
 
   const runTest = (userInput) => {
     console.log("running test...");
+    const newTest = {
+      test: sentences[currentIndex].sentence,
+      correctAnswer: sentences[currentIndex].blank,
+      userAnswer: userInput,
+      correct: null,
+    };
     if (userInput == sentences[currentIndex].blank) {
       console.log("TEST PASSING!");
-      return markTest(true);
-    } else return markTest(false);
+      newTest.correct = true;
+    } else {
+      newTest.correct = false;
+    }
+    updateRanTests(newTest);
+    getNewSentence();
+    setUserInput('')
   };
 
-  const markTest = () => {
-    // do stuff
-    // change icon to checkmark
-    // move to top,
-    // render new sentence
+  const updateRanTests = (newTest) => {
+    setRanTests([...ranTests, newTest]);
   };
 
   return (
@@ -69,10 +90,40 @@ export default function TestRunner() {
         <title>TestRunner</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Flex minH="lg" minW="6xl" direction="column-reverse">
+      <Flex minH="lg" minW="6xl" direction="column" justify="space-between">
+        {/* <Flex minH="lg" minW="6xl" direction="column-reverse"> */}
+        <Container minH="md" direction="column" minW="6xl">
+        {ranTests.map((test, index) => (
+          <Flex key={index} >
+            {test.correct ? (
+              <CheckIcon color="green" />
+            ) : (
+              <CloseIcon color="red" />
+            )}
+            <Text color="white" mr={2}>
+              {test.test}
+            </Text>
+            <Text mr={2} color="white">
+              Your Answer:{" "}
+            </Text>
+            <Text mr={2} color={test.correct ? "green" : "red"}>
+              {test.userAnswer}
+            </Text>
+            <Text mr={2} color="white">
+              Correct Answer:{" "}
+            </Text>
+            <Text mr={2} color={test.correct ? "green" : "red"}>
+              {test.correctAnswer}
+            </Text>
+            <Text color="white">{test.word}</Text>
+          </Flex>
+        ))}
+        </Container>
+        <Flex>
         <Text fontSize="xl" color="white">
-          <CloseIcon color="red" /> {sentences[0].sentence}
+          <CloseIcon color="red" /> {sentences[currentIndex].sentence}
         </Text>
+        </Flex>
       </Flex>
       <Divider />
       <Flex>
@@ -83,6 +134,7 @@ export default function TestRunner() {
           onChange={handleUserInput}
           className="terminal"
           onKeyUp={checkForSubmit}
+          value={userInput}
         />
       </Flex>
     </Container>
