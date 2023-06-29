@@ -5,13 +5,13 @@ import { useState, useEffect } from "react";
 
 export default function Account() {
   const initialDummyUser = {
-    email: 'tesssttt@test.io',
+    email: "tesssttt@test.io",
     login: {
-      username: 'coffeemonster',
-      password: '2394231fzxcxxc',
+      username: "coffeemonster",
+      password: "2394231fzxcxxc",
     },
-    dob: {date: '12/12/1980'}
-  }
+    dob: { date: "12/12/1980" },
+  };
   let [avatar, setAvatar] = useState("");
   let [user, setUser] = useState(initialDummyUser);
   const getUser = async () => {
@@ -29,27 +29,36 @@ export default function Account() {
     getUser();
   }, []);
   return (
-    <Container maxW="6xl" minH="sm">
-      <Flex maxW="6xl" mt={20} align="center" justify="center">
-        {/* <Sidebar links={accountLinks} section={"account"} maxW="sm" /> */}
+    <Container minH="sm" maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }}>
+      <Flex
+        mt={20}
+        mb={20}
+        align="center"
+        justify="center"
+        wrap={{ base: "wrap", lg: "nowrap" }}
+      >
         {avatar && (
-          <Flex maxW="5xl" flexDirection="row">
+          <Flex>
             <Image boxSize="2xs" src={avatar} p={5} alt="profile image" />
-            <Flex flexDirection="column" minW="3xl">
-              <Text fontSize="xl" py={5}>
-                User Profile
-              </Text>
-              <Text fontSize="md">Username</Text>
-              <Input value={user.login.username} width="sm" disabled />
-              <Text fontSize="md">Email Address</Text>
-              <Input value={user.email} width="sm" disabled />
-              <Text fontSize="md">Password</Text>
-              <Input value={user.login.password} width="sm" disabled />
-              <Text fontSize="md">Date of Birth</Text>
-              <Input value={new Date(user.dob.date).toDateString()} disabled width="sm" />
-            </Flex>
           </Flex>
         )}
+        <Flex flexDirection="column" minW={{ base: "xs", sm: "md"}}>
+          <Text fontSize="xl" py={5}>
+            User Profile
+          </Text>
+          <Text fontSize="md">Username</Text>
+          <Input
+            value={user.login.username}
+            maxW={{ base: "sm", sm: "md", md: "lg"}}
+            disabled
+          />
+          <Text fontSize="md">Email Address</Text>
+          <Input value={user.email} maxW={{ base: "sm", sm: "md", md: "lg"}} disabled />
+          <Text fontSize="md">Password</Text>
+          <Input value={user.login.password} maxW={{ base: "sm", sm: "md", md: "lg"}} disabled />
+          <Text fontSize="md">Date of Birth</Text>
+          <Input value={new Date(user.dob.date).toDateString()} maxW={{ base: "sm", sm: "md", md: "lg"}} disabled />
+        </Flex>
       </Flex>
     </Container>
   );

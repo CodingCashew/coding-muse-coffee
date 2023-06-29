@@ -56,20 +56,20 @@ function Contact() {
   };
 
   return (
-    <Container maxWidth="sm" minH="xl" centerContent>
+    <Container minH="xl" mt={20} centerContent maxW={{ base: "sm", sm: "2xl", md: "4xl" }} >
       <Head>
         <title>Contact</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       <form onSubmit={sendEmail} >
-        <Grid mt={20}>
+        <Grid mt={20} w={{ base: "xs", sm: "sm", md: "lg" }}>
           <Text fontSize="xl" color="secondary.dark">
             Questions? Comments? Suggestions?
           </Text>
           <Text fontSize="2xl" color="primary.main">
             Drop us a Message ~
           </Text>
-          <GridItem mt={3} minW="lg">
+          <GridItem mt={3} maxW={{xs: "xs", sm: "2xl", md: "4xl"}}>
             <Input
               id="outlined-name"
               placeholder="Name"

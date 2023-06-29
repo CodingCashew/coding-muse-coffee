@@ -101,6 +101,11 @@ export default function Navbar() {
             Articles
           </Text>
         </Link>
+        <Link href="/games" className="links">
+          <Text fontSize="xl" color="secondary.dark" className="link">
+            Games
+          </Text>
+        </Link>
         <Link href="/courses" className="links">
           <Text fontSize="xl" color="secondary.dark" className="link">
             Courses
