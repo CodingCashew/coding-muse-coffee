@@ -16,6 +16,11 @@
   overflow: hidden; */
 }
 
+.icon {
+  min-width: 50px;
+  display: block;
+}
+
 .description {
   display: inherit;
   justify-content: inherit;

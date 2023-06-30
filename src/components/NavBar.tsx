@@ -44,15 +44,14 @@ export default function Navbar() {
       justify="space-between"
     >
       <Flex align="center" className="navbar">
-        {/* <Link href="/" className="landingPage">
+        <Link href="/" className="icon">
             <Image
-              src="/favicon.png"
+              src="/public/favicon.png"
               alt="AEFD logo"
-              w="50px"
-              m={3}
-            />
-          </Link> */}
-        <Link href="/" className="logo">
+              maxW="xs"
+            ></Image>
+          </Link>
+        <Link href="/" className="logo" >
           <Text fontSize="2xl" ml={3} color="primary.main">
             American English For Devs
           </Text>

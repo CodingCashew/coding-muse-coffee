@@ -28,11 +28,11 @@ const games = [
 
 export default function Games() {
   return (
-    <Container maxW="6xl" minH="sm" mt={20}>
-      <Flex maxW="5xl">
-        <Flex flexWrap="wrap" minW="5xl">
+    <Container maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }}  minH="sm" mt={20}>
+      <Flex >
+        <Flex flexWrap="wrap" >
           {games.map((game: any) => (
-            <Card maxW="xs" m={5} key={game.id}>
+            <Card m={5} key={game.id}>
               <CardBody>
                 <Link href={`/games/${game.endpoint}`}>
                   <Image src={game.image} alt={game.alt} borderRadius="lg" />

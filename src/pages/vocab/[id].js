@@ -41,7 +41,7 @@ export default function Vocab() {
     }
   };
   return (
-    <Container minW="5xl" minH="xl">
+    <Container maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }}  minH="xl">
       <Head>
         <title>Engineering Verbs</title>
         <link rel="icon" href="/favicon.png" />

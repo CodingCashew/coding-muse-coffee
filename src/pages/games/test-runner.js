@@ -85,15 +85,15 @@ export default function TestRunner() {
   };
 
   return (
-    <Container minH="lg" minW="100%" bgColor="black" mt={20}>
+    <Container  maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }} minH="lg" minW="100%" bgColor="black" mt={20}>
       <Head>
         <title>TestRunner</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Flex minH="lg" minW="6xl" direction="column" justify="space-between">
-        <Container minH="md" direction="column" minW="6xl">
+      <Flex mt={20} minH="lg"  direction="column" justify="space-between">
+        <Flex minH="md" direction="column" wrap="wrap" >
         {ranTests.map((test, index) => (
-          <Flex key={index} >
+          <Flex key={index}  wrap="wrap">
             {test.correct ? (
               <CheckIcon color="green" />
             ) : (
@@ -117,7 +117,7 @@ export default function TestRunner() {
             <Text color="white">{test.word}</Text>
           </Flex>
         ))}
-        </Container>
+        </Flex>
         <Flex>
         <Text fontSize="xl" color="white">
           <CloseIcon color="red" /> {sentences[currentIndex].sentence}
