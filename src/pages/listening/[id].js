@@ -76,10 +76,10 @@ function Listening({ listening, numOfExercises }) {
 
   return (
     <>
-      <Container maxW="2xl" mt={20}>
-        <Flex maxW="5xl">
+      <Container  maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }} mt={20}>
+        <Flex justify='center'>
         {/* <Sidebar links={listeningLinks} section={'listening'} /> */}
-        <Flex minH="sm" minW="5xl" direction="column">
+        <Flex minH="sm"  direction="column" align="center">
         <Text fontSize="xl">{listening.title}</Text>
         <Container>
           <Card mt={3}>

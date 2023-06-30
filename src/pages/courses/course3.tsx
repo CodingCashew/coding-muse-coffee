@@ -25,21 +25,21 @@ export default function CourseThree() {
     length: "3:39:38",
     imagePath: "/courses/alvaro-reyes-fSWOVc3e06w-unsplash.webp",
   };
-  const { addItem, removeItem } = useShoppingCart();
+  const { addItem } = useShoppingCart();
 
   return (
-    <Container minW="5xl" minH="xl">
+    <Container maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }} minH="xl">
       <Head>
         <title>Pair Programming</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Flex p={8} minH="sm" mt={20} align="center">
-        <Container p={8}>
+      <Flex p={8} minH="sm" mt={20} align="center" justify="center" wrap={{ base: "wrap-reverse", lg: "nowrap" }}>
+        <Container >
           <Text fontSize="2xl">{course3.name}</Text>
           <Text pt={2}>
             {course3.description}
           </Text>
-          <Container p={5}>
+          <Container p={{ base: 0, sm: 4, md: 5 }}>
             <UnorderedList mb={5}>
               <ListItem>{course3.length} of audio content</ListItem>
               <ListItem>Immersive speaking practice</ListItem>
@@ -50,11 +50,11 @@ export default function CourseThree() {
             </UnorderedList>
             <audio controls src="/dummy-audio.mp3" />
           </Container>
+          <Flex wrap={{ base: "wrap", lg: "nowrap" }} gap={3}>
           <Link href="/checkout">
             <Button
               color="white"
               bgColor="primary.dark"
-              width="28%"
               onClick={() => addItem(course3)}
             >
               Buy Now
@@ -64,21 +64,21 @@ export default function CourseThree() {
             color="white"
             ml={3}
             bgColor="secondary.main"
-            width="28%"
             onClick={() => addItem(course3)}
           >
             Add to Cart
           </Button>
           <Link href="/courses">
-            <Button color="white" ml={3} bgColor="tertiary.main" width="34%">
+            <Button color="white"  bgColor="tertiary.main" >
               Back to Courses
             </Button>
           </Link>
+          </Flex>
         </Container>
         <Image
           src={course3.imagePath}
           alt="developers working together"
-          w="50%"
+          maxW={{ base: "100%", sm: "80%", md: "60%", lg: "50%"}}
         />
       </Flex>
     </Container>

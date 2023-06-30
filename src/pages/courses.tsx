@@ -162,7 +162,7 @@ export default function Courses() {
             >
               Add to Cart
             </Button>
-            <Link href="/courses/course1">
+            <Link href="/courses/course2">
               <Button color="white" bgColor="tertiary.main">
                 Course Details
               </Button>
@@ -208,7 +208,7 @@ export default function Courses() {
             >
               Add to Cart
             </Button>
-            <Link href="/courses/course1">
+            <Link href="/courses/course3">
               <Button color="white" bgColor="tertiary.main">
                 Course Details
               </Button>
@@ -261,7 +261,7 @@ export default function Courses() {
             >
               Add to Cart
             </Button>
-            <Link href="/courses/course1">
+            <Link href="/courses/course4">
               <Button color="white" bgColor="tertiary.main">
                 Course Details
               </Button>

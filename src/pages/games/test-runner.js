@@ -91,7 +91,6 @@ export default function TestRunner() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Flex minH="lg" minW="6xl" direction="column" justify="space-between">
-        {/* <Flex minH="lg" minW="6xl" direction="column-reverse"> */}
         <Container minH="md" direction="column" minW="6xl">
         {ranTests.map((test, index) => (
           <Flex key={index} >

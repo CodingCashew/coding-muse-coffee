@@ -28,18 +28,23 @@ export default function CourseOne() {
     imagePath: "/courses/linkedin-sales-solutions-Be5aVKFv9ho-unsplash.webp",
   };
   return (
-    <Container minW="5xl" minH="xl">
+    <Container maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }} minH="xl">
       <Head>
         <title>Interview Vocabulary</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Flex p={8} minH="sm" mt={20} align="center">
-        <Container p={8}>
+      <Flex
+        p={8}
+        minH="sm"
+        mt={20}
+        align="center"
+        justify="center"
+        wrap={{ base: "wrap-reverse", lg: "nowrap" }}
+      >
+        <Container >
           <Text fontSize="2xl">{course1.name}</Text>
-          <Text pt={2}>
-            {course1.description}
-          </Text>
-          <Container p={5}>
+          <Text pt={2}>{course1.description}</Text>
+          <Container p={{ base: 0, sm: 4, md: 5 }}>
             <UnorderedList mb={5}>
               <ListItem>Over 5 hours of audio content</ListItem>
               <ListItem>Immersive speaking practice</ListItem>
@@ -48,36 +53,35 @@ export default function CourseOne() {
             </UnorderedList>
             <audio controls src="/dummy-audio.mp3" />
           </Container>
-          <Link href="/checkout">
+          <Flex wrap={{ base: "wrap", lg: "nowrap" }} gap={3}>
+            <Link href="/checkout">
+              <Button
+                color="white"
+                bgColor="primary.dark"
+                onClick={() => addItem(course1)}
+              >
+                Buy Now
+              </Button>
+            </Link>
             <Button
               color="white"
-              bgColor="primary.dark"
-              width="28%"
+              ml={3}
+              bgColor="secondary.main"
               onClick={() => addItem(course1)}
             >
-              Buy Now
+              Add to Cart
             </Button>
-          </Link>
-          <Link href="/checkout"></Link>
-          <Button
-            color="white"
-            ml={3}
-            bgColor="secondary.main"
-            width="28%"
-            onClick={() => addItem(course1)}
-          >
-            Add to Cart
-          </Button>
-          <Link href="/courses">
-            <Button color="white" ml={3} bgColor="tertiary.main" width="34%">
-              Back to Courses
-            </Button>
-          </Link>
+            <Link href="/courses">
+              <Button color="white" bgColor="tertiary.main" >
+                Back to Courses
+              </Button>
+            </Link>
+          </Flex>
         </Container>
         <Image
           src={course1.imagePath}
           alt="man listening to American English for Devs course on street"
-          w="50%"
+          maxW={{ base: "100%", sm: "80%", md: "60%", lg: "50%" }}
         />
       </Flex>
     </Container>
