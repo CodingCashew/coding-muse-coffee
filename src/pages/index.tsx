@@ -25,7 +25,7 @@ export default function Home() {
         <title>American English for Devs</title>
         <meta name="description" content="American English for Devs" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
       <main>
         {/* <Container  width="100%"> */}
@@ -44,21 +44,23 @@ export default function Home() {
           alignItems="center"
           justifyContent="center"
         >
-          <Flex align="center" justify="center" wrap={{ base: "wrap-reverse", lg: "nowrap" }}>
+          <Flex
+            align="center"
+            justify="center"
+            wrap={{ base: "wrap-reverse", lg: "nowrap" }}
+          >
             <Container m={2}>
-
-          <Text fontSize="3xl" color="white" >
-            Work on just the vocabulary you need, and practice sentences that
-            you would use in real life on the job.
-          </Text>
+              <Text fontSize="3xl" color="white">
+                Work on just the vocabulary you need, and practice sentences
+                that you would use in real life on the job.
+              </Text>
             </Container>
-            
-          <Image
-            maxW={{ base: "100%", sm: '80%', md: "60%" }}
-            src="/landingPage/windows-6G6akT8biLg-unsplash.webp"
-            alt="software developer"
-          />
-       
+
+            <Image
+              maxW={{ base: "100%", sm: "80%", md: "60%" }}
+              src="/landingPage/windows-6G6akT8biLg-unsplash.webp"
+              alt="software developer"
+            />
           </Flex>
         </Box>
         <Image
@@ -74,9 +76,13 @@ export default function Home() {
           alignItems="center"
           justifyContent="center"
         >
-          <Flex justify="center" align="center" wrap={{ base: "wrap-reverse", lg: "nowrap" }}>
+          <Flex
+            justify="center"
+            align="center"
+            wrap={{ base: "wrap-reverse", lg: "nowrap" }}
+          >
             <Image
-              maxW={{ base: "80%", sm: '60%', md: "50%", lg: "40%" }}
+              maxW={{ base: "80%", sm: "60%", md: "50%", lg: "40%" }}
               src="/landingPage/procreator-ux-design-studio-VzJjPuk53sk-unsplash.webp"
               alt="software developer"
             />
@@ -98,7 +104,11 @@ export default function Home() {
           alignItems="center"
           justifyContent="center"
         >
-          <Flex align="center" justify="center" wrap={{ base: "wrap", lg: "nowrap" }}>
+          <Flex
+            align="center"
+            justify="center"
+            wrap={{ base: "wrap", lg: "nowrap" }}
+          >
             <Text fontSize="3xl" color="white" p={2}>
               Join Our English-Learning Community for Devs!
             </Text>

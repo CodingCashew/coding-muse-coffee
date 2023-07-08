@@ -77,7 +77,7 @@ export default function TestRunner() {
     }
     updateRanTests(newTest);
     getNewSentence();
-    setUserInput('')
+    setUserInput("");
   };
 
   const updateRanTests = (newTest) => {
@@ -85,43 +85,49 @@ export default function TestRunner() {
   };
 
   return (
-    <Container  maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }} minH="lg" minW="100%" bgColor="black" mt={20}>
+    <Container
+      maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }}
+      minH="lg"
+      minW="100%"
+      bgColor="black"
+      mt={20}
+    >
       <Head>
         <title>TestRunner</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
-      <Flex mt={20} minH="lg"  direction="column" justify="space-between">
-        <Flex minH="md" direction="column" wrap="wrap" >
-        {ranTests.map((test, index) => (
-          <Flex key={index}  wrap="wrap">
-            {test.correct ? (
-              <CheckIcon color="green" />
-            ) : (
-              <CloseIcon color="red" />
-            )}
-            <Text color="white" mr={2}>
-              {test.test}
-            </Text>
-            <Text mr={2} color="white">
-              Your Answer:{" "}
-            </Text>
-            <Text mr={2} color={test.correct ? "green" : "red"}>
-              {test.userAnswer}
-            </Text>
-            <Text mr={2} color="white">
-              Correct Answer:{" "}
-            </Text>
-            <Text mr={2} color={test.correct ? "green" : "red"}>
-              {test.correctAnswer}
-            </Text>
-            <Text color="white">{test.word}</Text>
-          </Flex>
-        ))}
+      <Flex mt={20} minH="lg" direction="column" justify="space-between">
+        <Flex minH="md" direction="column" wrap="wrap">
+          {ranTests.map((test, index) => (
+            <Flex key={index} wrap="wrap">
+              {test.correct ? (
+                <CheckIcon color="green" />
+              ) : (
+                <CloseIcon color="red" />
+              )}
+              <Text color="white" mr={2}>
+                {test.test}
+              </Text>
+              <Text mr={2} color="white">
+                Your Answer:{" "}
+              </Text>
+              <Text mr={2} color={test.correct ? "green" : "red"}>
+                {test.userAnswer}
+              </Text>
+              <Text mr={2} color="white">
+                Correct Answer:{" "}
+              </Text>
+              <Text mr={2} color={test.correct ? "green" : "red"}>
+                {test.correctAnswer}
+              </Text>
+              <Text color="white">{test.word}</Text>
+            </Flex>
+          ))}
         </Flex>
         <Flex>
-        <Text fontSize="xl" color="white">
-          <CloseIcon color="red" /> {sentences[currentIndex].sentence}
-        </Text>
+          <Text fontSize="xl" color="white">
+            <CloseIcon color="red" /> {sentences[currentIndex].sentence}
+          </Text>
         </Flex>
       </Flex>
       <Divider />

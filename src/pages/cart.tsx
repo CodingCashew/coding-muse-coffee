@@ -34,12 +34,12 @@ export default function Cart() {
     <Container minH="xl" minW={{ base: "xs", sm: "sm", md: "3xl", lg: "5xl" }}>
       <Head>
         <title>Cart</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
       <Text fontSize="2xl" mt={20}>
         Cart
       </Text>
-      <Flex wrap={{base: 'wrap', lg: 'nowrap'}} justify="center">
+      <Flex wrap={{ base: "wrap", lg: "nowrap" }} justify="center">
         <Container minW="xl">
           {!cartItems.length && (
             <Container>
@@ -55,7 +55,11 @@ export default function Cart() {
           )}
           {cartItems &&
             cartItems.map((item) => (
-              <Container key={Math.random() * 1000} mt={5} maxW={{base: "xs", sm: "sm", md: "md", xl: "lg"}}>
+              <Container
+                key={Math.random() * 1000}
+                mt={5}
+                maxW={{ base: "xs", sm: "sm", md: "md", xl: "lg" }}
+              >
                 <Text fontSize="xl" mt={7} mb={4}>
                   {item.name} Course
                 </Text>
@@ -87,12 +91,14 @@ export default function Cart() {
                 >
                   Remove Item
                 </Button>
-                <Divider mb={10}/>
+                <Divider mb={10} />
               </Container>
             ))}
         </Container>
         {cartItems.length > 0 && (
-          <Container maxW={{base: "xs", sm: "sm", md: "sm", lg: "md", xl: "lg"}}>
+          <Container
+            maxW={{ base: "xs", sm: "sm", md: "sm", lg: "md", xl: "lg" }}
+          >
             <Text fontSize="xl" minW="xl" mb={5}>
               Order Summary
             </Text>

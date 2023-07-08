@@ -67,7 +67,7 @@ export default function Faq() {
     <Container maxW="6xl" minH="xl" mb={10}>
       <Head>
         <title>FAQs</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
       <Flex direction="column" align="center">
         <Text fontSize="2xl" color="primary.dark" mt={20} align="center">

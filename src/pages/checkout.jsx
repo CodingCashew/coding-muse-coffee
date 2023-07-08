@@ -168,7 +168,7 @@ export default function Checkout() {
     <Container minH="xl">
       <Head>
         <title>Checkout</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
       <script
         src={`https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_CLIENT_ID}`}
@@ -194,41 +194,41 @@ export default function Checkout() {
           <Divider mb={7} />
           <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>
           {
-            
             <Container>
-                <Text>{'name ' + ' ' +  userInfo.name}</Text>
-              <Text>{'email ' +  ' ' + userInfo.email}</Text>
-                <Input
-                  placeholder="Name"
-                  name="name"
-                  value={userInfo.name}
-                  color="primary"
-                  onChange={handleChange}
-                  disabled={hasSubmittedInfo}
-                  m={3}
-                  required
-                />
-                <Input
-                  placeholder="Email"
-                  name="email"
-                  value={userInfo.email}
-                  color="primary"
-                  onChange={handleChange}
-                  disabled={hasSubmittedInfo}
-                  m={3}
-                  required
-                />
-                <Button
-                  variant="contained"
-                  type="submit"
-                  bgColor="primary.dark"
-                  color="white"
-                  mt={3}
-                  onClick={submitUserInfo}
-                >
-                  Save Info to Continue to Checkout<ArrowRightIcon ml={3} />
-                </Button>
-              </Container>
+              <Text>{"name " + " " + userInfo.name}</Text>
+              <Text>{"email " + " " + userInfo.email}</Text>
+              <Input
+                placeholder="Name"
+                name="name"
+                value={userInfo.name}
+                color="primary"
+                onChange={handleChange}
+                disabled={hasSubmittedInfo}
+                m={3}
+                required
+              />
+              <Input
+                placeholder="Email"
+                name="email"
+                value={userInfo.email}
+                color="primary"
+                onChange={handleChange}
+                disabled={hasSubmittedInfo}
+                m={3}
+                required
+              />
+              <Button
+                variant="contained"
+                type="submit"
+                bgColor="primary.dark"
+                color="white"
+                mt={3}
+                onClick={submitUserInfo}
+              >
+                Save Info to Continue to Checkout
+                <ArrowRightIcon ml={3} />
+              </Button>
+            </Container>
           }
           {subtotal == 0 && (
             <Flex mt={20} direction="column ">

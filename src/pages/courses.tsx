@@ -59,7 +59,7 @@ export default function Courses() {
     >
       <Head>
         <title>Courses</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
       <Flex align="center" direction="column">
         <Text fontSize="2xl" color="primary.dark" mt={20} align="center">

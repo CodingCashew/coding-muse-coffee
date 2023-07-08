@@ -35,7 +35,7 @@ export default function SpeakingOne() {
     <Container maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }} minH="xl">
       <Head>
         <title>Speaking Practice 1</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
       <Flex
         wrap={{ base: "wrap", lg: "nowrap" }}
@@ -73,7 +73,10 @@ export default function SpeakingOne() {
             key={index}
             wrap={{ base: "wrap", lg: "nowrap" }}
           >
-            <Flex maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }} justify="start">
+            <Flex
+              maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }}
+              justify="start"
+            >
               <audio controls src={sentence.audio} />
             </Flex>
             <Text minW={{ sm: "2xl", md: "3xl" }}>{sentence.sentence}</Text>

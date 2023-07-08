@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
     <Container minH="xl">
       <Head>
         <title>Privacy Policy</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
       <Container mt={20}>
         <Text>

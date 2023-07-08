@@ -26,16 +26,26 @@ export async function getServerSideProps(context: any) {
   };
 }
 
-
-export default function Listening({ listening }:any) {
+export default function Listening({ listening }: any) {
   return (
-    <Container maxW={{ base: "xs", sm: "md", md: "2xl", lg: "3xl" }}  minH="xl" mb={10}>
+    <Container
+      maxW={{ base: "xs", sm: "md", md: "2xl", lg: "3xl" }}
+      minH="xl"
+      mb={10}
+    >
       <Head>
         <title>Listening Practice</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
       <main>
-        <Flex maxW={{ base: "xs", sm: "md", md: "2xl", lg: "3xl" }}  alignItems="center" justifyContent="center" mt={20} mb={10} wrap={{ base: "wrap", lg: "nowrap" }}>
+        <Flex
+          maxW={{ base: "xs", sm: "md", md: "2xl", lg: "3xl" }}
+          alignItems="center"
+          justifyContent="center"
+          mt={20}
+          mb={10}
+          wrap={{ base: "wrap", lg: "nowrap" }}
+        >
           <Image
             maxH="xl"
             src="/listening/kelly-sikkema-_-TwILDnZSU-unsplash.webp"
@@ -43,46 +53,65 @@ export default function Listening({ listening }:any) {
           />
           <Container maxW={{ base: "xs", sm: "lg", md: "2xl", lg: "3xl" }}>
             <Text fontSize="2xl">Practice Listening Comprehension</Text>
-            <Text fontSize="xl">Can you identify exactly what they are saying?</Text>
+            <Text fontSize="xl">
+              Can you identify exactly what they are saying?
+            </Text>
             {/* <Link href="/listening/listening1"> */}
-              <Button bgColor="secondary.main" width="250px" mt="1rem" color="white">
-                Go to Practice
-                <ChevronRightIcon ml={3} /></Button>
+            <Button
+              bgColor="secondary.main"
+              width="250px"
+              mt="1rem"
+              color="white"
+            >
+              Go to Practice
+              <ChevronRightIcon ml={3} />
+            </Button>
             {/* </Link> */}
           </Container>
         </Flex>
-        <Flex alignItems="center" justifyContent="center" mt={10} mb={10} maxW={{ base: "xs", sm: "sm", md: "xl", lg: "2xl" }} wrap={{ base: "wrap-reverse", lg: "nowrap" }}>
+        <Flex
+          alignItems="center"
+          justifyContent="center"
+          mt={10}
+          mb={10}
+          maxW={{ base: "xs", sm: "sm", md: "xl", lg: "2xl" }}
+          wrap={{ base: "wrap-reverse", lg: "nowrap" }}
+        >
           <Container maxW={{ base: "xs", sm: "sm", md: "2xl", lg: "3xl" }}>
-          <Text fontSize="2xl">Practice Listening Comprehension</Text>
-            <Text fontSize="xl">Can you identify exactly what they are saying?</Text>
+            <Text fontSize="2xl">Practice Listening Comprehension</Text>
+            <Text fontSize="xl">
+              Can you identify exactly what they are saying?
+            </Text>
             {/* <Link href="/listening/listening1" > */}
-              <Button bgColor="secondary.main" width="250px" mt="1rem" color="white">
-                Go to Practice
-                <ChevronRightIcon ml={3} /></Button>
+            <Button
+              bgColor="secondary.main"
+              width="250px"
+              mt="1rem"
+              color="white"
+            >
+              Go to Practice
+              <ChevronRightIcon ml={3} />
+            </Button>
             {/* </Link> */}
           </Container>
           <Image
-            width={{base: "100%", sm: "90%", md: "75%", lg: "80%"}}
+            width={{ base: "100%", sm: "90%", md: "75%", lg: "80%" }}
             src="/listening/soundtrap-C-2Wky-LT7k-unsplash.webp"
             alt="having an online job interview"
           />
         </Flex>
         {listening.map((practice: any) => (
-        <Card mt={2} key={practice.id}>
-          <CardBody>
-            <Image
-              src={practice.imgPath}
-              alt="language blog logo"
-              w="75%"
-            />
-            <Text>{practice.title}</Text>
-            <Link href={`/listening/${practice.id}`}>
-              <Button bgColor="primary.main" m="1rem" color="white">
-                Listen
-              </Button>
-            </Link>
-          </CardBody>
-        </Card>
+          <Card mt={2} key={practice.id}>
+            <CardBody>
+              <Image src={practice.imgPath} alt="language blog logo" w="75%" />
+              <Text>{practice.title}</Text>
+              <Link href={`/listening/${practice.id}`}>
+                <Button bgColor="primary.main" m="1rem" color="white">
+                  Listen
+                </Button>
+              </Link>
+            </CardBody>
+          </Card>
         ))}
       </main>
     </Container>

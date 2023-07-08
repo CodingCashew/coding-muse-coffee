@@ -30,7 +30,7 @@ export default function CourseFour() {
     <Container maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }} minH="xl">
       <Head>
         <title>General Tech</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
       <Flex
         p={8}
@@ -40,7 +40,7 @@ export default function CourseFour() {
         justify="center"
         wrap={{ base: "wrap-reverse", lg: "nowrap" }}
       >
-        <Container >
+        <Container>
           <Text fontSize="2xl">{course4.name}</Text>
           <Text pt={2}>{course4.description}</Text>
           <Container p={{ base: 0, sm: 4, md: 5 }}>

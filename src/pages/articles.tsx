@@ -27,7 +27,7 @@ export default function Articles({ articles }: any) {
     <Container maxW="7xl" minH="xl" centerContent pt={8} mt={20}>
       <Head>
         <title>Articles</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
       <Flex>
         {/* <Sidebar links={blogLinks} section={"articles"} maxW="sm" /> */}

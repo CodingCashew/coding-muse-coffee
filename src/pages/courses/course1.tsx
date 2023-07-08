@@ -31,7 +31,7 @@ export default function CourseOne() {
     <Container maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }} minH="xl">
       <Head>
         <title>Interview Vocabulary</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
       <Flex
         p={8}
@@ -41,7 +41,7 @@ export default function CourseOne() {
         justify="center"
         wrap={{ base: "wrap-reverse", lg: "nowrap" }}
       >
-        <Container >
+        <Container>
           <Text fontSize="2xl">{course1.name}</Text>
           <Text pt={2}>{course1.description}</Text>
           <Container p={{ base: 0, sm: 4, md: 5 }}>
@@ -72,7 +72,7 @@ export default function CourseOne() {
               Add to Cart
             </Button>
             <Link href="/courses">
-              <Button color="white" bgColor="tertiary.main" >
+              <Button color="white" bgColor="tertiary.main">
                 Back to Courses
               </Button>
             </Link>
