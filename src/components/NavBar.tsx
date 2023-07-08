@@ -18,8 +18,8 @@ import {
   useShoppingCart,
   ShoppingCartProvider,
 } from "../context/ShoppingCartContext";
-import NotificationBadge from "react-notification-badge";
-import { Effect } from "react-notification-badge";
+// import NotificationBadge from "react-notification-badge";
+// import { Effect } from "react-notification-badge";
 import { ColorModeScript } from "@chakra-ui/react";
 import { SunIcon, MoonIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { BsPersonCircle, BsCart2 } from "react-icons/bs";
@@ -129,10 +129,10 @@ export default function Navbar() {
             <Link href="/account" className="links">
               <BsPersonCircle size={25} fill="teal" />
             </Link>
-            <Link href="/cart" className="links">
+            {/* <Link href="/cart" className="links">
               <NotificationBadge count={num} effect={Effect.Custome} />
               <BsCart2 className="cart" size={30} fill="teal" />
-            </Link>
+            </Link> */}
           </Flex>
         </Flex>
       )}
@@ -237,10 +237,10 @@ export default function Navbar() {
               <Link href="/account" className="links">
                 <BsPersonCircle size={25} fill="teal" />
               </Link>
-              <Link href="/cart" className="links">
+              {/* <Link href="/cart" className="links">
                 <NotificationBadge count={num} effect={Effect.Custome} />
                 <BsCart2 className="cart" size={30} fill="teal" />
-              </Link>
+              </Link> */}
             </Flex>
           </Flex>
         </Flex>
