@@ -18,7 +18,7 @@ model orders {
   product_name_2  String?   @db.VarChar(255)
   product_price_2 String?   @db.VarChar(255)
   product_id_3    Int?
-  product_name_3  Int?
+  product_name_3  String?   @db.VarChar(255)
   product_price_3 String?   @db.VarChar(255)
   product_id_4    Int?
   product_name_4  String?   @db.VarChar(255)

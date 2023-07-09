@@ -21,25 +21,25 @@ import Head from "next/head";
 export default function Checkout() {
   const { cartItems, subtotal, resetCart } = useShoppingCart();
   const [isCheckingOut, setIsCheckingOut] = useState(true);
-  const [hasSubmittedInfo, setHasSubmittedInfo] = useState(false);
+  // const [hasSubmittedInfo, setHasSubmittedInfo] = useState(false);
 
-  const submitUserInfo = () => {
-    setHasSubmittedInfo(true);
-  };
+  // const submitUserInfo = () => {
+  //   setHasSubmittedInfo(true);
+  // };
 
-  const initialValues = {
-    name: "",
-    email: "",
-  };
-  const [userInfo, setUserInfo] = useState(initialValues);
+  // const initialValues = {
+  //   name: "",
+  //   email: "",
+  // };
+  // const [userInfo, setUserInfo] = useState(initialValues);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserInfo({
-      ...userInfo,
-      [name]: value,
-    });
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setUserInfo({
+  //     ...userInfo,
+  //     [name]: value,
+  //   });
+  // };
 
   const blankOrder = {
     email: "",
@@ -83,7 +83,8 @@ export default function Checkout() {
                     {
                       description: "American English Course for Devs",
                       amount: {
-                        value: "1",
+                        currency_code: "USD",
+                        value: total.toString(),
                         // value: total
                       },
                     },
@@ -92,11 +93,12 @@ export default function Checkout() {
                 // .then(res => {
                 //   if (res.ok) return res.json()
                 //   return res.json().then(json => Promise.reject(json))
-                .then(({ id }) => {
-                  return id;
-                  // return id;
-                })
-                .catch((e) => console.error(e.error))
+                // }).then(({ id }) => {
+                //   console.log(id)
+                //   return id;
+                //   // return id;
+                // })
+                // .catch((e) => console.error(e.error))
             );
           },
 
@@ -104,37 +106,36 @@ export default function Checkout() {
             // const paypalOrderObj = actions.order.capture();
             // console.log("Order object from paypal:", order);
             return actions.order.capture().then(function (paypalOrderObj) {
-              console.log("here: ", paypalOrderObj);
+              if (paypalOrderObj.status == "COMPLETED") {
+                const orderData = {
+                  email: paypalOrderObj.payer.email_address,
+                  first_name: paypalOrderObj.payer.name.given_name,
+                  last_name: paypalOrderObj.payer.name.surname,
+                  paypal_order_id: paypalOrderObj.id,
+                  total: paypalOrderObj.purchase_units[0].amount.value,
+                  // discount_id: "",
+                  created_at: paypalOrderObj.create_time,
+                  product_id_1: cartItems[0].id,
+                  product_name_1: cartItems[0].name,
+                  product_price_1: cartItems[0].price.toString(),
+                  product_id_2: cartItems[1]?.id || null,
+                  product_name_2: cartItems[1]?.name || "",
+                  product_price_2: cartItems[1]?.price.toString() || "",
+                  product_id_3: cartItems[2]?.id || null,
+                  product_name_3: cartItems[2]?.name || "",
+                  product_price_3: cartItems[2]?.price.toString() || "",
+                  product_id_4: cartItems[3]?.id || null,
+                  product_name_4: cartItems[3]?.name || "",
+                  product_price_4: cartItems[3]?.price.toString() || "",
+                };
+  
+                // console.log("orderData that I manually built out: ", orderData);
+  
+                // setOrderInfo(orderData);
+                // console.log("orderInfo after setting state: ", orderInfo);
+                handleSubmitOrder(orderData);
+              }
             });
-            if (paypalOrderObj.status == "COMPLETED") {
-              const orderData = {
-                email: paypalOrderObj.payer.email_address,
-                first_name: paypalOrderObj.payer.name.given_name,
-                last_name: paypalOrderObj.payer.name.surname,
-                paypal_order_id: paypalOrderObj.id,
-                total: paypalOrderObj.purchase_units[0].amount.value,
-                discount_id: "",
-                created_at: paypalOrderObj.create_time,
-                product_id_1: cartItems[0].id,
-                product_name_1: cartItems[0].name,
-                product_price_1: cartItems[0].price.toString(),
-                product_id_2: cartItems[1]?.id || null,
-                product_name_2: cartItems[1]?.name || "",
-                product_price_2: cartItems[1]?.price.toString() || "",
-                product_id_3: cartItems[2]?.id || null,
-                product_name_3: cartItems[2]?.name || "",
-                product_price_3: cartItems[2]?.price.toString() || "",
-                product_id_4: cartItems[3]?.id || null,
-                product_name_4: cartItems[3]?.name || "",
-                product_price_4: cartItems[3]?.price.toString() || "",
-              };
-
-              console.log("orderData that I manually built out: ", orderData);
-
-              setOrderInfo(orderData);
-              // console.log("orderInfo after setting state: ", orderInfo);
-              handleSubmitOrder();
-            }
           },
           onCancel: () => {
             console.log("order cancelled");
@@ -148,16 +149,21 @@ export default function Checkout() {
         })
         .render(paypal.current);
     }
-  }, [total, hasSubmittedInfo]);
+  }, [total]);
 
-  const handleSubmitOrder = () => {
-    const res = fetch("/api/order", {
+  const handleSubmitOrder = async (orderData) => {
+    // console.log('orderData in handleSubmitOrder: ', orderData)
+    // console.log('orderInfo in handleSubmitOrder: ', orderInfo)
+    const res = await fetch("/api/order",  {
       method: "POST",
-      body: JSON.stringify(orderInfo),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderData),
     });
-    // const data = await res.json();
+    const data = await res.json();
 
-    // console.log("data:", data);
+    console.log("data:", data);
     // alert("Order Submitted");
 
     // resetCart();
@@ -193,7 +199,7 @@ export default function Checkout() {
             ))}
           <Divider mb={7} />
           <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>
-          {
+          {/* {
             <Container>
               <Text>{"name " + " " + userInfo.name}</Text>
               <Text>{"email " + " " + userInfo.email}</Text>
@@ -229,7 +235,7 @@ export default function Checkout() {
                 <ArrowRightIcon ml={3} />
               </Button>
             </Container>
-          }
+          } */}
           {subtotal == 0 && (
             <Flex mt={20} direction="column ">
               <Text fontSize="2xl">Nothing in Cart</Text>
@@ -240,7 +246,7 @@ export default function Checkout() {
               </Link>
             </Flex>
           )}
-          {hasSubmittedInfo && <Container ref={paypal} mt={5}></Container>}
+          <Container ref={paypal} mt={5}></Container>
         </Stack>
       )}
       {!isCheckingOut && (
