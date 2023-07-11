@@ -14,7 +14,7 @@ export default function Vocab() {
   return (
     <Container minH="xl">
       <Head>
-        <title>Terms of Service</title>
+        <title>Vocabulary</title>
         <link rel="icon" href="/landingPage/favicon.png" />
       </Head>
       <Container maxW="xl" mt={20}>
