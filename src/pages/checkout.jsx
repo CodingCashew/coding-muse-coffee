@@ -8,6 +8,7 @@ import {
   Flex,
   Input,
   Divider,
+  useToast
 } from "@chakra-ui/react";
 import {
   useShoppingCart,
@@ -21,6 +22,7 @@ import Head from "next/head";
 export default function Checkout() {
   const { cartItems, subtotal, resetCart } = useShoppingCart();
   const [isCheckingOut, setIsCheckingOut] = useState(true);
+  const toast = useToast()
   // const [hasSubmittedInfo, setHasSubmittedInfo] = useState(false);
 
   // const submitUserInfo = () => {
@@ -165,9 +167,17 @@ export default function Checkout() {
 
     console.log("data:", data);
     // alert("Order Submitted");
-
-    // resetCart();
-    // setIsCheckingOut(false);
+    // if (data.success) {
+      toast({
+        title: 'Success!',
+        description: "Your order has been submitted.",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
+      resetCart();
+      setIsCheckingOut(false);
+    // }
   };
 
   return (
@@ -251,11 +261,14 @@ export default function Checkout() {
       )}
       {!isCheckingOut && (
         <Flex mt={20} minH="sm" direction="column">
-          <Text mt={20} mb={5}>
+          <Text mt={20} mb={5} fontSize="2xl">
             Thank you for your purchase!
           </Text>
+          <Text  mb={5}>
+            Check your email to download your new course.
+          </Text>
           <Link href="/">
-            <Button bgColor="tertiary.dark">Back to Home </Button>
+            <Button bgGradient="linear(to-r, primary.dark, secondary.main)" color="white">Back to Home </Button>
           </Link>
         </Flex>
       )}
