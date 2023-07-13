@@ -20,29 +20,6 @@ import { ArrowRightIcon } from "@chakra-ui/icons";
 import Head from "next/head";
 
 export default function Checkout() {
-  const { cartItems, subtotal, resetCart } = useShoppingCart();
-  const [isCheckingOut, setIsCheckingOut] = useState(true);
-  const toast = useToast();
-  // const [hasSubmittedInfo, setHasSubmittedInfo] = useState(false);
-
-  // const submitUserInfo = () => {
-  //   setHasSubmittedInfo(true);
-  // };
-
-  // const initialValues = {
-  //   name: "",
-  //   email: "",
-  // };
-  // const [userInfo, setUserInfo] = useState(initialValues);
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUserInfo({
-  //     ...userInfo,
-  //     [name]: value,
-  //   });
-  // };
-
   const blankOrder = {
     email: "",
     first_name: "",
@@ -66,8 +43,85 @@ export default function Checkout() {
     product_price_4: "",
   };
 
-  const [orderInfo, setOrderInfo] = useState(blankOrder);
+  const { cartItems, subtotal, resetCart } = useShoppingCart();
+  const [isCheckingOut, setIsCheckingOut] = useState(true);
 
+
+  const toast = useToast();
+  const [hasSubmittedInfo, setHasSubmittedInfo] = useState(false);
+
+  const submitUserInfo = async () => {
+    if (userInfo.name.length && userInfo.email.length) {
+      try {
+        const res = await fetch("/api/emailOrder", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({...userInfo, orderId}),
+        });
+        const data =  await res.json();
+        // console.log('data: ', data)
+        setHasSubmittedInfo(true);
+      } catch (e) {
+        console.log(e)
+        toast({
+          title: "Error",
+          description:
+            "Please contact support using the Contact tab.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+    } else if (!userInfo.name.length && !userInfo.email.length) {
+      toast({
+        title: "Error",
+        description:
+          "Please add a valid name and email address.",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+    } else if (!userInfo.name.length) {
+      toast({
+        title: "Error",
+        description:
+          "Please add a valid name.",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+    } else if (!userInfo.email.length) {
+      toast({
+        title: "Error",
+        description:
+          "Please add a valid email address.",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+    }
+  };
+
+  const initialValues = {
+    name: "",
+    email: "",
+  };
+  const [userInfo, setUserInfo] = useState(initialValues);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserInfo({
+      ...userInfo,
+      [name]: value,
+    });
+  };
+
+
+  const [orderInfo, setOrderInfo] = useState(blankOrder);
+  // const [orderId, setOrderId] = useState('adfasdfas')
+  const [orderId, setOrderId] = useState('')
   const paypal = useRef();
 
   const total = subtotal();
@@ -98,13 +152,14 @@ export default function Checkout() {
         .Buttons({
           createOrder: (data, actions, err) => {
             return actions.order.create({
-              purchase_units: purchaseUnits
+              purchase_units: purchaseUnits,
             });
           },
 
           onApprove: function (data, actions) {
             return actions.order.capture().then(function (paypalOrderObj) {
               if (paypalOrderObj.status == "COMPLETED") {
+                setOrderId(paypalOrderObj.id)
                 const orderData = {
                   email: paypalOrderObj.payer.email_address,
                   first_name: paypalOrderObj.payer.name.given_name,
@@ -126,7 +181,6 @@ export default function Checkout() {
                   product_name_4: cartItems[3]?.name || "",
                   product_price_4: cartItems[3]?.price.toString() || "",
                 };
-
                 handleSubmitOrder(orderData);
               }
             });
@@ -145,7 +199,8 @@ export default function Checkout() {
             console.log("helpful and descriptive error: ", err);
             toast({
               title: "Error: There was a problem fulfilling your order.",
-              description: "Please try again or send a message on the Contact Tab.",
+              description:
+                "Please try again or send a message on the Contact Tab.",
               status: "error",
               duration: 9000,
               isClosable: true,
@@ -205,12 +260,25 @@ export default function Checkout() {
               </Flex>
             ))}
           <Divider mb={7} />
-          <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>
-          {/* <Text fontSize="2xl">Order Total: ${total}</Text> */}
-          {/* {
-            <Container>
-              <Text>{"name " + " " + userInfo.name}</Text>
-              <Text>{"email " + " " + userInfo.email}</Text>
+          {total > 0 && <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>}
+          {total == 0 && (
+            <Flex  direction="column ">
+              <Text fontSize="2xl">Nothing in Cart</Text>
+              <Link href="/courses">
+                <Button color="white" bgColor="primary.main" m={3}>
+                  Add a Course <ArrowRightIcon ml={3} />
+                </Button>
+              </Link>
+            </Flex>
+          )}
+          <Container ref={paypal} mt={5}></Container>
+        </Stack>
+      )}
+          {/* {true && */}
+          {!isCheckingOut && !hasSubmittedInfo &&
+            <Container mt={20}>
+              <Text fontSize={{base: "xl", md: "2xl"}} color="primary.light" mt={5}>Success!</Text>
+              <Text fontSize={{base: "lg", md: "xl"}}>Let us know where to send your audio:</Text>
               <Input
                 placeholder="Name"
                 name="name"
@@ -239,25 +307,12 @@ export default function Checkout() {
                 mt={3}
                 onClick={submitUserInfo}
               >
-                Save Info to Continue to Checkout
+                Send Email with Audio
                 <ArrowRightIcon ml={3} />
               </Button>
             </Container>
-          } */}
-          {subtotal == 0 && (
-            <Flex mt={20} direction="column ">
-              <Text fontSize="2xl">Nothing in Cart</Text>
-              <Link href="/courses">
-                <Button color="white" bgColor="primary.main" m={3}>
-                  Add a Course <ArrowRightIcon ml={3} />
-                </Button>
-              </Link>
-            </Flex>
-          )}
-          <Container ref={paypal} mt={5}></Container>
-        </Stack>
-      )}
-      {!isCheckingOut && (
+          }
+      {!isCheckingOut && hasSubmittedInfo && (
         <Flex mt={20} minH="sm" direction="column">
           <Text mt={20} mb={5} fontSize="2xl">
             Thank you for your purchase!

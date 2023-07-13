@@ -7,6 +7,25 @@ datasource db {
   url      = env("PG_URI")
 }
 
+model course {
+  id          Int       @id
+  name        String?   @db.VarChar(255)
+  description String?   @db.VarChar(255)
+  price       Int?
+  length      String?   @db.VarChar(255)
+  imagepath   String?   @db.VarChar(255)
+  created_at  DateTime? @db.Timestamp(6)
+  modified_at DateTime? @db.Timestamp(6)
+  deleted_at  DateTime? @db.Timestamp(6)
+}
+
+model emails {
+  id              Int    @id @default(autoincrement())
+  name            String @db.VarChar(255)
+  email           String @db.VarChar(255)
+  paypal_order_id String @db.VarChar(255)
+}
+
 model orders {
   order_id        Int       @id @default(autoincrement())
   email           String    @db.VarChar(255)
@@ -32,16 +51,4 @@ model orders {
   first_name      String?   @db.VarChar(255)
   last_name       String?   @db.VarChar(255)
   phone_number    String?   @db.VarChar(255)
-}
-
-model course {
-  id          Int       @id
-  name        String?   @db.VarChar(255)
-  description String?   @db.VarChar(255)
-  price       Int?
-  length      String?   @db.VarChar(255)
-  imagepath   String?   @db.VarChar(255)
-  created_at  DateTime? @db.Timestamp(6)
-  modified_at DateTime? @db.Timestamp(6)
-  deleted_at  DateTime? @db.Timestamp(6)
 }
