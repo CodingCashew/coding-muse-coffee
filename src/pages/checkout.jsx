@@ -8,7 +8,7 @@ import {
   Flex,
   Input,
   Divider,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import {
   useShoppingCart,
@@ -22,7 +22,7 @@ import Head from "next/head";
 export default function Checkout() {
   const { cartItems, subtotal, resetCart } = useShoppingCart();
   const [isCheckingOut, setIsCheckingOut] = useState(true);
-  const toast = useToast()
+  const toast = useToast();
   // const [hasSubmittedInfo, setHasSubmittedInfo] = useState(false);
 
   // const submitUserInfo = () => {
@@ -72,41 +72,37 @@ export default function Checkout() {
 
   const total = subtotal();
 
+  const [purchaseUnits, setPurchaseUnits] = useState([]);
+
   useEffect(() => {
-    if (window.paypal && total) {
+    const units = [];
+    for (let i = 0; i < cartItems.length; i++) {
+      const currItem = cartItems[i];
+      const unit = {
+        description: currItem.name,
+        reference_id: currItem.id,
+        amount: {
+          currency_code: "USD",
+          value: currItem.price,
+        },
+      };
+      units.push(unit);
+    }
+
+    setPurchaseUnits(units);
+  }, [cartItems]);
+
+  useEffect(() => {
+    if (window.paypal && total && purchaseUnits.length) {
       window.paypal
         .Buttons({
           createOrder: (data, actions, err) => {
-            return (
-              actions.order
-                .create({
-                  // intent: "CAPTURE",
-                  purchase_units: [
-                    {
-                      description: "American English Course for Devs",
-                      amount: {
-                        currency_code: "USD",
-                        value: total.toString(),
-                        // value: total
-                      },
-                    },
-                  ],
-                })
-                // .then(res => {
-                //   if (res.ok) return res.json()
-                //   return res.json().then(json => Promise.reject(json))
-                // }).then(({ id }) => {
-                //   console.log(id)
-                //   return id;
-                //   // return id;
-                // })
-                // .catch((e) => console.error(e.error))
-            );
+            return actions.order.create({
+              purchase_units: purchaseUnits
+            });
           },
 
           onApprove: function (data, actions) {
-            // const paypalOrderObj = actions.order.capture();
-            // console.log("Order object from paypal:", order);
             return actions.order.capture().then(function (paypalOrderObj) {
               if (paypalOrderObj.status == "COMPLETED") {
                 const orderData = {
@@ -114,7 +110,7 @@ export default function Checkout() {
                   first_name: paypalOrderObj.payer.name.given_name,
                   last_name: paypalOrderObj.payer.name.surname,
                   paypal_order_id: paypalOrderObj.id,
-                  total: paypalOrderObj.purchase_units[0].amount.value,
+                  total: total.toString(),
                   // discount_id: "",
                   created_at: paypalOrderObj.create_time,
                   product_id_1: cartItems[0].id,
@@ -130,33 +126,38 @@ export default function Checkout() {
                   product_name_4: cartItems[3]?.name || "",
                   product_price_4: cartItems[3]?.price.toString() || "",
                 };
-  
-                // console.log("orderData that I manually built out: ", orderData);
-  
-                // setOrderInfo(orderData);
-                // console.log("orderInfo after setting state: ", orderInfo);
+
                 handleSubmitOrder(orderData);
               }
             });
           },
           onCancel: () => {
             console.log("order cancelled");
+            toast({
+              title: "Order cancelled",
+              description: "Your order has been cancelled.",
+              status: "warning",
+              duration: 9000,
+              isClosable: true,
+            });
           },
           onError: (err) => {
-            console.log("descriptive error: ", err);
-            // alert(
-            //   "There was a problem fulfilling your order. Please try again or send a message on the Contact Tab."
-            // );
+            console.log("helpful and descriptive error: ", err);
+            toast({
+              title: "Error: There was a problem fulfilling your order.",
+              description: "Please try again or send a message on the Contact Tab.",
+              status: "error",
+              duration: 9000,
+              isClosable: true,
+            });
           },
         })
         .render(paypal.current);
     }
-  }, [total]);
+  }, [total, purchaseUnits]);
 
   const handleSubmitOrder = async (orderData) => {
-    // console.log('orderData in handleSubmitOrder: ', orderData)
-    // console.log('orderInfo in handleSubmitOrder: ', orderInfo)
-    const res = await fetch("/api/order",  {
+    const res = await fetch("/api/order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -165,19 +166,15 @@ export default function Checkout() {
     });
     const data = await res.json();
 
-    console.log("data:", data);
-    // alert("Order Submitted");
-    // if (data.success) {
-      toast({
-        title: 'Success!',
-        description: "Your order has been submitted.",
-        status: 'success',
-        duration: 9000,
-        isClosable: true,
-      })
-      resetCart();
-      setIsCheckingOut(false);
-    // }
+    toast({
+      title: "Success!",
+      description: "Your order has been submitted.",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+    });
+    resetCart();
+    setIsCheckingOut(false);
   };
 
   return (
@@ -209,6 +206,7 @@ export default function Checkout() {
             ))}
           <Divider mb={7} />
           <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>
+          {/* <Text fontSize="2xl">Order Total: ${total}</Text> */}
           {/* {
             <Container>
               <Text>{"name " + " " + userInfo.name}</Text>
@@ -264,11 +262,14 @@ export default function Checkout() {
           <Text mt={20} mb={5} fontSize="2xl">
             Thank you for your purchase!
           </Text>
-          <Text  mb={5}>
-            Check your email to download your new course.
-          </Text>
+          <Text mb={5}>Check your email to download your new course.</Text>
           <Link href="/">
-            <Button bgGradient="linear(to-r, primary.dark, secondary.main)" color="white">Back to Home </Button>
+            <Button
+              bgGradient="linear(to-r, primary.dark, secondary.main)"
+              color="white"
+            >
+              Back to Home{" "}
+            </Button>
           </Link>
         </Flex>
       )}

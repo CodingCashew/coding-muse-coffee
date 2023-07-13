@@ -77,7 +77,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     let currTotal = 0;
     if (!cartItems.length) return 0;
     for (let item of cartItems) {
-      currTotal += item.price;
+      currTotal += Number(item.price);
     }
     return currTotal;
   };
