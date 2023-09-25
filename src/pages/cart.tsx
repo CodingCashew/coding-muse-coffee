@@ -107,24 +107,24 @@ export default function Cart() {
               <Text>{numOfItems()}</Text>
             </Flex>
             <Button
-              mt={3}
-              mb={3}
+              m={3}
+              mb={0}
               variant="ghost"
-              color="primary.dark"
+              color="secondary.main"
               onClick={toggleShowDiscountInput}
             >
               Add Discount Code
             </Button>
             {showDiscountInput && (
-              <>
+              <Container m={3} mt={1} >
                 <Input></Input>
-                <Button variant="ghost" onClick={handleSubmitDiscountCode}>
+                <Button bgColor="secondary.main" color="white" onClick={handleSubmitDiscountCode} mt={3}>
                   Submit
                 </Button>
-                <Button variant="ghost" onClick={toggleShowDiscountInput}>
+                <Button variant="ghost" ml={3} onClick={toggleShowDiscountInput} mt={3}>
                   Cancel
                 </Button>
-              </>
+              </Container>
             )}
 
             <Flex justify="space-between">
