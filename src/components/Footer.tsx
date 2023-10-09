@@ -60,6 +60,11 @@ export default function Footer() {
             Contact
           </Text>
         </Link>
+        <Link href="/return-policy" className="footerLinks">
+          <Text fontSize="lg" className="footerText">
+            Return Policy
+          </Text>
+        </Link>
         <Link href="/privacy-policy" className="footerLinks">
           <Text fontSize="lg" className="footerText">
             Privacy Policy

@@ -47,6 +47,7 @@ export default function Navbar() {
             p={3}
             bgColor="white"
             align="center"
+            zIndex={100}
             justify="space-between"
           >
             <Link href="/" className="icon">
@@ -82,6 +83,7 @@ export default function Navbar() {
             className="navbar flexboxContainer"
             mb={20}
             p={3}
+            zIndex={100}
             bgColor="white"
             align="center"
             justify="space-between"
@@ -106,22 +108,28 @@ export default function Navbar() {
                 </Link>
               )}
             </Flex>
-            <Flex align="center" gap={8} className="mainLinksContainer">
+            <Flex align="center" gap={8} justify="center" className="skdfjl">
               <Link href="/shop" className="links">
                 <Text fontSize="xl" color="secondary.dark" className="link">
                   Shop
                 </Text>
               </Link>
-              <Link href="/about" className="links">
+              <Link href="/faq" className="links">
                 <Text fontSize="xl" color="secondary.dark" className="link">
-                  About
+                  FAQs
+                </Text>
+              </Link>
+              <Link href="/account" className="links">
+                <Text fontSize="xl" color="secondary.dark" className="link">
+                  Account
                 </Text>
               </Link>
               <Link href="/cart" className="links">
-                <Text fontSize="xl" color="secondary.dark" className="link">
+                <Text fontSize="xl" color="secondary.main" className="link">
                   Cart
                 </Text>
               </Link>
+              <Flex>
               <Button bgColor="green.400">
                 <CheckIcon
                   boxSize={35}
@@ -130,6 +138,7 @@ export default function Navbar() {
                 />
                 Buy Now: coffee.random()
               </Button>
+              </Flex>
             </Flex>
           </Flex>
         )}
