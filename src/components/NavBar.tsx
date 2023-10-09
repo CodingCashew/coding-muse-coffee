@@ -126,7 +126,6 @@ export default function Navbar() {
                 <CheckIcon
                   boxSize={35}
                   color="white"
-                  bgColor="green.400"
                   m={2}
                 />
                 Buy Now: coffee.random()

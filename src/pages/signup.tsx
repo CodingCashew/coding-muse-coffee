@@ -14,8 +14,8 @@ import {
 
 import { AiFillFacebook, AiFillGoogleCircle } from "react-icons/ai";
 import { ChatIcon } from "@chakra-ui/icons";
-const passport = require('passport')
-const FacebookStrategy = require('passport-facebook').Strategy;
+const passport = require("passport");
+const FacebookStrategy = require("passport-facebook").Strategy;
 
 const initialValues = {
   email: "",
@@ -29,14 +29,14 @@ function SignUp() {
 
   // const [loggedIn, setLoggedIn] = useState(false);
   const [values, setValues] = useState(initialValues);
-  const [passwordError, setPasswordError] = useState('');
+  const [passwordError, setPasswordError] = useState("");
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setValues({
       ...values,
       [name]: value,
     });
-    if (values.password.length >= 8) setPasswordError('');
+    if (values.password.length >= 8) setPasswordError("");
   };
 
   const createUser = (e: any) => {
@@ -79,7 +79,7 @@ function SignUp() {
   };
 
   return (
-    <div >
+    <div>
       <Box
         bgGradient="linear(to-tl, primary.main, secondary.light)"
         h="100%"
@@ -141,7 +141,7 @@ function SignUp() {
               </InputRightElement>
             </InputGroup>
             {passwordError && <Text>{passwordError}</Text>}
-            <Button bgColor="tertiary.dark" color="white" onClick={createUser}>
+            <Button bgColor="secondary.dark" color="white" onClick={createUser}>
               Sign Up Free
             </Button>
             <Button variant="link" color="black" fontSize="xs">
@@ -157,10 +157,16 @@ function SignUp() {
               <Text>or</Text>
               <Divider w="47%" />
             </Container>
-            <Button bgColor="primary.dark" color="white" onClick={googleOAuth}><AiFillGoogleCircle size={25} style={{ marginRight: '6px' }} />
+            <Button bgColor="primary.dark" color="white" onClick={googleOAuth}>
+              <AiFillGoogleCircle size={25} style={{ marginRight: "6px" }} />
               Continue with Google
             </Button>
-            <Button bgColor="primary.dark" color="white" onClick={facebookOAuth}><AiFillFacebook size={25} style={{ marginRight: '6px' }} />
+            <Button
+              bgColor="primary.dark"
+              color="white"
+              onClick={facebookOAuth}
+            >
+              <AiFillFacebook size={25} style={{ marginRight: "6px" }} />
               Continue with Facebook
             </Button>
           </Stack>

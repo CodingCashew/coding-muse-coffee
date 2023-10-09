@@ -7,48 +7,41 @@ datasource db {
   url      = env("PG_URI")
 }
 
-model course {
-  id          Int       @id
-  name        String?   @db.VarChar(255)
-  description String?   @db.VarChar(255)
-  price       Int?
-  length      String?   @db.VarChar(255)
-  imagepath   String?   @db.VarChar(255)
-  created_at  DateTime? @db.Timestamp(6)
-  modified_at DateTime? @db.Timestamp(6)
-  deleted_at  DateTime? @db.Timestamp(6)
+model Coffee {
+  id           Int     @id @default(autoincrement())
+  name         String  @unique
+  description  String?
+  sku          String?
+  roast        String
+  region       String
+  price        Int
+  size         String
+  imagePath    String
+  discount_id  String?
+  inventory_id String?
+  created_at   String?
+  modified_at  String?
+  deleted_at   String?
+  rating       Int?
+  reviews      String?
 }
 
-model emails {
-  id              Int    @id @default(autoincrement())
-  name            String @db.VarChar(255)
-  email           String @db.VarChar(255)
-  paypal_order_id String @db.VarChar(255)
-}
-
-model orders {
-  order_id        Int       @id @default(autoincrement())
-  email           String    @db.VarChar(255)
-  username        String?   @db.VarChar(255)
-  product_id_1    Int?
-  product_name_1  String?   @db.VarChar(255)
-  product_price_1 String?   @db.VarChar(255)
-  product_id_2    Int?
-  product_name_2  String?   @db.VarChar(255)
-  product_price_2 String?   @db.VarChar(255)
-  product_id_3    Int?
-  product_name_3  String?   @db.VarChar(255)
-  product_price_3 String?   @db.VarChar(255)
-  product_id_4    Int?
-  product_name_4  String?   @db.VarChar(255)
-  product_price_4 String?   @db.VarChar(255)
-  total           String?   @db.VarChar(255)
-  discount_id     String?   @db.VarChar(255)
-  created_at      DateTime? @db.Timestamp(6)
-  modified_at     DateTime? @db.Timestamp(6)
-  deleted_at      DateTime? @db.Timestamp(6)
-  paypal_order_id String?   @db.VarChar(255)
-  first_name      String?   @db.VarChar(255)
-  last_name       String?   @db.VarChar(255)
-  phone_number    String?   @db.VarChar(255)
+model Order {
+  orderNumber          Int      @id @default(autoincrement())
+  firstName            String
+  lastName             String
+  shippingAddressLine1 String
+  shippingAddressLine2 String
+  shippingCity         String
+  shippingState        String
+  shippingZip          String
+  email                String
+  phoneNumber          String
+  item1Id              Int
+  item1Qty             Int
+  item2Id              Int?
+  item2Qty             Int?
+  submittedAt          DateTime @default(now())
+  item3Id              Int?
+  item3Qty             Int?
 }

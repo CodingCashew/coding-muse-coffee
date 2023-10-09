@@ -16,7 +16,7 @@
     "@emotion/styled": "^11.10.6",
     "@paypal/checkout-server-sdk": "^1.0.3",
     "@paypal/react-paypal-js": "^8.0.0",
-    "@prisma/client": "^4.16.1",
+    "@prisma/client": "^5.4.1",
     "@types/node": "18.15.13",
     "@types/react": "18.0.38",
     "@types/react-dom": "18.0.11",
@@ -37,6 +37,6 @@
   },
   "devDependencies": {
     "@types/pg": "^8.10.2",
-    "prisma": "^4.16.1"
+    "prisma": "^4.16.2"
   }
 }

@@ -15,24 +15,18 @@ import { ShoppingCartProvider } from "@/context/ShoppingCartContext";
 const theme = extendTheme({
   colors: {
     primary: {
-      light: "#00B5D8",
-      dark: "#0987A0",
-      main: "#086F83",
+      light: "#B77A4D",
+      main: "#7A2E20",
+      dark: "#34211D",
     },
     secondary: {
-      light: "#4FD1C5",
-      main: "#38B2AC",
-      dark: "#319795",
+      light: "#DCAB83",
+      main: "#36546C",
+      dark: "#183346",
     },
-    tertiary: {
-      light: "#4299e1",
-      main: "#2b6cb0",
-      dark: "#2c5282"
-    }
   },
   // config: {
   //   initialColorMode: 'dark',
-  //   useSystemColorMode: true,
   // }
 });
 

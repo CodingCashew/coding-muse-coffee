@@ -46,7 +46,6 @@ export default function Checkout() {
   const { cartItems, subtotal, resetCart } = useShoppingCart();
   const [isCheckingOut, setIsCheckingOut] = useState(true);
 
-
   const toast = useToast();
   const [hasSubmittedInfo, setHasSubmittedInfo] = useState(false);
 
@@ -58,17 +57,16 @@ export default function Checkout() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({...userInfo, orderId}),
+          body: JSON.stringify({ ...userInfo, orderId }),
         });
-        const data =  await res.json();
+        const data = await res.json();
         // console.log('data: ', data)
         setHasSubmittedInfo(true);
       } catch (e) {
-        console.log(e)
+        console.log(e);
         toast({
           title: "Error",
-          description:
-            "Please contact support using the Contact tab.",
+          description: "Please contact support using the Contact tab.",
           status: "error",
           duration: 9000,
           isClosable: true,
@@ -77,8 +75,7 @@ export default function Checkout() {
     } else if (!userInfo.name.length && !userInfo.email.length) {
       toast({
         title: "Error",
-        description:
-          "Please add a valid name and email address.",
+        description: "Please add a valid name and email address.",
         status: "error",
         duration: 4000,
         isClosable: true,
@@ -86,8 +83,7 @@ export default function Checkout() {
     } else if (!userInfo.name.length) {
       toast({
         title: "Error",
-        description:
-          "Please add a valid name.",
+        description: "Please add a valid name.",
         status: "error",
         duration: 4000,
         isClosable: true,
@@ -95,8 +91,7 @@ export default function Checkout() {
     } else if (!userInfo.email.length) {
       toast({
         title: "Error",
-        description:
-          "Please add a valid email address.",
+        description: "Please add a valid email address.",
         status: "error",
         duration: 4000,
         isClosable: true,
@@ -118,10 +113,9 @@ export default function Checkout() {
     });
   };
 
-
   const [orderInfo, setOrderInfo] = useState(blankOrder);
   // const [orderId, setOrderId] = useState('adfasdfas')
-  const [orderId, setOrderId] = useState('')
+  const [orderId, setOrderId] = useState("");
   const paypal = useRef();
 
   const total = subtotal();
@@ -159,7 +153,7 @@ export default function Checkout() {
           onApprove: function (data, actions) {
             return actions.order.capture().then(function (paypalOrderObj) {
               if (paypalOrderObj.status == "COMPLETED") {
-                setOrderId(paypalOrderObj.id)
+                setOrderId(paypalOrderObj.id);
                 const orderData = {
                   email: paypalOrderObj.payer.email_address,
                   first_name: paypalOrderObj.payer.name.given_name,
@@ -236,7 +230,7 @@ export default function Checkout() {
     <Container minH="xl">
       <Head>
         <title>Checkout</title>
-        <link rel="icon" href="/landingPage/favicon.png" />
+        <link rel="icon" href="coding-muse-coffee.jpg" />
       </Head>
       <script
         src={`https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_CLIENT_ID}`}
@@ -251,22 +245,24 @@ export default function Checkout() {
           {subtotal &&
             cartItems.map((item, index) => (
               <Flex key={index} gap={5}>
-                <Text fontSize="xl" color="tertiary.dark">
+                <Text fontSize="xl" color="secondary.dark">
                   {item.name} -{" "}
                 </Text>
-                <Text fontSize="xl" color="tertiary.dark">
+                <Text fontSize="xl" color="secondary.dark">
                   ${item.price}
                 </Text>
               </Flex>
             ))}
           <Divider mb={7} />
-          {total > 0 && <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>}
+          {total > 0 && (
+            <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>
+          )}
           {total == 0 && (
-            <Flex  direction="column ">
+            <Flex direction="column ">
               <Text fontSize="2xl">Nothing in Cart</Text>
               <Link href="/courses">
                 <Button color="white" bgColor="primary.main" m={3}>
-                  Add a Course <ArrowRightIcon ml={3} />
+                  Add a Coding Muse<ArrowRightIcon ml={3} />
                 </Button>
               </Link>
             </Flex>
@@ -274,44 +270,52 @@ export default function Checkout() {
           <Container ref={paypal} mt={5}></Container>
         </Stack>
       )}
-          {/* {true && */}
-          {!isCheckingOut && !hasSubmittedInfo &&
-            <Container mt={20}>
-              <Text fontSize={{base: "xl", md: "2xl"}} color="primary.light" mt={5}>Success!</Text>
-              <Text fontSize={{base: "lg", md: "xl"}}>Let us know where to send your audio:</Text>
-              <Input
-                placeholder="Name"
-                name="name"
-                value={userInfo.name}
-                color="primary"
-                onChange={handleChange}
-                disabled={hasSubmittedInfo}
-                m={3}
-                required
-              />
-              <Input
-                placeholder="Email"
-                name="email"
-                value={userInfo.email}
-                color="primary"
-                onChange={handleChange}
-                disabled={hasSubmittedInfo}
-                m={3}
-                required
-              />
-              <Button
-                variant="contained"
-                type="submit"
-                bgColor="primary.dark"
-                color="white"
-                mt={3}
-                onClick={submitUserInfo}
-              >
-                Send Email with Audio
-                <ArrowRightIcon ml={3} />
-              </Button>
-            </Container>
-          }
+      {/* {true && */}
+      {!isCheckingOut && !hasSubmittedInfo && (
+        <Container mt={20}>
+          <Text
+            fontSize={{ base: "xl", md: "2xl" }}
+            color="primary.light"
+            mt={5}
+          >
+            Success!
+          </Text>
+          <Text fontSize={{ base: "lg", md: "xl" }}>
+            Let us know where to send your audio:
+          </Text>
+          <Input
+            placeholder="Name"
+            name="name"
+            value={userInfo.name}
+            color="primary"
+            onChange={handleChange}
+            disabled={hasSubmittedInfo}
+            m={3}
+            required
+          />
+          <Input
+            placeholder="Email"
+            name="email"
+            value={userInfo.email}
+            color="primary"
+            onChange={handleChange}
+            disabled={hasSubmittedInfo}
+            m={3}
+            required
+          />
+          <Button
+            variant="contained"
+            type="submit"
+            bgColor="primary.dark"
+            color="white"
+            mt={3}
+            onClick={submitUserInfo}
+          >
+            Send Email with Audio
+            <ArrowRightIcon ml={3} />
+          </Button>
+        </Container>
+      )}
       {!isCheckingOut && hasSubmittedInfo && (
         <Flex mt={20} minH="sm" direction="column">
           <Text mt={20} mb={5} fontSize="2xl">

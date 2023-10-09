@@ -34,7 +34,7 @@ export default function Cart() {
     <Container minH="xl" minW={{ base: "xs", sm: "sm", md: "3xl", lg: "5xl" }}>
       <Head>
         <title>Cart</title>
-        <link rel="icon" href="/landingPage/favicon.png" />
+        <link rel="icon" href="coding-muse-coffee.jpg" />
       </Head>
       <Text fontSize="2xl" mt={20}>
         Cart
@@ -48,7 +48,7 @@ export default function Cart() {
               </Text>
               <Link href="/courses">
                 <Button color="white" bgColor="primary.main" m={3}>
-                  Add a Course <ArrowRightIcon ml={3} />
+                  Add a Coding Muse<ArrowRightIcon ml={3} />
                 </Button>
               </Link>
             </Container>
@@ -116,12 +116,22 @@ export default function Cart() {
               Add Discount Code
             </Button>
             {showDiscountInput && (
-              <Container m={3} mt={1} >
+              <Container m={3} mt={1}>
                 <Input></Input>
-                <Button bgColor="secondary.main" color="white" onClick={handleSubmitDiscountCode} mt={3}>
+                <Button
+                  bgColor="secondary.main"
+                  color="white"
+                  onClick={handleSubmitDiscountCode}
+                  mt={3}
+                >
                   Submit
                 </Button>
-                <Button variant="ghost" ml={3} onClick={toggleShowDiscountInput} mt={3}>
+                <Button
+                  variant="ghost"
+                  ml={3}
+                  onClick={toggleShowDiscountInput}
+                  mt={3}
+                >
                   Cancel
                 </Button>
               </Container>

@@ -22,24 +22,24 @@ export default function Home() {
   return (
     <Flex>
       <Head>
-        <title>American English for Devs</title>
-        <meta name="description" content="American English for Devs" />
+        <title>Coding Muse Coffee</title>
+        <meta name="description" content="Coding Muse Coffee" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/landingPage/favicon.png" />
+        <link rel="icon" href="coding-muse-coffee.jpg" />
       </Head>
       <main>
         {/* <Container  width="100%"> */}
         <Image
           mt={20}
           width="100%"
-          src="/landingPage/nubelson-fernandes-gTs2w7bu3Qo-unsplash.webp"
-          alt="software developer"
+          src="anastasiia-beans.jpg"
+          alt="coffee beans"
         />
         {/* </Container> */}
         <Box
           width="100%"
           minHeight="md"
-          bgColor="tertiary.main"
+          bgColor="secondary.main"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -58,20 +58,16 @@ export default function Home() {
 
             <Image
               maxW={{ base: "100%", sm: "80%", md: "60%" }}
-              src="/landingPage/windows-6G6akT8biLg-unsplash.webp"
-              alt="software developer"
+              src="anastasiia-beans.jpg"
+              alt="coffee beans"
             />
           </Flex>
         </Box>
-        <Image
-          width="100%"
-          src="/landingPage/linkedin-sales-solutions-1LyBcHrH4J8-unsplash.webp"
-          alt="software developer"
-        />
+        <Image width="100%" src="anastasiia-beans.jpg" alt="coffee beans" />
         <Box
           width="100%"
           minHeight="md"
-          bgGradient="linear(to-b, primary.light, tertiary.dark)"
+          bgGradient="linear(to-b, primary.light, secondary.dark)"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -83,15 +79,15 @@ export default function Home() {
           >
             <Image
               maxW={{ base: "80%", sm: "60%", md: "50%", lg: "40%" }}
-              src="/landingPage/procreator-ux-design-studio-VzJjPuk53sk-unsplash.webp"
-              alt="software developer"
+              src="anastasiia-beans.jpg"
+              alt="coffee beans"
             />
             <Container display="flex column" maxW="3xl">
               <Text fontSize="3xl" color="white" p={2}>
-                Save valuable time by having everything compiled for you!
+                Coffee!
               </Text>
               <Text fontSize="3xl" color="white" p={2}>
-                Short, content-rich lessons that fit into your busy schedule
+                Coffee!
               </Text>
             </Container>
           </Flex>
@@ -110,7 +106,7 @@ export default function Home() {
             wrap={{ base: "wrap", lg: "nowrap" }}
           >
             <Text fontSize="3xl" color="white" p={2}>
-              Join Our English-Learning Community for Devs!
+              Don&apos;t miss out! Create an account!
             </Text>
             <Link href="/signup">
               <Button
@@ -120,7 +116,7 @@ export default function Home() {
                 paddingX="3em"
                 paddingY="1.35em"
               >
-                <ArrowRightIcon marginRight=".5rem" /> Create a New Account
+                <ArrowRightIcon marginRight=".5rem" /> Join
               </Button>
             </Link>
           </Flex>

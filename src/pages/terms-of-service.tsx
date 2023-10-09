@@ -7,12 +7,10 @@ export default function TermsOfService() {
     <Container minH="xl">
       <Head>
         <title>Terms of Service</title>
-        <link rel="icon" href="/landingPage/favicon.png" />
+        <link rel="icon" href="coding-muse-coffee.jpg" />
       </Head>
       <Container mt={20}>
-        <Text>
-          This is the Terms of Service page for American English for Devs
-        </Text>
+        <Text></Text>
       </Container>
     </Container>
   );
