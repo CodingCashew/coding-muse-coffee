@@ -278,10 +278,7 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-}
-
-.link:hover {
-  color: "red";
+  
 }
 
 .cart {
@@ -292,6 +289,7 @@
 .mainLinksContainer {
   display: flex;
   flex-direction: row;
+  
 }
 /* end of navbar styles */
 
