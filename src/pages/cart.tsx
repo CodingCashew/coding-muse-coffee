@@ -46,7 +46,7 @@ export default function Cart() {
               <Text mt={20} mb={5}>
                 Your cart is empty :/
               </Text>
-              <Link href="/courses">
+              <Link href="/shop">
                 <Button color="white" bgColor="primary.main" m={3}>
                   Add a Coding Muse<ArrowRightIcon ml={3} />
                 </Button>
@@ -61,21 +61,16 @@ export default function Cart() {
                 maxW={{ base: "xs", sm: "sm", md: "md", xl: "lg" }}
               >
                 <Text fontSize="xl" mt={7} mb={4}>
-                  {item.name} Course
+                  {item.name} Coffee
                 </Text>
-                <Image src={item.imagePath} alt="english course" w="100%" />
+                <Image src={item.imagePath} alt={`${item.name} coffee`} w="100%" />
                 <Text fontSize="lg" mt={3}>
                   Price:{" "}
                   <Text as="span" color="secondary.dark">
                     ${item.price}
                   </Text>
                 </Text>
-                <Text fontSize="lg">
-                  Length:{" "}
-                  <Text as="span" color="secondary.dark">
-                    {item.length}
-                  </Text>
-                </Text>
+              
                 <Text fontSize="lg">
                   Audio or Video:{" "}
                   <Text as="span" color="secondary.dark">
@@ -153,9 +148,9 @@ export default function Cart() {
                   </Button>
                 )}
               </Link>
-              <Link href="/courses">
+              <Link href="/shop">
                 <Button color="primary.dark" variant="outline" m={3}>
-                  Back to Courses
+                  Back to Coffees
                 </Button>
               </Link>
             </Container>

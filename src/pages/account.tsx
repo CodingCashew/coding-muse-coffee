@@ -26,7 +26,7 @@ export default function Account() {
     getUser();
   }, []);
   return (
-    <Container minH="sm" maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }}>
+    <Container minH="xl" maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }}>
       <Flex
         mt={20}
         mb={20}

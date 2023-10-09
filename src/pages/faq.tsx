@@ -28,7 +28,7 @@ const questions: faq[] = [
 
 export default function Faq() {
   return (
-    <Container maxW="6xl" minH="xl" mb={10}>
+    <Container maxW="6xl" minH="3xl" mb={10}>
       <Head>
         <title>FAQs</title>
         <link rel="icon" href="coding-muse-coffee.jpg" />

@@ -17,7 +17,7 @@ import {
 
 export default function Footer() {
   return (
-    <Box className="footer" minW="100%">
+    <Box className="footer" minW="100%" minH="2vh" p={5}>
       {/* <Flex
         className="flexboxContainer"
         // maxW="8xl"

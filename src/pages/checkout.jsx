@@ -321,7 +321,7 @@ export default function Checkout() {
           <Text mt={20} mb={5} fontSize="2xl">
             Thank you for your purchase!
           </Text>
-          <Text mb={5}>Check your email to download your new course.</Text>
+          <Text mb={5}>Your coding muse is on its way!</Text>
           <Link href="/">
             <Button
               bgGradient="linear(to-r, primary.dark, secondary.main)"

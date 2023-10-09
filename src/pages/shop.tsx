@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, Flex, Link, Text, Image } from "@chakra-ui/react";
 import Head from "next/head";
 import { PrismaClient } from "@prisma/client";
-import { CheckIcon } from "@chakra-ui/icons";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
+import { Divider } from '@chakra-ui/react'
 
 // TODO: add endpoint ref name (one word or kabob case name)
-interface coffee {
+export interface coffee {
   id: number;
   name: string;
   description: string;
@@ -32,54 +32,55 @@ export default function Coffees({ coffees }: any) {
   return (
     <Flex
       maxW="8xl"
-      minH="2xl"
-      mb={10}
+      minH="3xl"
       bgColor="black"
       align="center"
       direction="column"
+      
     >
       <Head>
         <title>Shop Coffees</title>
         <link rel="icon" href="coding-muse-coffee.jpg" />
       </Head>
-      <Flex direction="column" align="center" justify="center" mb={8}>
+      <Flex direction="column" align="center" justify="center" mb={8} >
         <Text fontSize="3xl" color="primary.main" mt={20} align="center">
           Select Your Muse
         </Text>
+        <Divider />
         {/* <Text fontSize="3xl" color="secondary.light" mt={20} align="center">
           Your muse awaits
         </Text> */}
       </Flex>
-      <Flex wrap="wrap" maxW="6xl" align="center">
+      <Flex wrap="wrap" maxW="6xl" align="center" gap={5}>
         {coffees.map((coffee: coffee, index: number) => (
           <Link key={index} href={`/shop/${coffee.name}`}>
             <Flex key={index} maxW="sm" direction="column">
-              <Text fontSize="2xl" color="secondary.main">
+              <Text fontSize="2xl" color="white">
                 {coffee.name}
               </Text>
               <Image
                 src={coffee.imagePath}
                 alt={`${coffee.roast} coffee beans`}
-                maxW="90%"
+                maxW="100%"
                 maxH="220px"
                 mb={3}
                 mt={3}
               />
-              <Text fontSize="xl" color="secondary.main">
+              <Text fontSize="xl" color="white">
                 {coffee.roast} Roast
               </Text>
-              <Text fontSize="xl" color="secondary.main">
+              <Text fontSize="xl" color="white">
                 {coffee.size}
               </Text>
-              <Text fontSize="xl" color="secondary.main">
+              <Text fontSize="xl" color="white">
                 ${coffee.price}
               </Text>
-              <Container mt={3}>
+              <Flex mt={3} gap={3}>
                 <Link href="/checkout">
                   <Button
                     color="white"
                     bgColor="primary.dark"
-                    width="30%"
+                    // width="30%"
                     onClick={() =>
                       increment(
                         coffee.id,
@@ -98,9 +99,9 @@ export default function Coffees({ coffees }: any) {
                 </Link>
                 <Button
                   color="white"
-                  ml={3}
+                  // ml={3}
                   bgColor="primary.main"
-                  width="34%"
+                  // width="34%"
                   onClick={() =>
                     increment(
                       coffee.id,
@@ -119,14 +120,14 @@ export default function Coffees({ coffees }: any) {
                 <Link href={`/shop/${coffee.name}`}>
                   <Button
                     color="white"
-                    ml={3}
+                    // ml={3}
                     bgColor="primary.light"
-                    width="29%"
+                    // width="29%"
                   >
                     Details
                   </Button>
                 </Link>
-              </Container>
+              </Flex>
             </Flex>
           </Link>
         ))}

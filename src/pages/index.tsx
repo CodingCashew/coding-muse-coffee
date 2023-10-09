@@ -39,7 +39,7 @@ export default function Home() {
         <Box
           width="100%"
           minHeight="md"
-          bgColor="secondary.main"
+          bgColor="black"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -51,8 +51,7 @@ export default function Home() {
           >
             <Container m={2}>
               <Text fontSize="3xl" color="white">
-                Work on just the vocabulary you need, and practice sentences
-                that you would use in real life on the job.
+                Coffee!
               </Text>
             </Container>
 
@@ -67,7 +66,8 @@ export default function Home() {
         <Box
           width="100%"
           minHeight="md"
-          bgGradient="linear(to-b, primary.light, secondary.dark)"
+          // bgGradient="linear(to-b, primary.light, primary.dark)"
+          bgColor="black"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -95,7 +95,7 @@ export default function Home() {
         <Box
           width="100%"
           minHeight="md"
-          bgGradient="linear(to-r, primary.dark, secondary.light)"
+          bgGradient="linear(to-r, primary.dark, primary.light)"
           display="flex"
           alignItems="center"
           justifyContent="center"
