@@ -18,7 +18,7 @@ import {
 export default function Footer() {
   return (
     <Box className="footer" minW="100%">
-      <Flex
+      {/* <Flex
         className="flexboxContainer"
         // maxW="8xl"
         // minW="7xl"
@@ -44,16 +44,10 @@ export default function Footer() {
         >
           <FaInstagramSquare className="search" size={35} />
         </Link>
-        <Link
-          href="https://www.buymeacoffee.com/fyhenglish"
-          className="footerLinks"
-        >
-          <SiBuymeacoffee className="search" size={35} />
-        </Link>
-        <Link href="https://www.youtube.com/channel/0" className="footerLinks">
+        <Link href="" className="footerLinks">
           <FaYoutube className="search" size={35} />
         </Link>
-      </Flex>
+      </Flex> */}
       <Flex
         className="flexboxContainer"
         gap={7}

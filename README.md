@@ -1,1 +1,3 @@
-##American English for Devs
+## Coding Muse Coffee
+
+### Leverage Your Muse
