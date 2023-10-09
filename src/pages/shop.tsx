@@ -18,26 +18,18 @@ interface coffee {
 
 export async function getStaticProps() {
   const prisma = new PrismaClient();
-  const coffee = await prisma.coffee.findMany();
-  // console.log("coffee in getStaticProps:", coffee);
+  const coffees = await prisma.coffee.findMany();
+  console.log("coffee in getStaticProps:", coffees);
   return {
-    props: { coffee },
+    props: { coffees },
   };
 }
 
-export default function Coffees({ coffee }: any) {
+export default function Coffees({ coffees }: any) {
+  // const { getItemQty, increment, decrement, removeItem } = useShoppingCart();
 
-  const { getItemQty, increment, decrement, removeItem } = useShoppingCart();
-
-  const [coffees, setCoffees] = useState([]);
-  useEffect(() => {
-    // console.log("coffee in useEffect: ", coffee);
-    setCoffees(coffee);
-    // console.log("coffees after setting state : ", coffees);
-  }, [coffee, coffees]);
-  
   return (
-    <Container maxW="6xl" minH="xl" mb={10}>
+    <Container maxW="6xl" minH="2xl" mb={10} bgColor="black">
       <Head>
         <title>Shop Coffees</title>
         <link rel="icon" href="coding-muse-coffee.jpg" />
@@ -47,24 +39,30 @@ export default function Coffees({ coffee }: any) {
           Your muse awaits
         </Text>
         <Button bgColor="green.400">
-                <CheckIcon
-                  boxSize={35}
-                  color="white"
-                  m={2}
-                />
-                Buy Now: coffee.random()
-              </Button>
+          <CheckIcon boxSize={35} color="white" m={2} />
+          Buy Now: coffee.random()
+        </Button>
       </Flex>
-      {coffees.map((coffee: coffee, index: number) => (
-        <Flex key={index} maxW="4xl" mt={10}>
-          <Text fontSize="2xl" color="secondary.light">
-            {coffee.name}
-          </Text>
-          <Text fontSize="xl">{coffee.roast}</Text>
-          <Text fontSize="xl">{coffee.size}</Text>
-          <Text fontSize="xl">{coffee.price}</Text>
-        </Flex>
-      ))}
+      <Flex wrap="wrap">
+        {coffees.map((coffee: coffee, index: number) => (
+          <Link key={index} >
+            <Flex key={index} maxW="lg" p={3} direction="column">
+              <Text fontSize="2xl" color="secondary.light">
+                {coffee.name}
+              </Text>
+              <Text fontSize="xl" color="secondary.main">
+                {coffee.roast}
+              </Text>
+              <Text fontSize="xl" color="secondary.main">
+                {coffee.size}
+              </Text>
+              <Text fontSize="xl" color="secondary.main">
+                {coffee.price}
+              </Text>
+            </Flex>
+          </Link>
+        ))}
+      </Flex>
     </Container>
   );
 }

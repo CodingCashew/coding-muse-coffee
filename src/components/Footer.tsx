@@ -53,7 +53,7 @@ export default function Footer() {
         gap={7}
         justify="center"
         align="center"
-        p={3}
+        // p={3}
       >
         <Link href="/contact" className="footerLinks">
           <Text fontSize="lg" className="footerText">
