@@ -9,6 +9,7 @@ import {
   Flex,
   Input,
   Divider,
+  Box,
 } from "@chakra-ui/react";
 import {
   useShoppingCart,
@@ -30,23 +31,24 @@ export default function Cart() {
 
   const orderTotal = subtotal();
   return (
-    <Container minH="xl" minW={{ base: "xs", sm: "sm", md: "3xl", lg: "5xl" }}>
+    <Box bgColor="black" mt={20}>
+    <Container minH="2xl" minW={{ base: "xs", sm: "sm", md: "3xl", lg: "5xl" }} mt={20}>
       <Head>
         <title>Cart</title>
         <link rel="icon" href="coding-muse-coffee.jpg" />
       </Head>
-      <Text fontSize="2xl" mt={20}>
+      <Text fontSize="2xl" pt={10} color="primary.main">
         Cart
       </Text>
       <Flex wrap={{ base: "wrap", lg: "nowrap" }} justify="center">
         <Container minW="xl">
           {!cartItems.length && (
             <Container>
-              <Text mt={20} mb={5}>
+              <Text mt={10} mb={5} color='secondary.light'>
                 Your cart is empty :/
               </Text>
               <Link href="/shop">
-                <Button color="white" bgColor="primary.main" m={3}>
+                <Button color="white" bgColor="secondary.main" m={3}>
                   Add a Coding Muse
                   <ArrowRightIcon ml={3} />
                 </Button>
@@ -156,5 +158,6 @@ export default function Cart() {
         )}
       </Flex>
     </Container>
+    </Box>
   );
 }

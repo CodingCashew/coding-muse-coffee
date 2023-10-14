@@ -7,6 +7,7 @@ import {
   Stack,
   Flex,
   Input,
+  Box,
   Divider,
   useToast,
 } from "@chakra-ui/react";
@@ -227,7 +228,8 @@ export default function Checkout() {
   };
 
   return (
-    <Container minH="xl">
+    <Box bgColor="black">
+    <Container minH="2xl" >
       <Head>
         <title>Checkout</title>
         <link rel="icon" href="coding-muse-coffee.jpg" />
@@ -333,5 +335,6 @@ export default function Checkout() {
         </Flex>
       )}
     </Container>
+    </Box>
   );
 }

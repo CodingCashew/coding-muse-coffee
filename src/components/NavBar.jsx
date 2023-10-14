@@ -74,7 +74,7 @@ export default function Navbar() {
           as="header"
           position="fixed"
           top="0"
-          backgroundColor="white"
+          backgroundColor="black"
           w="100%"
           className="navbar flexboxContainer"
           mb={20}
@@ -146,6 +146,11 @@ export default function Navbar() {
             <Link href="/shop" className="links">
               <Text fontSize="xl" color="secondary.dark" className="link">
                 Shop
+              </Text>
+            </Link>
+            <Link href="/about" className="links">
+              <Text fontSize="xl" color="secondary.dark" className="link">
+                About
               </Text>
             </Link>
             <Link href="/faq" className="links">
