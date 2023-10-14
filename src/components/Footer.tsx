@@ -56,22 +56,22 @@ export default function Footer() {
         // p={3}
       >
         <Link href="/contact" className="footerLinks">
-          <Text fontSize="lg" className="footerText">
+          <Text fontSize="lg" className="footerText" color="secondary.dark">
             Contact
           </Text>
         </Link>
         <Link href="/return-policy" className="footerLinks">
-          <Text fontSize="lg" className="footerText">
+          <Text fontSize="lg" className="footerText" color="secondary.dark">
             Return Policy
           </Text>
         </Link>
         <Link href="/privacy-policy" className="footerLinks">
-          <Text fontSize="lg" className="footerText">
+          <Text fontSize="lg" className="footerText" color="secondary.dark">
             Privacy Policy
           </Text>
         </Link>
         <Link href="/terms-of-service" className="footerLinks">
-          <Text fontSize="lg" className="footerText">
+          <Text fontSize="lg" className="footerText" color="secondary.dark">
             Terms of Service
           </Text>
         </Link>

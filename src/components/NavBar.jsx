@@ -19,27 +19,30 @@ import {
   useShoppingCart,
   ShoppingCartProvider,
 } from "../context/ShoppingCartContext";
-// import NotificationBadge from "react-notification-badge";
-// import { Effect } from "react-notification-badge";
+import NotificationBadge from "react-notification-badge";
+import { Effect } from "react-notification-badge";
 import { ColorModeScript } from "@chakra-ui/react";
 import { SunIcon, MoonIcon, HamburgerIcon, CheckIcon } from "@chakra-ui/icons";
+import { GrCart } from "react-icons/gr";
 import { BsPersonCircle, BsCart2 } from "react-icons/bs";
 import { coffee } from "@/pages/shop";
 import { PrismaClient } from "@prisma/client";
 
-export async function getStaticProps() {
-  const prisma = new PrismaClient();
-  const coffeeData = await prisma.coffee.findMany();
-  console.log("coffeeData: ", coffeeData);
-  return {
-    props: { coffeeData },
-  };
-}
+// export async function getStaticProps() {
+//   console.log('in getStaticProps')
+//   const prisma = new PrismaClient();
+//   const coffeeData = await prisma.coffee.findMany();
+//   console.log('coffeeeeees', coffeeData)
+//   return {
+//     props: { coffeeData },
+//   };
+// }
 
-export default function Navbar({ coffeeData }: any) {
-  const coffees = coffeeData;
+export default function Navbar() {
+  // const coffees = props;
+  // console.log('coffeeData at top of navbar: ', props)
   const { cartItems, numOfItems } = useShoppingCart();
-  const num: number = numOfItems();
+  const num = numOfItems();
   // const [device, setDevice] = useStaijte("mobile");
   const device = useBreakpointValue({ base: "mobile", md: "tablet" });
 
@@ -49,8 +52,8 @@ export default function Navbar({ coffeeData }: any) {
 
   const buyRandomCoffee = () => {
     const index = Math.floor(Math.random() * (7 - 0 + 1));
-    console.log(coffees);
-    const coffee = coffees[index];
+    console.log('coffees in buy random: --->', props);
+    const coffee = props[index];
     // console.log("coffee: ", coffee);
     // increment(
     //   coffee.id,
@@ -132,7 +135,7 @@ export default function Navbar({ coffeeData }: any) {
                 <Text
                   fontSize={{ lg: "xl", xl: "2xl" }}
                   ml={3}
-                  color="primary.main"
+                  color="primary.dark"
                 >
                   Coding Muse Coffee
                 </Text>
@@ -155,18 +158,20 @@ export default function Navbar({ coffeeData }: any) {
                 Account
               </Text>
             </Link>
-            <Link href="/cart" className="links">
-              <Text fontSize="xl" color="secondary.main" className="link">
+            <Link href="/cart" className="links" mr={5}>
+            <NotificationBadge count={num} effect={Effect.Custome}/>
+              <GrCart className="cart" size={25} color="red"/>
+              {/* <Text fontSize="xl" color="primary.main" className="link">
                 Cart
-              </Text>
+              </Text> */}
             </Link>
 
-            <Link href="/checkout">
-              <Button bgColor="green.400" onClick={() => buyRandomCoffee()}>
+            {/* <Link href="/checkout"> */}
+              {/* <Button bgColor="green.400" onClick={() => buyRandomCoffee()}>
                 <CheckIcon boxSize={35} color="white" m={2} />
                 Buy Now: Coffee.random()
-              </Button>
-            </Link>
+              </Button> */}
+            {/* </Link> */}
           </Flex>
         </Flex>
       )}

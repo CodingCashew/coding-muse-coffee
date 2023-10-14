@@ -18,8 +18,7 @@ import Head from "next/head";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 
 export default function Cart() {
-  const { cartItems, numOfItems, subtotal, removeItem } =
-    useShoppingCart();
+  const { cartItems, numOfItems, subtotal, removeItem } = useShoppingCart();
   const [showDiscountInput, setShowDiscountInput] = useState(false);
 
   const toggleShowDiscountInput = () => {
@@ -48,7 +47,8 @@ export default function Cart() {
               </Text>
               <Link href="/shop">
                 <Button color="white" bgColor="primary.main" m={3}>
-                  Add a Coding Muse<ArrowRightIcon ml={3} />
+                  Add a Coding Muse
+                  <ArrowRightIcon ml={3} />
                 </Button>
               </Link>
             </Container>
@@ -63,20 +63,18 @@ export default function Cart() {
                 <Text fontSize="xl" mt={7} mb={4}>
                   {item.name} Coffee
                 </Text>
-                <Image src={item.imagePath} alt={`${item.name} coffee`} w="100%" />
+                <Image
+                  src={item.imagePath}
+                  alt={`${item.name} coffee`}
+                  w="100%"
+                />
                 <Text fontSize="lg" mt={3}>
                   Price:{" "}
                   <Text as="span" color="secondary.dark">
                     ${item.price}
                   </Text>
                 </Text>
-              
-                <Text fontSize="lg">
-                  Audio or Video:{" "}
-                  <Text as="span" color="secondary.dark">
-                    audio
-                  </Text>
-                </Text>
+
                 <Button
                   color="primary.main"
                   variant="ghost"

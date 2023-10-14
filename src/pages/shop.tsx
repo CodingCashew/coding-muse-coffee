@@ -37,14 +37,14 @@ export default function Coffees({ coffees }: any) {
       bgColor="black"
       align="center"
       direction="column"
-      
+      p={5}
     >
       <Head>
         <title>Shop Coffees</title>
         <link rel="icon" href="coding-muse-coffee.jpg" />
       </Head>
       <Flex direction="column" align="center" justify="center" mb={8} >
-        <Text fontSize="3xl" color="primary.main" mt={20} align="center">
+        <Text fontSize="3xl" color="secondary.main" mt={20} align="center">
           Select Your Muse
         </Text>
         <Divider />
@@ -52,7 +52,7 @@ export default function Coffees({ coffees }: any) {
           Your muse awaits
         </Text> */}
       </Flex>
-      <Flex wrap="wrap" maxW="6xl" align="center" gap={5}>
+      <Flex wrap="wrap" maxW="6xl" align="center" gap={7}>
         {coffees.map((coffee: coffee, index: number) => (
           // <Link key={index} href={`/shop/${coffee.name.toLowerCase()}`}>
             <Flex key={index} maxW="sm" direction="column">

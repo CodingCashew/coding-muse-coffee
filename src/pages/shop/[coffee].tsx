@@ -33,7 +33,7 @@ export async function getStaticPaths() {
 export async function getStaticProps() {
   const prisma = new PrismaClient();
   const coffees = await prisma.coffee.findMany();
-  // console.log('coffeeeeees', coffees)
+
   return {
     props: { coffees },
   };
