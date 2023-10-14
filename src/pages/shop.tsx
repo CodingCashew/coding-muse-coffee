@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container, Flex, Link, Text, Image } from "@chakra-ui/react";
+import { Button, Container, Flex, Text, Image } from "@chakra-ui/react";
 import Head from "next/head";
 import { PrismaClient } from "@prisma/client";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
 import { Divider } from '@chakra-ui/react'
+import Link from "next/link";
 
 // TODO: add endpoint ref name (one word or kabob case name)
 export interface coffee {
@@ -53,7 +54,7 @@ export default function Coffees({ coffees }: any) {
       </Flex>
       <Flex wrap="wrap" maxW="6xl" align="center" gap={5}>
         {coffees.map((coffee: coffee, index: number) => (
-          <Link key={index} href={`/shop/${coffee.name}`}>
+          // <Link key={index} href={`/shop/${coffee.name.toLowerCase()}`}>
             <Flex key={index} maxW="sm" direction="column">
               <Text fontSize="2xl" color="white">
                 {coffee.name}
@@ -117,7 +118,7 @@ export default function Coffees({ coffees }: any) {
                 >
                   Add to Cart
                 </Button>
-                <Link href={`/shop/${coffee.name}`}>
+                <Link href={`/shop/${coffee.name.toLowerCase()}`}>
                   <Button
                     color="white"
                     // ml={3}
@@ -129,7 +130,7 @@ export default function Coffees({ coffees }: any) {
                 </Link>
               </Flex>
             </Flex>
-          </Link>
+         
         ))}
       </Flex>
     </Flex>

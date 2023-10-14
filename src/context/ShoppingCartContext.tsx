@@ -158,7 +158,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   const subtotal = (): number => {
     let currTotal = 0;
-    if (!cartItems.length) return 0;
+    if (!cartItems || !cartItems.length) return 0;
     for (let item of cartItems) {
       currTotal += item.quantity * item.price;
     }

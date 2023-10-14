@@ -41,7 +41,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <ShoppingCartProvider>
-      <Navbar {...pageProps}/>
+      <Navbar  />
+      {/* <Navbar {...pageProps}  /> */}
       <Component {...pageProps} />
       <Footer />
       </ShoppingCartProvider>

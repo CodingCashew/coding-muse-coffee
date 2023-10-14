@@ -18,7 +18,7 @@ import Head from "next/head";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 
 export default function Cart() {
-  const { cartItems, numOfItems, subtotal, addItem, removeItem } =
+  const { cartItems, numOfItems, subtotal, removeItem } =
     useShoppingCart();
   const [showDiscountInput, setShowDiscountInput] = useState(false);
 
