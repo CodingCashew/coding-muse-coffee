@@ -41,7 +41,7 @@ export default function Coffees({ coffees }: any) {
     >
       <Head>
         <title>Shop Coffees</title>
-        <link rel="icon" href="coding-muse-coffee.jpg" />
+        <link rel="icon" href="/coding-muse-icon.ico" />
       </Head>
       <Flex direction="column" align="center" justify="center" mb={8} >
         <Text fontSize="3xl" color="secondary.main" mt={20} align="center">

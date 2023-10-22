@@ -25,7 +25,7 @@ export default function Home() {
         <title>Coding Muse Coffee</title>
         <meta name="description" content="Coding Muse Coffee" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="coding-muse-coffee.jpg" />
+        <link rel="icon" href="/coding-muse-icon.ico" />
       </Head>
       <main>
         {/* <Container  width="100%"> */}

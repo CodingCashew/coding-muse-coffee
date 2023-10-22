@@ -64,7 +64,7 @@ function Contact() {
     >
       <Head>
         <title>Contact</title>
-        <link rel="icon" href="coding-muse-coffee.jpg" />
+        <link rel="icon" href="/coding-muse-icon.ico" />
       </Head>
       <form onSubmit={sendEmail}>
         <Grid mt={20} w={{ base: "xs", sm: "sm", md: "lg" }}>

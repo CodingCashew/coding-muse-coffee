@@ -31,7 +31,7 @@ export default function Faq() {
     <Container maxW="6xl" minH="3xl" mb={10}>
       <Head>
         <title>FAQs</title>
-        <link rel="icon" href="coding-muse-coffee.jpg" />
+        <link rel="icon" href="/coding-muse-icon.ico" />
       </Head>
       <Flex direction="column" align="center">
         <Text fontSize="2xl" color="primary.dark" mt={20} align="center">

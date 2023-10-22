@@ -77,7 +77,7 @@ export default function Coffee({ coffees }: any) {
         <Box width="100%" minH="2xl" bgColor="black" mt={20} p={10}>
           <Head>
             <title>{coffee.name}</title>
-            <link rel="icon" href="coding-muse-coffee.jpg" />
+            <link rel="icon" href="/coding-muse-icon.ico" />
           </Head>
           <Flex p={8} minH="sm" maxW="5xl" align="center" mt={10}>
             <Image src={coffee?.imagePath} alt="coffee beans" w="50%" />

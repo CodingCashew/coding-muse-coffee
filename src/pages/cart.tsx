@@ -35,7 +35,7 @@ export default function Cart() {
     <Container minH="2xl" minW={{ base: "xs", sm: "sm", md: "3xl", lg: "5xl" }} mt={20}>
       <Head>
         <title>Cart</title>
-        <link rel="icon" href="coding-muse-coffee.jpg" />
+        <link rel="icon" href="/coding-muse-icon.ico" />
       </Head>
       <Text fontSize="2xl" pt={10} color="primary.main">
         Cart

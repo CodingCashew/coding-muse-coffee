@@ -232,7 +232,7 @@ export default function Checkout() {
     <Container minH="2xl" >
       <Head>
         <title>Checkout</title>
-        <link rel="icon" href="coding-muse-coffee.jpg" />
+        <link rel="icon" href="/coding-muse-icon.ico" />
       </Head>
       <script
         src={`https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_CLIENT_ID}`}
@@ -313,7 +313,7 @@ export default function Checkout() {
             mt={3}
             onClick={submitUserInfo}
           >
-            Send Email with Audio
+            Send Email
             <ArrowRightIcon ml={3} />
           </Button>
         </Container>

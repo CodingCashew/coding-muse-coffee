@@ -1,5 +1,17 @@
-import { Container, Text, Flex, Image, Input, Stack } from "@chakra-ui/react";
+import {
+  Container,
+  Text,
+  Flex,
+  Image,
+  Input,
+  Stack,
+  Box,
+} from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import { useAccountContext, AccountProvider } from "../context/AccountContext";
+import SignUp from "../components/signup";
+import Login from "../components/login";
+import Head from "next/head";
 
 export default function Account() {
   const initialDummyUser = {
@@ -25,33 +37,59 @@ export default function Account() {
   useEffect(() => {
     getUser();
   }, []);
+  // useEffect(() => {
+  //   console.log('isLoggedIn: ', isLoggedIn);
+  // }, []);
+
+  const { isLoggedIn, updateIsLoggedIn, isLoggingIn, updateIsLoggingIn } =
+    useAccountContext();
+
   return (
-    <Container minH="xl" maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }}>
-      <Flex
-        mt={20}
-        mb={20}
-        align="center"
-        justify="center"
-        wrap={{ base: "wrap", lg: "nowrap" }}
+    <Box bgColor="black" mt={20}>
+      <Container
+        minH="2xl"
+        maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }}
       >
-        
-        <Flex flexDirection="column" minW={{ base: "xs", sm: "md"}}>
-          <Text fontSize="xl" py={5}>
-            Account
-          </Text>
-          <Text fontSize="md">Username</Text>
-          <Input
-            value={user.login.username}
-            maxW={{ base: "sm", sm: "md", md: "lg"}}
-            disabled
-          />
-          <Text fontSize="md">Email Address</Text>
-          <Input value={user.email} maxW={{ base: "sm", sm: "md", md: "lg"}} disabled />
-          <Text fontSize="md">Password</Text>
-          <Input value={'xxxxxxx'} maxW={{ base: "sm", sm: "md", md: "lg"}} disabled />
-          
+        <Head>
+          <title>Account</title>
+          <link rel="icon" href="/coding-muse-icon.ico" />
+        </Head>
+        <Flex
+          mt={20}
+          mb={20}
+          align="center"
+          justify="center"
+          wrap={{ base: "wrap", lg: "nowrap" }}
+        >
+          {isLoggedIn && (
+            <Flex flexDirection="column" minW={{ base: "xs", sm: "md" }}>
+              <Text fontSize="xl" py={5}>
+                Account
+              </Text>
+              <Text fontSize="md">Username</Text>
+              <Input
+                value={user.login.username}
+                maxW={{ base: "sm", sm: "md", md: "lg" }}
+                disabled
+              />
+              <Text fontSize="md">Email Address</Text>
+              <Input
+                value={user.email}
+                maxW={{ base: "sm", sm: "md", md: "lg" }}
+                disabled
+              />
+              <Text fontSize="md">Password</Text>
+              <Input
+                value={"xxxxxxx"}
+                maxW={{ base: "sm", sm: "md", md: "lg" }}
+                disabled
+              />
+            </Flex>
+          )}
+          {!isLoggedIn && !isLoggingIn && <SignUp />}
+          {!isLoggedIn && isLoggingIn && <Login />}
         </Flex>
-      </Flex>
-    </Container>
+      </Container>
+    </Box>
   );
 }

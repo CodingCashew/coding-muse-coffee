@@ -7,7 +7,7 @@ export default function TermsOfService() {
     <Container minH="xl">
       <Head>
         <title>Terms of Service</title>
-        <link rel="icon" href="coding-muse-coffee.jpg" />
+        <link rel="icon" href="/coding-muse-icon.ico" />
       </Head>
       <Container mt={20}>
         <Text></Text>
