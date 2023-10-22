@@ -1,5 +1,5 @@
-import { PrismaClient } from '@prisma/client'
-// const { PrismaClient } = require('@prisma/client');
+// import { PrismaClient } from '@prisma/client'
+const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient()
 
@@ -8,23 +8,15 @@ async function main() {
   // replace this data with new course data
 
 
-// const order = await prisma.orders.create({
-//   data: {
-//     firstName: "Pam",
-//     lastName: "Poovey",
-//     shippingAddressLine1: "123 Cool St.",
-//     shippingAddressLine2: "",
-//     shippingCity: "OKC",
-//     shippingState: "OK",
-//     shippingZip: "78978",
-//     email: "pampage@test.io",
-//     phone_number: "123",
-//     item1Id: 2,
-//     item1Qty: 3
-//   }
-// })
+const user = await prisma.users.create({
+  data: {
+    username:'Lana',
+    email: 'lana@test.com',
+    password: 'noooooooope'
+  }
+})
 
-//   console.log('order: ', order)
+  console.log('user: ', user)
 
 
 //   const course = await prisma.course.create({

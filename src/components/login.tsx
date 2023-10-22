@@ -13,14 +13,19 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { ArrowRightIcon } from "@chakra-ui/icons";
-import { AiFillFacebook, AiFillGoogleCircle } from "react-icons/ai";
+
+import { PrismaClient } from "@prisma/client";
+
 import { useAccountContext } from "@/context/AccountContext";
+import bcrypt from 'bcrypt';
 
 export interface User {
   email: string;
   username?: string;
   password: string;
 }
+
+const prisma = new PrismaClient();
 
 const initialValues = {
   email: "",
@@ -41,27 +46,51 @@ function Login() {
     });
     // console.log('values:', values)
   };
-  const { isLoggedIn, updateIsLoggedIn, isLoggingIn, updateIsLoggingIn } =
+  const { isLoggedIn, updateIsLoggedIn, isLoggingIn, updateIsLoggingIn, user, updateUser } =
     useAccountContext();
 
   const toast = useToast();
 
-  const login = () => {
+  const login = async () => {
     fetch("/api/login", {
       method: "POST",
       body: JSON.stringify({ email: values.email, password: values.password }),
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "text/html" },
     })
       .then((res) => res.json())
       .then((data) => {
         console.log("data in login:", data);
-        // setValues(initialValues)
+        updateUser({
+          username: values.username,
+          email: values.email,
+          password: 'xxxxxxx'
+        })
+        setValues(initialValues)
       })
       .catch((err) => {
         console.log("error!: ", err);
       });
+    // try {
+    //   const { email } = values;
+    //   const hash = await bcrypt.hash(values.password, 10);
 
-    setShow(false);
+  
+    //   const user = await prisma.users.findOne({ email: email });
+    //   if (user) {
+    //     const isValid = await bcrypt.compare(values.password, user.password);
+    //     if (!isValid) {
+    //       res.json("Incorrect email or password");
+    //       console.log("Incorrect email or password");
+    //     } else {
+    //       res.json("Success!! Woot, woot!");
+    //       console.log("Success!! Woot, woot!");
+    //     }
+    //   }
+    // } catch (e) {
+    //   console.error(e);
+    // }
+
+    // setShow(false);
   };
 
   return (
@@ -79,7 +108,8 @@ function Login() {
         <Input
           placeholder="Email Address"
           size="md"
-          bgColor="#F7FAFC"
+          // color="white"
+          bgColor="white"
           value={values.email}
           name={"email"}
           onChange={handleChange}
@@ -89,7 +119,7 @@ function Login() {
             pr="4.5rem"
             type={show ? "text" : "password"}
             placeholder="Password"
-            bgColor="#F7FAFC"
+            bgColor="white"
             value={values.password}
             name={"password"}
             onChange={handleChange}

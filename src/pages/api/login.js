@@ -1,19 +1,26 @@
-import clientPromise from "../../../lib/mongodb";
+import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
-// const jwt = require('jsonwebtoken')
-// import jwt from 'jsonwebtoken'
+
+const prisma = new PrismaClient()
 
 const handler = async (req, res) => {
+  console.log('in handler')
   try {
-    const { email } = req.body;
-    const hash = await bcrypt.hash(req.body.password, 10);
+    const { email, password } = req.body;
+    const hash = await bcrypt.hash(password, 10);
+console.log(email, password, hash)
 
-    const client = await clientPromise;
-    const db = client.db("Langship");
 
-    const user = await db.collection("Users").findOne({ email: email });
+    const user = await prisma.user.findFirst({
+      where: {
+        email: email,
+        password: hash
+      },
+    })
+    console.log('user: ', user)
     if (user) {
-      const isValid = await bcrypt.compare(req.body.password, user.password);
+      console.log('hash: ', hash)
+      const isValid = await bcrypt.compare(password, hash);
       if (!isValid) {
         res.json("Incorrect email or password");
       } else {

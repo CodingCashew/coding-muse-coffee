@@ -45,3 +45,10 @@ model Order {
   item3Id              Int?
   item3Qty             Int?
 }
+
+model User {
+  id       Int     @id @default(autoincrement())
+  username String? @db.VarChar(255)
+  email    String? @db.VarChar(255)
+  password String? @db.VarChar(255)
+}

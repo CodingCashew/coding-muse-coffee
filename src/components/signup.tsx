@@ -10,20 +10,25 @@ import {
   Link,
   InputGroup,
   InputRightElement,
+  useToast,
 } from "@chakra-ui/react";
+import bcrypt from "bcrypt";
 
 // import { AiFillFacebook, AiFillGoogleCircle } from "react-icons/ai";
 import { ArrowRightIcon, ChatIcon } from "@chakra-ui/icons";
 import { useAccountContext } from "@/context/AccountContext";
+import { PrismaClient } from "@prisma/client";
+import { User } from "../context/AccountContext";
 // const passport = require("passport");
 // const FacebookStrategy = require("passport-facebook").Strategy;
 
 const initialValues = {
   email: "",
-  username: '',
+  username: "",
   password: "",
 };
 
+const prisma = new PrismaClient();
 function SignUp() {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(!show);
@@ -39,40 +44,94 @@ function SignUp() {
     });
     if (values.password.length >= 8) setPasswordError("");
   };
+  
+  const toast = useToast();
 
-  const createUser = (e: any) => {
+  const createUser = async (e: any) => {
     if (values.password.length < 8) {
       setPasswordError("Please enter 8 or more characters.");
       return;
     }
-    if (values.email && values.password) {
+    if (values.email && values.password && values.username) {
+      console.log("req.body: ", values);
+      // try {
+      const { email, username, password } = values;
+      // const hashedPassword = await bcrypt.hash(values.password, 10);
+
       fetch("/api/signup", {
         method: "POST",
         body: JSON.stringify({
-          email: values.email,
-          password: values.password,
+          username,
+          email,
+          password,
         }),
         headers: { "Content-Type": "application/json" },
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          // alert('You successfully created a new account')
+          updateIsLoggedIn(true);
+          updateUser({
+            username,
+            email,
+            password: 'xxxxxxx'
+          })
 
-          // setLoggedIn(true);
-          // console.log("loggedIn?:", loggedIn)
-
-          // setValues({
-          //   email: '',
-          //   password: ''
-          // })
-          // TO DO: redirect to href="/account"
+          setValues({
+            email: "",
+            password: "",
+            username: "",
+          });
+          toast({
+            title: "Success",
+            description:
+              "You have successfully created your account.",
+            status: "success",
+            duration: 4000,
+            isClosable: true,
+          })
+          setTimeout(() => {
+            console.log('success')
+          }, 4000)
         })
+        // alert('You successfully created a new account')
+        //   const user = await prisma.users.create({
+        //     data: {
+        //       email: email,
+        //       username: username,
+        //       password: hashedPassword,
+        //     },
+        //   });
+        // const client = await clientPromise;
+        // const db = client.db("Mysa");
+        // const user = await db
+        //   .collection("Users")
+        //   .insertOne({
+        //     username: username,
+        //     email: email,
+        //     password: hashedPassword,
+        //   });
+        // console.log("user: ", user);
+        // res.json(user);
+        // } catch (e) {
+        //   console.error(e);
+        // }
+
+        //     // console.log("loggedIn?:", loggedIn)
+        //     // TO DO: redirect to href="/account"
+
         .catch((err) => console.log(err));
     }
   };
 
-  const { isLoggedIn, updateIsLoggedIn, isLoggingIn, updateIsLoggingIn } = useAccountContext();
+  const {
+    isLoggedIn,
+    updateIsLoggedIn,
+    isLoggingIn,
+    updateIsLoggingIn,
+    user,
+    updateUser,
+  } = useAccountContext();
 
   return (
     <Container
@@ -88,7 +147,6 @@ function SignUp() {
         textAlign="center"
         color="primary.main"
       >
-        
         Start leveraging your coding muse today with a free account.
       </Text>
       <Stack spacing={5} w="75%" mt={5}>
@@ -101,12 +159,13 @@ function SignUp() {
           onChange={handleChange}
         />
         <Input
-              placeholder='Username'
-              size='md'
-              bgColor="#F7FAFC"
-              value={values.username}
-              name={"username"}
-              onChange={handleChange} />
+          placeholder="Username"
+          size="md"
+          bgColor="#F7FAFC"
+          value={values.username}
+          name={"username"}
+          onChange={handleChange}
+        />
         <InputGroup size="md">
           <Input
             pr="4.5rem"
@@ -129,10 +188,21 @@ function SignUp() {
           </InputRightElement>
         </InputGroup>
         {passwordError && <Text>{passwordError}</Text>}
-        <Button bgGradient="linear(to-br, secondary.dark,  primary.main)" color="white" onClick={createUser}>
+        <Button
+          bgGradient="linear(to-br, secondary.dark,  primary.main)"
+          color="white"
+          onClick={createUser}
+        >
           Sign Up Free
         </Button>
-        <Button variant="link" color="white" ml={1} mt={10}  fontSize="xl" onClick={() => updateIsLoggingIn(true)}>
+        <Button
+          variant="link"
+          color="white"
+          ml={1}
+          mt={10}
+          fontSize="xl"
+          onClick={() => updateIsLoggingIn(true)}
+        >
           Already Have An Account? Log In <ArrowRightIcon />
         </Button>
         <Container
