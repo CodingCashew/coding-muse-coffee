@@ -132,12 +132,14 @@ export default function Checkout() {
     const units = [];
     for (let i = 0; i < cartItems.length; i++) {
       const currItem = cartItems[i];
+      console.log(currItem)
       const unit = {
         description: currItem.name,
         reference_id: currItem.id,
         amount: {
           currency_code: "USD",
           value: currItem.price,
+          quantity: currItem.quantity
         },
       };
       units.push(unit);
@@ -209,7 +211,7 @@ export default function Checkout() {
         })
         .render(paypal.current);
     }
-  }, [total, purchaseUnits]);
+  }, [total, purchaseUnits, cartItems]);
 
   const handleSubmitOrder = async (orderData) => {
     const res = await fetch("/api/order", {
@@ -243,7 +245,6 @@ export default function Checkout() {
           src={`https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_CLIENT_ID}`}
           async
         ></script>
-
         {isCheckingOut && cartItems && (
           <Flex mt={20} direction="column">
             <Flex justify="space-between" align="center" mt={10}>
@@ -276,9 +277,6 @@ export default function Checkout() {
                       Quantity: {item.quantity}
                     </Text>
                   </Flex>
-                  {/* <Text fontSize="xl" color="secondary.dark">
-                    $ {item.price * item.quantity}
-                  </Text> */}
                   {percentToPay === 100 && (
                     <Text fontSize="xl" color="secondary.dark">
                       ${total}
@@ -302,10 +300,10 @@ export default function Checkout() {
                 Order Subtotal: ${total}
               </Text>
             )}
-              <Text fontSize="2xl" color="primary.main">
+              {/* <Text fontSize="2xl" color="primary.main">
                 User email: {user.email}
-                User username: {user.username}
-              </Text>
+                User username: {user.username}  
+              </Text> */}
             {total == 0 && (
               <Flex direction="column" mt={5}>
                 <Text fontSize="2xl" color="secondary.main">
