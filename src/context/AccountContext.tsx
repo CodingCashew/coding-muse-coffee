@@ -2,6 +2,7 @@ import {
   createContext,
   ReactNode,
   useContext,
+  useEffect,
   useState,
 } from "react";
 
@@ -52,6 +53,18 @@ export function AccountProvider({ children }: AccountProviderProps) {
   function updateUser(newUserValues: User): void {
     setUser(newUserValues);
   }
+
+  useEffect(() => {
+    const data = window.localStorage.getItem("user");
+    if (data !== "undefined") {
+      // console.log("data: ", data);
+      setUser(JSON.parse(data!));
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
 
   return (
     <AccountContext.Provider

@@ -44,9 +44,9 @@ export default function Account() {
           wrap={{ base: "wrap", lg: "nowrap" }}
         >
           {/* {( */}
-          {isLoggedIn && (
-            <Flex flexDirection="column" minW={{ base: "xs", sm: "md" }} gap={1}>
-              <Text fontSize="xl" color="secondary.dark" py={5}>
+          { user.email && (
+            <Flex flexDirection="column" minW={{ base: "xs", sm: "md" }} gap={1} mt={5}>
+              <Text fontSize="2xl" color="secondary.dark" py={5}>
                 Account
               </Text> 
               <Text fontSize="md" color="primary.main" mt={4}>Username</Text>

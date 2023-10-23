@@ -19,6 +19,7 @@ import { PrismaClient } from "@prisma/client";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 
 import Head from "next/head";
+import { useAccountContext } from "@/context/AccountContext";
 
 export default function Checkout() {
   const blankOrder = {
@@ -45,7 +46,9 @@ export default function Checkout() {
   };
 
   const { cartItems, subtotal, resetCart, percentToPay, updatePercentToPay } =
-    useShoppingCart();
+  useShoppingCart();
+  const { user } =
+    useAccountContext();
   const [isCheckingOut, setIsCheckingOut] = useState(true);
 
   const toast = useToast();
@@ -244,17 +247,16 @@ export default function Checkout() {
         {isCheckingOut && cartItems && (
           <Flex mt={20} direction="column">
             <Flex justify="space-between" align="center" mt={10}>
-              
-            <Text fontSize="2xl"  color="white">
-              Checkout
-            </Text>
-            {total != 0 && (
-          <Link href="/cart">
-            <Button variant="ghost" color="primary.dark">
-              Return to Cart
-            </Button>
-          </Link>
-        )}
+              <Text fontSize="2xl" color="white">
+                Checkout
+              </Text>
+              {total != 0 && (
+                <Link href="/cart">
+                  <Button variant="ghost" color="primary.dark">
+                    Return to Cart
+                  </Button>
+                </Link>
+              )}
             </Flex>
             <Divider mb={7} />
             {subtotal &&
@@ -287,16 +289,28 @@ export default function Checkout() {
                       <Text id="oldPrice" color="white">
                         ${item.price * item.quantity}
                       </Text>
-                      <Text color="secondary.dark" fontSize="xl">${(item.price * item.quantity) * percentToPay / 100}</Text>
+                      <Text color="secondary.dark" fontSize="xl">
+                        ${(item.price * item.quantity * percentToPay) / 100}
+                      </Text>
                     </Flex>
                   )}
                 </Flex>
               ))}
             <Divider mb={7} />
-            {total > 0 && <Text fontSize="2xl" color="primary.main">Order Subtotal: ${total}</Text>}
+            {total > 0 && (
+              <Text fontSize="2xl" color="primary.main">
+                Order Subtotal: ${total}
+              </Text>
+            )}
+              <Text fontSize="2xl" color="primary.main">
+                User email: {user.email}
+                User username: {user.username}
+              </Text>
             {total == 0 && (
-              <Flex direction="column " mt={5}>
-                <Text fontSize="2xl" color="secondary.main">Nothing in Cart</Text>
+              <Flex direction="column" mt={5}>
+                <Text fontSize="2xl" color="secondary.main">
+                  Nothing in Cart
+                </Text>
                 <Link href="/shop">
                   <Button color="white" bgColor="primary.main" mt={10}>
                     Add a Coding Muse
@@ -308,7 +322,7 @@ export default function Checkout() {
             <Container ref={paypal} mt={5}></Container>
           </Flex>
         )}
-        
+
         {!isCheckingOut && !hasSubmittedInfo && (
           <Container mt={20}>
             <Text
