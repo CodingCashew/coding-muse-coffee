@@ -2,42 +2,16 @@ import {
   Container,
   Text,
   Flex,
-  Image,
   Input,
-  Stack,
   Box,
   Button,
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-import { useAccountContext, AccountProvider } from "../context/AccountContext";
+import { useAccountContext } from "../context/AccountContext";
 import SignUp from "../components/signup";
 import Login from "../components/login";
 import Head from "next/head";
 
 export default function Account() {
-  // const currentUser = {
-  //   email: "",
-  //   username: "",
-  //   password: "",
-  // };
-
-  // let [user, setUser] = useState(currentUser);
-  // const getUser = async () => {
-  //   fetch("https://randomuser.me/api/")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       // console.log("data.results:", data.results[0]);
-  //       setUser(data.results[0]);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
-  // useEffect(() => {
-  //   console.log('isLoggedIn: ', isLoggedIn);
-  // }, []);
 
   const { isLoggedIn, updateIsLoggedIn, isLoggingIn, updateIsLoggingIn, user, updateUser } =
     useAccountContext();
@@ -74,7 +48,7 @@ export default function Account() {
             <Flex flexDirection="column" minW={{ base: "xs", sm: "md" }} gap={1}>
               <Text fontSize="xl" color="secondary.dark" py={5}>
                 Account
-              </Text>
+              </Text> 
               <Text fontSize="md" color="primary.main" mt={4}>Username</Text>
               <Input
                 value={user.username}

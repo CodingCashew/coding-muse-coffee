@@ -14,8 +14,6 @@ const handler = async (req, res) => {
     },
   });
 
-  console.log("user ------->", user);
-
   if (!user) {
     return res.status(400).send("Cannot find user");
   }
@@ -24,11 +22,9 @@ const handler = async (req, res) => {
     console.log('in try')
     if (await bcrypt.compare(req.body.password, user.password)) {
       console.log('in compare conditional')
-      res.json("Success");
-      // res.status(200).send("Success");
+      res.send({"message": "Success", "username": user.username})
     } else {
       res.json("Not allowed");
-      // res.status(401).send("Not allowed");
     }
 
 
