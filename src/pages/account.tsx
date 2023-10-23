@@ -39,8 +39,18 @@ export default function Account() {
   //   console.log('isLoggedIn: ', isLoggedIn);
   // }, []);
 
-  const { isLoggedIn, updateIsLoggedIn, isLoggingIn, updateIsLoggingIn, user } =
+  const { isLoggedIn, updateIsLoggedIn, isLoggingIn, updateIsLoggingIn, user, updateUser } =
     useAccountContext();
+
+  const logOut = () =>{ 
+    updateIsLoggedIn(false)
+    updateIsLoggingIn(true)
+    updateUser({
+      email: "",
+      username: "",
+      password: "",
+    })
+  }
 
   return (
     <Box bgColor="black" mt={20}>
@@ -86,7 +96,7 @@ export default function Account() {
                 maxW={{ base: "sm", sm: "md", md: "lg" }}
                 readOnly={true}
               />
-              <Button mt={7} bgGradient="linear(to-bl, secondary.dark,  primary.main)" color="white" onClick={() => updateIsLoggedIn(false)}>Log Out</Button>
+              <Button mt={7} bgGradient="linear(to-bl, secondary.dark,  primary.main)" color="white" onClick={logOut}>Log Out</Button>
             </Flex>
           )}
           {!isLoggedIn && !isLoggingIn && <SignUp />}

@@ -52,10 +52,13 @@ function Login() {
   const toast = useToast();
 
   const login = async () => {
+    console.log('values.email: ', values.email)
+    console.log('values.password: ', values.password)
+
     fetch("/api/login", {
       method: "POST",
       body: JSON.stringify({ email: values.email, password: values.password }),
-      headers: { "Content-Type": "text/html" },
+      headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -66,6 +69,8 @@ function Login() {
           password: 'xxxxxxx'
         })
         setValues(initialValues)
+        updateIsLoggingIn(false)
+        updateIsLoggedIn(true)
       })
       .catch((err) => {
         console.log("error!: ", err);
@@ -135,7 +140,6 @@ function Login() {
             </Button>
           </InputRightElement>
         </InputGroup>
-        {/* <Button bgGradient='linear(to-r, secondary.main, secondary.main)' color="white" onClick={login} >Log In</Button> */}
         <Button mt={5} bgGradient="linear(to-b, primary.main, secondary.dark)"  color="white" onClick={login}>
           Log In
         </Button>
