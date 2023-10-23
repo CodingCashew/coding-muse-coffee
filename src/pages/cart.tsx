@@ -20,11 +20,11 @@ import Head from "next/head";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 
 export default function Cart() {
-  const { cartItems, numOfItems, subtotal, removeItem, increment, decrement } =
+  const { cartItems, numOfItems, subtotal, removeItem, increment, decrement, percentToPay, updatePercentToPay } =
     useShoppingCart();
   const [showDiscountInput, setShowDiscountInput] = useState(false);
   const [discountCode, setDiscountCode] = useState<string>("");
-  const [percentToPay, setPercentToPay] = useState<number>(100);
+
   const [invalidDiscountCode, setInvalidDiscountCode] = useState(false);
 
   const toast = useToast();
@@ -53,7 +53,7 @@ export default function Cart() {
         isClosable: true,
       });
 
-      setPercentToPay(percentToPay);
+      updatePercentToPay(percentToPay);
       setInvalidDiscountCode(false);
       toggleShowDiscountInput();
     } else {
@@ -65,8 +65,14 @@ export default function Cart() {
     setDiscountCode(e.target.value);
   };
 
-  const orderTotal =
-    percentToPay !== 100 ? (subtotal() * percentToPay) / 100 : subtotal();
+  const handleCheckout = () => {
+    setDiscountCode('')
+    
+  }
+
+  const orderTotal = percentToPay !== 100 ? (subtotal() * percentToPay) / 100 : subtotal();
+
+  // const orderTotal = subtotal()
 
   return (
     <Box bgColor="black" mt={20}>
@@ -97,6 +103,7 @@ export default function Cart() {
                 </Link>
               </Container>
             )}
+            <Text color="white">percentToPay: {orderTotal}</Text>
             {cartItems &&
               cartItems.map((item) => (
                 <Container
@@ -251,7 +258,7 @@ export default function Cart() {
               <Container mb={10} mt={5}>
                 <Link href="/checkout">
                   {!!cartItems.length && (
-                    <Button color="white" bgColor="primary.dark" m={3}>
+                    <Button color="white" bgColor="primary.dark" m={3} onClick={handleCheckout}>
                       Checkout
                     </Button>
                   )}

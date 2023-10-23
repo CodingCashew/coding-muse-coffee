@@ -27,7 +27,7 @@ export default function Footer() {
         p={3}
       >
         <Link
-          href="https://twitter.com/AmericanEnglishForDevs"
+          href="https://twitter.com/CodingMuseCoffee"
           className="footerLinks"
         >
           <FaTwitter className="search" size={35} />
@@ -39,7 +39,7 @@ export default function Footer() {
           <FaFacebookSquare className="search" size={35} />
         </Link>
         <Link
-          href="https://www.instagram.com/AmericanEnglishForDevs/"
+          href="https://www.instagram.com/CodingMuseCoffee/"
           className="footerLinks"
         >
           <FaInstagramSquare className="search" size={35} />

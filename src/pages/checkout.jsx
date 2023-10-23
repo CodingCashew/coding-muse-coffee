@@ -44,61 +44,62 @@ export default function Checkout() {
     product_price_4: "",
   };
 
-  const { cartItems, subtotal, resetCart } = useShoppingCart();
+  const { cartItems, subtotal, resetCart, percentToPay, updatePercentToPay } =
+    useShoppingCart();
   const [isCheckingOut, setIsCheckingOut] = useState(true);
 
   const toast = useToast();
   const [hasSubmittedInfo, setHasSubmittedInfo] = useState(false);
 
-  const submitUserInfo = async () => {
-    if (userInfo.name.length && userInfo.email.length) {
-      try {
-        const res = await fetch("/api/emailOrder", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ ...userInfo, orderId }),
-        });
-        const data = await res.json();
-        // console.log('data: ', data)
-        setHasSubmittedInfo(true);
-      } catch (e) {
-        console.log(e);
-        toast({
-          title: "Error",
-          description: "Please contact support using the Contact tab.",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      }
-    } else if (!userInfo.name.length && !userInfo.email.length) {
-      toast({
-        title: "Error",
-        description: "Please add a valid name and email address.",
-        status: "error",
-        duration: 4000,
-        isClosable: true,
-      });
-    } else if (!userInfo.name.length) {
-      toast({
-        title: "Error",
-        description: "Please add a valid name.",
-        status: "error",
-        duration: 4000,
-        isClosable: true,
-      });
-    } else if (!userInfo.email.length) {
-      toast({
-        title: "Error",
-        description: "Please add a valid email address.",
-        status: "error",
-        duration: 4000,
-        isClosable: true,
-      });
-    }
-  };
+  // const submitUserInfo = async () => {
+  //   if (userInfo.name.length && userInfo.email.length) {
+  //     try {
+  //       const res = await fetch("/api/emailOrder", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ ...userInfo, orderId }),
+  //       });
+  //       const data = await res.json();
+  //       // console.log('data: ', data)
+  //       setHasSubmittedInfo(true);
+  //     } catch (e) {
+  //       console.log(e);
+  //       toast({
+  //         title: "Error",
+  //         description: "Please contact support using the Contact tab.",
+  //         status: "error",
+  //         duration: 9000,
+  //         isClosable: true,
+  //       });
+  //     }
+  //   } else if (!userInfo.name.length && !userInfo.email.length) {
+  //     toast({
+  //       title: "Error",
+  //       description: "Please add a valid name and email address.",
+  //       status: "error",
+  //       duration: 4000,
+  //       isClosable: true,
+  //     });
+  //   } else if (!userInfo.name.length) {
+  //     toast({
+  //       title: "Error",
+  //       description: "Please add a valid name.",
+  //       status: "error",
+  //       duration: 4000,
+  //       isClosable: true,
+  //     });
+  //   } else if (!userInfo.email.length) {
+  //     toast({
+  //       title: "Error",
+  //       description: "Please add a valid email address.",
+  //       status: "error",
+  //       duration: 4000,
+  //       isClosable: true,
+  //     });
+  //   }
+  // };
 
   const initialValues = {
     name: "",
@@ -119,7 +120,8 @@ export default function Checkout() {
   const [orderId, setOrderId] = useState("");
   const paypal = useRef();
 
-  const total = subtotal();
+  const total =
+    percentToPay !== 100 ? (subtotal() * percentToPay) / 100 : subtotal();
 
   const [purchaseUnits, setPurchaseUnits] = useState([]);
 
@@ -229,112 +231,146 @@ export default function Checkout() {
 
   return (
     <Box bgColor="black">
-    <Container minH="2xl" >
-      <Head>
-        <title>Checkout</title>
-        <link rel="icon" href="/coding-muse-icon.ico" />
-      </Head>
-      <script
-        src={`https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_CLIENT_ID}`}
-        async
-      ></script>
-      {isCheckingOut && cartItems && (
-        <Stack mt={20}>
-          <Text fontSize="2xl" mt={10}>
-            Checkout
-          </Text>
-          <Divider mb={7} />
-          {subtotal &&
-            cartItems.map((item, index) => (
-              <Flex key={index} gap={5}>
-                <Text fontSize="xl" color="secondary.dark">
-                  {item.name} -{" "}
-                </Text>
-                <Text fontSize="xl" color="secondary.dark">
-                  ${item.price}
-                </Text>
-              </Flex>
-            ))}
-          <Divider mb={7} />
-          {total > 0 && (
-            <Text fontSize="2xl">Order Subtotal: ${subtotal()}</Text>
-          )}
-          {total == 0 && (
-            <Flex direction="column ">
-              <Text fontSize="2xl">Nothing in Cart</Text>
-              <Link href="/courses">
-                <Button color="white" bgColor="primary.main" m={3}>
-                  Add a Coding Muse<ArrowRightIcon ml={3} />
-                </Button>
-              </Link>
-            </Flex>
-          )}
-          <Container ref={paypal} mt={5}></Container>
-        </Stack>
-      )}
-      {/* {true && */}
-      {!isCheckingOut && !hasSubmittedInfo && (
-        <Container mt={20}>
-          <Text
-            fontSize={{ base: "xl", md: "2xl" }}
-            color="primary.light"
-            mt={5}
-          >
-            Success!
-          </Text>
-          <Text fontSize={{ base: "lg", md: "xl" }}>
-            Let us know where to send your audio:
-          </Text>
-          <Input
-            placeholder="Name"
-            name="name"
-            value={userInfo.name}
-            color="primary"
-            onChange={handleChange}
-            disabled={hasSubmittedInfo}
-            m={3}
-            required
-          />
-          <Input
-            placeholder="Email"
-            name="email"
-            value={userInfo.email}
-            color="primary"
-            onChange={handleChange}
-            disabled={hasSubmittedInfo}
-            m={3}
-            required
-          />
-          <Button
-            variant="contained"
-            type="submit"
-            bgColor="primary.dark"
-            color="white"
-            mt={3}
-            onClick={submitUserInfo}
-          >
-            Send Email
-            <ArrowRightIcon ml={3} />
-          </Button>
-        </Container>
-      )}
-      {!isCheckingOut && hasSubmittedInfo && (
-        <Flex mt={20} minH="sm" direction="column">
-          <Text mt={20} mb={5} fontSize="2xl">
-            Thank you for your purchase!
-          </Text>
-          <Text mb={5}>Your coding muse is on its way!</Text>
-          <Link href="/">
-            <Button
-              bgGradient="linear(to-r, primary.dark, secondary.main)"
-              color="white"
-            >
-              Back to Home{" "}
+      <Container minH="2xl">
+        <Head>
+          <title>Checkout</title>
+          <link rel="icon" href="/coding-muse-icon.ico" />
+        </Head>
+        <script
+          src={`https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_CLIENT_ID}`}
+          async
+        ></script>
+
+        {isCheckingOut && cartItems && (
+          <Flex mt={20} direction="column">
+            <Flex justify="space-between" align="center" mt={10}>
+              
+            <Text fontSize="2xl"  color="white">
+              Checkout
+            </Text>
+            {total != 0 && (
+          <Link href="/cart">
+            <Button variant="ghost" color="primary.dark">
+              Return to Cart
             </Button>
           </Link>
-        </Flex>
-      )}
-    </Container>
+        )}
+            </Flex>
+            <Divider mb={7} />
+            {subtotal &&
+              cartItems.map((item, index) => (
+                <Flex key={index} gap={5} mt={3} mb={7} justify="space-between">
+                  <Flex direction="column">
+                    <Text fontSize="2xl" color="secondary.dark">
+                      {item.name}
+                    </Text>
+                    <Text color="white" fontSize="md" ml={5}>
+                      Size: {item.size}
+                    </Text>
+                    <Text color="white" fontSize="md" ml={5}>
+                      Grind: {item.grind}
+                    </Text>
+                    <Text color="white" fontSize="md" ml={5}>
+                      Quantity: {item.quantity}
+                    </Text>
+                  </Flex>
+                  {/* <Text fontSize="xl" color="secondary.dark">
+                    $ {item.price * item.quantity}
+                  </Text> */}
+                  {percentToPay === 100 && (
+                    <Text fontSize="xl" color="secondary.dark">
+                      ${total}
+                    </Text>
+                  )}
+                  {percentToPay !== 100 && (
+                    <Flex direction="column">
+                      <Text id="oldPrice" color="white">
+                        ${item.price * item.quantity}
+                      </Text>
+                      <Text color="secondary.dark" fontSize="xl">${(item.price * item.quantity) * percentToPay / 100}</Text>
+                    </Flex>
+                  )}
+                </Flex>
+              ))}
+            <Divider mb={7} />
+            {total > 0 && <Text fontSize="2xl" color="primary.main">Order Subtotal: ${total}</Text>}
+            {total == 0 && (
+              <Flex direction="column " mt={5}>
+                <Text fontSize="2xl" color="secondary.main">Nothing in Cart</Text>
+                <Link href="/shop">
+                  <Button color="white" bgColor="primary.main" mt={10}>
+                    Add a Coding Muse
+                    <ArrowRightIcon ml={3} />
+                  </Button>
+                </Link>
+              </Flex>
+            )}
+            <Container ref={paypal} mt={5}></Container>
+          </Flex>
+        )}
+        
+        {!isCheckingOut && !hasSubmittedInfo && (
+          <Container mt={20}>
+            <Text
+              fontSize={{ base: "xl", md: "2xl" }}
+              color="primary.light"
+              mt={5}
+            >
+              Success!
+            </Text>
+            <Text fontSize={{ base: "lg", md: "xl" }}>
+              Let us know where to send your email:
+            </Text>
+            <Input
+              placeholder="Name"
+              name="name"
+              value={userInfo.name}
+              color="primary"
+              onChange={handleChange}
+              disabled={hasSubmittedInfo}
+              m={3}
+              required
+            />
+            <Input
+              placeholder="Email"
+              name="email"
+              value={userInfo.email}
+              color="primary"
+              onChange={handleChange}
+              disabled={hasSubmittedInfo}
+              m={3}
+              required
+            />
+            <Button
+              variant="contained"
+              type="submit"
+              bgColor="primary.dark"
+              color="white"
+              mt={3}
+              onClick={submitUserInfo}
+            >
+              Send Email
+              <ArrowRightIcon ml={3} />
+            </Button>
+          </Container>
+        )}
+        {!isCheckingOut && hasSubmittedInfo && (
+          <Flex mt={20} minH="sm" direction="column">
+            <Text mt={20} mb={5} fontSize="2xl">
+              Thank you for your purchase!
+            </Text>
+            <Text mb={5}>Your coding muse is on its way!</Text>
+            <Link href="/">
+              <Button
+                bgGradient="linear(to-r, primary.dark, secondary.main)"
+                color="white"
+              >
+                Back to Home{" "}
+              </Button>
+            </Link>
+          </Flex>
+        )}
+      </Container>
     </Box>
   );
 }

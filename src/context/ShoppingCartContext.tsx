@@ -48,6 +48,8 @@ type ShoppingCartContext = {
   cartItems: CartItem[];
   numOfItems: () => number;
   subtotal: () => number;
+  percentToPay: number;
+  updatePercentToPay: (newPercent: number) => void;
 };
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -58,6 +60,11 @@ export function useShoppingCart() {
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [percentToPay, setPercentToPay] = useState<number>(100);
+
+  function updatePercentToPay(newPercentToPay: number): void {
+    setPercentToPay(newPercentToPay);
+  }
 
   useEffect(() => {
     const data = window.localStorage.getItem("cart");
@@ -70,6 +77,23 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
+
+
+
+  useEffect(() => {
+    const data = window.localStorage.getItem("discount");
+    if (data !== "undefined") {
+      // console.log("data: ", data);
+      setPercentToPay(JSON.parse(data!));
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("discount", JSON.stringify(percentToPay || 100));
+  }, [percentToPay]);
+
+
+
 
   function getItemQty(id: number) {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
@@ -165,6 +189,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     return currTotal;
   };
 
+
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -175,6 +201,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         numOfItems,
         increment,
         decrement,
+        percentToPay,
+        updatePercentToPay
       }}
     >
       {children}

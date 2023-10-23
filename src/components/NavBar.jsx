@@ -159,9 +159,10 @@ export default function Navbar() {
               </Text>
             </Link>
             <Link href="/account" className="links">
-              <Text fontSize="xl" color="secondary.dark" className="link">
+              {/* <Text fontSize="xl" color="secondary.dark" className="link">
                 Account
-              </Text>
+              </Text> */}
+              <BsPersonCircle size={25} />
             </Link>
             <Link href="/cart" className="links" mr={5}>
             <NotificationBadge count={num} effect={Effect.Custome}/>

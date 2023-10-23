@@ -77,7 +77,7 @@ function Login() {
       flexDirection="column"
       alignItems="center"
     >
-      <Text fontSize="2xl" paddingY="2rem" color="secondary.dark">
+      <Text fontSize="2xl" mt={14} mb={7} color="secondary.dark">
         <ArrowRightIcon marginRight="1rem" color="secondary.dark" />
         Welcome Back
       </Text>
