@@ -38,7 +38,7 @@ export default function Checkout() {
     product_name_2: "",
     product_price_2: "",
     product_id_3: null,
-    product_name_3: "",
+    product_name_3: "",x
     product_price_3: "",
     product_id_4: null,
     product_name_4: "",
@@ -46,9 +46,8 @@ export default function Checkout() {
   };
 
   const { cartItems, subtotal, resetCart, percentToPay, updatePercentToPay } =
-  useShoppingCart();
-  const { user } =
-    useAccountContext();
+    useShoppingCart();
+  const { user } = useAccountContext();
   const [isCheckingOut, setIsCheckingOut] = useState(true);
 
   const toast = useToast();
@@ -132,14 +131,14 @@ export default function Checkout() {
     const units = [];
     for (let i = 0; i < cartItems.length; i++) {
       const currItem = cartItems[i];
-      console.log(currItem)
+      console.log(currItem);
       const unit = {
         description: currItem.name,
         reference_id: currItem.id,
         amount: {
           currency_code: "USD",
           value: currItem.price,
-          quantity: currItem.quantity
+          quantity: currItem.quantity,
         },
       };
       units.push(unit);
@@ -296,11 +295,18 @@ export default function Checkout() {
               ))}
             <Divider mb={7} />
             {total > 0 && (
-              <Text fontSize="2xl" color="primary.main">
-                Order Subtotal: ${total}
-              </Text>
+              <Container>
+                <Text fontSize="2xl" color="primary.main">
+                  Order Subtotal: ${total}
+                </Text>
+                {!user.email && (
+                  <Container>
+                    <Input></Input>
+                  </Container>
+                )}
+              </Container>
             )}
-              {/* <Text fontSize="2xl" color="primary.main">
+            {/* <Text fontSize="2xl" color="primary.main">
                 User email: {user.email}
                 User username: {user.username}  
               </Text> */}

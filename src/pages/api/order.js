@@ -3,9 +3,9 @@ const prisma = new PrismaClient();
 
 const handler = async (req, res) => {
 // export default async function handler(req, res) {
-  // console.log('in handler, huzzah!!')
+  console.log('in handler, huzzah!!')
   if (req.method === "POST") {
-    // console.log('req.body: ', req.body)
+    console.log('req.body: ', req.body)
     const {
       email,
       first_name,
@@ -28,7 +28,7 @@ const handler = async (req, res) => {
     } = req.body;
     // } = JSON.parse(req.body);
     try {
-      const order = await prisma.orders.create({
+      const order = await prisma.order.create({
         data: {
           email: email,
           first_name: first_name,
