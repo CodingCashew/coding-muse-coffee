@@ -56,17 +56,19 @@ export default function Coffees({ coffees }: any) {
         {coffees.map((coffee: coffee, index: number) => (
           // <Link key={index} href={`/shop/${coffee.name.toLowerCase()}`}>
             <Flex key={index} maxW="sm" direction="column">
+              <Link href={`/shop/${coffee.name.toLowerCase()}`}>
               <Text fontSize="2xl" color="white">
                 {coffee.name}
               </Text>
               <Image
-                src={coffee.imagePath}
+                src={coffee.imagePath.split(' ')[0]}
                 alt={`${coffee.roast} coffee beans`}
                 maxW="100%"
                 maxH="220px"
                 mb={3}
                 mt={3}
               />
+              </Link>
               <Text fontSize="xl" color="white">
                 {coffee.roast} Roast
               </Text>

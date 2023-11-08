@@ -14,6 +14,7 @@ import {
   Image,
   Box,
 } from "@chakra-ui/react";
+import Carousel from '../../components/Carousel'
 import { useShoppingCart } from "@/context/ShoppingCartContext";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -51,21 +52,16 @@ const initialCoffee = {
 };
 
 export default function Coffee({ coffees }: any) {
-  // const coffees = props;
   const router = useRouter();
   const name = router.query.coffee;
   const [coffee, setCoffee] = useState(initialCoffee);
-  // console.log('coffees heeere : ', coffees)
 
   useEffect(() => {
-    // console.log("coffees: ", coffees);
     if (!coffees || !name) return;
     let filteredCoffee = coffees.find((coffee: any) => {
       return coffee.name.toLowerCase() === name;
     });
-    console.log("filteredCoffee HERE! -->: ", filteredCoffee);
     setCoffee(filteredCoffee);
-    // console.log('name: ', name)
   }, [coffees, name, coffee]);
 
   const { getItemQty, increment, decrement, removeItem } = useShoppingCart();
@@ -79,8 +75,8 @@ export default function Coffee({ coffees }: any) {
             <title>{coffee.name}</title>
             <link rel="icon" href="/coding-muse-icon.ico" />
           </Head>
-          <Flex p={8} minH="sm" maxW="5xl" align="center" mt={10}>
-            <Image src={coffee?.imagePath} alt="coffee beans" w="50%" />
+          <Flex p={8} minH="md" maxW="5xl" align="center" mt={10}>
+          <Carousel coffeePhotoString={coffee.imagePath}/>
             <Flex p={8} direction="column">
               <Text fontSize="2xl" color="primary.main">
                 {coffee?.name}
