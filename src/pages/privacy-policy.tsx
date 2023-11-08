@@ -10,9 +10,7 @@ export default function PrivacyPolicy() {
         <link rel="icon" href="/coding-muse-icon.ico" />
       </Head>
       <Container mt={20}>
-        <Text>
-          
-        </Text>
+        <Text></Text>
       </Container>
     </Container>
   );

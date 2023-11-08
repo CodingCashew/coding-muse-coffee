@@ -1,12 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  Box,
   Text,
   Flex,
   Image,
-  Container,
-  Button,
-  useColorMode,
   Menu,
   MenuButton,
   MenuList,
@@ -14,7 +10,6 @@ import {
   MenuItem,
   useBreakpointValue,
 } from "@chakra-ui/react";
-// import Link from "next/link";
 import {
   useShoppingCart,
   ShoppingCartProvider,
@@ -22,16 +17,12 @@ import {
 import NotificationBadge from "react-notification-badge";
 import { Effect } from "react-notification-badge";
 import { ColorModeScript } from "@chakra-ui/react";
-import { SunIcon, MoonIcon, HamburgerIcon, CheckIcon } from "@chakra-ui/icons";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { GrCart } from "react-icons/gr";
 import { BsPersonCircle, BsCart2 } from "react-icons/bs";
-import { coffee } from "@/pages/shop";
-import { PrismaClient } from "@prisma/client";
-import RandomButton  from "../components/randomButton";
+import RandomButton from "../components/randomButton";
 
 export default function Navbar() {
-  // const coffees = props;
-  // console.log('coffeeData at top of navbar: ', props)
   const { cartItems, numOfItems } = useShoppingCart();
   const num = numOfItems();
   // const [device, setDevice] = useStaijte("mobile");

@@ -14,13 +14,10 @@ import {
 } from "@chakra-ui/react";
 import bcrypt from "bcrypt";
 
-// import { AiFillFacebook, AiFillGoogleCircle } from "react-icons/ai";
-import { ArrowRightIcon, ChatIcon } from "@chakra-ui/icons";
+import { ArrowRightIcon } from "@chakra-ui/icons";
 import { useAccountContext } from "@/context/AccountContext";
 import { PrismaClient } from "@prisma/client";
 import { User } from "../context/AccountContext";
-// const passport = require("passport");
-// const FacebookStrategy = require("passport-facebook").Strategy;
 
 const initialValues = {
   email: "",
@@ -44,7 +41,7 @@ function SignUp() {
     });
     if (values.password.length >= 8) setPasswordError("");
   };
-  
+
   const toast = useToast();
 
   const createUser = async (e: any) => {
@@ -53,10 +50,7 @@ function SignUp() {
       return;
     }
     if (values.email && values.password && values.username) {
-      console.log("req.body: ", values);
-      // try {
       const { email, username, password } = values;
-      // const hashedPassword = await bcrypt.hash(values.password, 10);
 
       fetch("/api/signup", {
         method: "POST",
@@ -69,13 +63,12 @@ function SignUp() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           updateIsLoggedIn(true);
           updateUser({
             username,
             email,
-            password: 'xxxxxxx'
-          })
+            password: "xxxxxxx",
+          });
 
           setValues({
             email: "",
@@ -84,43 +77,16 @@ function SignUp() {
           });
           toast({
             title: "Success",
-            description:
-              "You have successfully created your account.",
+            description: "You have successfully created your account.",
             status: "success",
             duration: 4000,
             isClosable: true,
-          })
+          });
           setTimeout(() => {
-            console.log('success')
-          }, 4000)
+            console.log("success");
+          }, 4000);
         })
-        // alert('You successfully created a new account')
-        //   const user = await prisma.users.create({
-        //     data: {
-        //       email: email,
-        //       username: username,
-        //       password: hashedPassword,
-        //     },
-        //   });
-        // const client = await clientPromise;
-        // const db = client.db("Mysa");
-        // const user = await db
-        //   .collection("Users")
-        //   .insertOne({
-        //     username: username,
-        //     email: email,
-        //     password: hashedPassword,
-        //   });
-        // console.log("user: ", user);
-        // res.json(user);
-        // } catch (e) {
-        //   console.error(e);
-        // }
-
-        //     // console.log("loggedIn?:", loggedIn)
-        //     // TO DO: redirect to href="/account"
-
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
     }
   };
 
@@ -217,8 +183,6 @@ function SignUp() {
         </Container>
       </Stack>
     </Container>
-    //   </Box>
-    // </div>
   );
 }
 

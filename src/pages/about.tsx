@@ -19,13 +19,10 @@ export default function About() {
           </Button>
         </Link>
       </Flex>
-      
-        <Container maxW="4xl" mt={10}>
-          <Text fontSize="2xl" color="secondary.light">
-            
-          </Text>
-          <Text fontSize="xl"></Text>
-        </Container>
+      <Container maxW="4xl" mt={10}>
+        <Text fontSize="2xl" color="secondary.light"></Text>
+        <Text fontSize="xl"></Text>
+      </Container>
     </Container>
   );
 }

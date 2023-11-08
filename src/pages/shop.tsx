@@ -3,7 +3,7 @@ import { Button, Container, Flex, Text, Image } from "@chakra-ui/react";
 import Head from "next/head";
 import { PrismaClient } from "@prisma/client";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
-import { Divider } from '@chakra-ui/react'
+import { Divider } from "@chakra-ui/react";
 import Link from "next/link";
 
 // TODO: add endpoint ref name (one word or kabob case name)
@@ -21,7 +21,6 @@ export interface coffee {
 export async function getStaticProps() {
   const prisma = new PrismaClient();
   const coffees = await prisma.coffee.findMany();
-console.log('coffeess in shop', coffees)
   return {
     props: { coffees },
   };
@@ -43,68 +42,42 @@ export default function Coffees({ coffees }: any) {
         <title>Shop Coffees</title>
         <link rel="icon" href="/coding-muse-icon.ico" />
       </Head>
-      <Flex direction="column" align="center" justify="center" mb={8} >
+      <Flex direction="column" align="center" justify="center" mb={8}>
         <Text fontSize="3xl" color="secondary.main" mt={20} align="center">
           Select Your Muse
         </Text>
         <Divider />
-        {/* <Text fontSize="3xl" color="secondary.light" mt={20} align="center">
-          Your muse awaits
-        </Text> */}
       </Flex>
       <Flex wrap="wrap" maxW="6xl" align="center" gap={7}>
         {coffees.map((coffee: coffee, index: number) => (
-          // <Link key={index} href={`/shop/${coffee.name.toLowerCase()}`}>
-            <Flex key={index} maxW="sm" direction="column">
-              <Link href={`/shop/${coffee.name.toLowerCase()}`}>
+          <Flex key={index} maxW="sm" direction="column">
+            <Link href={`/shop/${coffee.name.toLowerCase()}`}>
               <Text fontSize="2xl" color="white">
                 {coffee.name}
               </Text>
               <Image
-                src={coffee.imagePath.split(' ')[0]}
+                src={coffee.imagePath.split(" ")[0]}
                 alt={`${coffee.roast} coffee beans`}
                 maxW="100%"
                 maxH="220px"
                 mb={3}
                 mt={3}
               />
-              </Link>
-              <Text fontSize="xl" color="white">
-                {coffee.roast} Roast
-              </Text>
-              <Text fontSize="xl" color="white">
-                {coffee.size}
-              </Text>
-              <Text fontSize="xl" color="white">
-                ${coffee.price}
-              </Text>
-              <Flex mt={3} gap={3}>
-                <Link href="/checkout">
-                  <Button
-                    color="white"
-                    bgColor="primary.dark"
-                    // width="30%"
-                    onClick={() =>
-                      increment(
-                        coffee.id,
-                        coffee.name,
-                        coffee.description,
-                        coffee.roast,
-                        coffee.region,
-                        coffee.price,
-                        coffee.size,
-                        coffee.imagePath
-                      )
-                    }
-                  >
-                    Buy Now
-                  </Button>
-                </Link>
+            </Link>
+            <Text fontSize="xl" color="white">
+              {coffee.roast} Roast
+            </Text>
+            <Text fontSize="xl" color="white">
+              {coffee.size}
+            </Text>
+            <Text fontSize="xl" color="white">
+              ${coffee.price}
+            </Text>
+            <Flex mt={3} gap={3}>
+              <Link href="/checkout">
                 <Button
                   color="white"
-                  // ml={3}
-                  bgColor="primary.main"
-                  // width="34%"
+                  bgColor="primary.dark"
                   onClick={() =>
                     increment(
                       coffee.id,
@@ -118,21 +91,36 @@ export default function Coffees({ coffees }: any) {
                     )
                   }
                 >
-                  Add to Cart
+                  Buy Now
                 </Button>
-                <Link href={`/shop/${coffee.name.toLowerCase()}`}>
-                  <Button
-                    color="white"
-                    // ml={3}
-                    bgColor="primary.light"
-                    // width="29%"
-                  >
-                    Details
-                  </Button>
-                </Link>
-              </Flex>
+              </Link>
+              <Button
+                color="white"
+                // ml={3}
+                bgColor="primary.main"
+                // width="34%"
+                onClick={() =>
+                  increment(
+                    coffee.id,
+                    coffee.name,
+                    coffee.description,
+                    coffee.roast,
+                    coffee.region,
+                    coffee.price,
+                    coffee.size,
+                    coffee.imagePath
+                  )
+                }
+              >
+                Add to Cart
+              </Button>
+              <Link href={`/shop/${coffee.name.toLowerCase()}`}>
+                <Button color="white" bgColor="primary.light">
+                  Details
+                </Button>
+              </Link>
             </Flex>
-         
+          </Flex>
         ))}
       </Flex>
     </Flex>

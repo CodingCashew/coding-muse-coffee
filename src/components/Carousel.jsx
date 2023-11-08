@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Text, Flex } from "@chakra-ui/react";
+import React from "react";
+import { Flex } from "@chakra-ui/react";
 import {
   CarouselProvider,
   Slider,

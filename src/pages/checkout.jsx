@@ -4,7 +4,6 @@ import {
   Text,
   Button,
   Link,
-  Stack,
   Flex,
   Input,
   Box,
@@ -15,7 +14,6 @@ import {
   useShoppingCart,
   ShoppingCartProvider,
 } from "../context/ShoppingCartContext";
-import { PrismaClient } from "@prisma/client";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 
 import Head from "next/head";
@@ -64,10 +62,9 @@ export default function Checkout() {
   //         body: JSON.stringify({ ...userInfo, orderId }),
   //       });
   //       const data = await res.json();
-  //       // console.log('data: ', data)
   //       setHasSubmittedInfo(true);
   //     } catch (e) {
-  //       console.log(e);
+  //       console.error(e);
   //       toast({
   //         title: "Error",
   //         description: "Please contact support using the Contact tab.",
@@ -118,7 +115,6 @@ export default function Checkout() {
   };
 
   const [orderInfo, setOrderInfo] = useState(blankOrder);
-  // const [orderId, setOrderId] = useState('adfasdfas')
   const [orderId, setOrderId] = useState("");
   const paypal = useRef();
 
@@ -131,7 +127,6 @@ export default function Checkout() {
     const units = [];
     for (let i = 0; i < cartItems.length; i++) {
       const currItem = cartItems[i];
-      console.log(currItem);
       const unit = {
         description: currItem.name,
         reference_id: currItem.id,
@@ -187,7 +182,7 @@ export default function Checkout() {
             });
           },
           onCancel: () => {
-            console.log("order cancelled");
+            console.error("order cancelled");
             toast({
               title: "Order cancelled",
               description: "Your order has been cancelled.",
@@ -197,7 +192,7 @@ export default function Checkout() {
             });
           },
           onError: (err) => {
-            console.log("helpful and descriptive error: ", err);
+            console.error("helpful and descriptive error: ", err);
             toast({
               title: "Error: There was a problem fulfilling your order.",
               description:
@@ -326,7 +321,6 @@ export default function Checkout() {
             <Container ref={paypal} mt={5}></Container>
           </Flex>
         )}
-
         {!isCheckingOut && !hasSubmittedInfo && (
           <Container mt={20}>
             <Text

@@ -1,24 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { PrismaClient } from "@prisma/client";
-import {
-  CardHeader,
-  Container,
-  Text,
-  Card,
-  CardBody,
-  Flex,
-  UnorderedList,
-  ListItem,
-  Link,
-  Button,
-  Image,
-  Box,
-} from "@chakra-ui/react";
-import Carousel from '../../components/Carousel'
+import { Container, Text, Flex, Link, Button, Box } from "@chakra-ui/react";
+import Carousel from "../../components/Carousel";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { SiCoffeescript } from "react-icons/si";
 
 export async function getStaticPaths() {
   const prisma = new PrismaClient();
@@ -76,7 +62,7 @@ export default function Coffee({ coffees }: any) {
             <link rel="icon" href="/coding-muse-icon.ico" />
           </Head>
           <Flex p={8} minH="md" maxW="5xl" align="center" mt={10}>
-          <Carousel coffeePhotoString={coffee.imagePath}/>
+            <Carousel coffeePhotoString={coffee.imagePath} />
             <Flex p={8} direction="column">
               <Text fontSize="2xl" color="primary.main">
                 {coffee?.name}
@@ -130,11 +116,7 @@ export default function Coffee({ coffees }: any) {
                   Add to Cart
                 </Button>
                 <Link href="/shop">
-                  <Button
-                    color="white"
-                    ml={3}
-                    bgColor="primary.light"
-                  >
+                  <Button color="white" ml={3} bgColor="primary.light">
                     Back to Coffees
                   </Button>
                 </Link>

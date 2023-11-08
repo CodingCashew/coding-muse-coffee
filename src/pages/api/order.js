@@ -2,10 +2,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const handler = async (req, res) => {
-// export default async function handler(req, res) {
-  console.log('in handler, huzzah!!')
   if (req.method === "POST") {
-    console.log('req.body: ', req.body)
     const {
       email,
       first_name,
@@ -26,7 +23,7 @@ const handler = async (req, res) => {
       product_name_4,
       product_price_4,
     } = req.body;
-    // } = JSON.parse(req.body);
+
     try {
       const order = await prisma.order.create({
         data: {
@@ -52,9 +49,9 @@ const handler = async (req, res) => {
       });
       return res.status(200).json(order);
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
   }
-}
+};
 
 export default handler;

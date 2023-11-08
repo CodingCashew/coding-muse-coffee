@@ -1,14 +1,13 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 
-
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 const handler = async (req, res) => {
   if (req.method === "POST") {
     try {
       const { email, username, password } = req.body;
-      
+
       const hashedPassword = await bcrypt.hash(password, 10);
 
       // holy crap, keep this!!! .user
@@ -16,10 +15,9 @@ const handler = async (req, res) => {
         data: {
           username,
           email,
-          password: hashedPassword
-        }
-      })
-      console.log('user HERE ---> ', user)
+          password: hashedPassword,
+        },
+      });
 
       res.json(user);
     } catch (e) {

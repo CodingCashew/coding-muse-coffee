@@ -66,7 +66,7 @@ function Login() {
         updateIsLoggedIn(true);
       })
       .catch((err) => {
-        console.log("error!: ", err);
+        console.error("error!: ", err);
       });
   };
 
@@ -85,7 +85,6 @@ function Login() {
         <Input
           placeholder="Email Address"
           size="md"
-          // color="white"
           bgColor="white"
           value={values.email}
           name={"email"}
@@ -142,8 +141,7 @@ function Login() {
           flexDirection="row"
           justifyContent="center"
           alignItems="center"
-        >
-        </Container>
+        ></Container>
         <Button
           variant="link"
           fontSize="xl"

@@ -15,7 +15,6 @@ import {
 } from "@chakra-ui/react";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 
-// initialize state
 const initialValues = {
   fullName: "",
   email: "",
@@ -23,7 +22,6 @@ const initialValues = {
 };
 
 function Contact() {
-  // set state values as they type
   const [values, setValues] = useState(initialValues);
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -35,7 +33,6 @@ function Contact() {
 
   const toast = useToast();
 
-  // send the message to my email using the three input values and my emailjs account info
   const sendEmail = (e: any) => {
     e.preventDefault();
     emailjs
@@ -61,7 +58,7 @@ function Contact() {
         });
       })
       .catch((err: any) => {
-        console.log("FAILED...", err);
+        console.error("FAILED...", err);
       });
   };
 

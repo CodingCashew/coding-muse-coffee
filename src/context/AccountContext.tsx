@@ -35,7 +35,7 @@ const initialValues: User = {
   username: "",
   email: "",
   password: "",
-}
+};
 
 export function AccountProvider({ children }: AccountProviderProps) {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -57,7 +57,6 @@ export function AccountProvider({ children }: AccountProviderProps) {
   useEffect(() => {
     const data = window.localStorage.getItem("user");
     if (data !== "undefined") {
-      // console.log("data: ", data);
       setUser(JSON.parse(data!));
     }
   }, []);
@@ -74,7 +73,7 @@ export function AccountProvider({ children }: AccountProviderProps) {
         user,
         updateIsLoggedIn,
         updateIsLoggingIn,
-        updateUser
+        updateUser,
       }}
     >
       {children}

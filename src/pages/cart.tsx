@@ -20,8 +20,16 @@ import Head from "next/head";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 
 export default function Cart() {
-  const { cartItems, numOfItems, subtotal, removeItem, increment, decrement, percentToPay, updatePercentToPay } =
-    useShoppingCart();
+  const {
+    cartItems,
+    numOfItems,
+    subtotal,
+    removeItem,
+    increment,
+    decrement,
+    percentToPay,
+    updatePercentToPay,
+  } = useShoppingCart();
   const [showDiscountInput, setShowDiscountInput] = useState(false);
   const [discountCode, setDiscountCode] = useState<string>("");
 
@@ -66,13 +74,11 @@ export default function Cart() {
   };
 
   const handleCheckout = () => {
-    setDiscountCode('')
-    
-  }
+    setDiscountCode("");
+  };
 
-  const orderTotal = percentToPay !== 100 ? (subtotal() * percentToPay) / 100 : subtotal();
-
-  // const orderTotal = subtotal()
+  const orderTotal =
+    percentToPay !== 100 ? (subtotal() * percentToPay) / 100 : subtotal();
 
   return (
     <Box bgColor="black" mt={20}>
@@ -103,7 +109,6 @@ export default function Cart() {
                 </Link>
               </Container>
             )}
-            {/* <Text color="white">percentToPay: {orderTotal}</Text> */}
             {cartItems &&
               cartItems.map((item) => (
                 <Container
@@ -243,14 +248,18 @@ export default function Cart() {
                 <Text color="secondary.main">TBD</Text>
               </Flex>
               <Flex justify="space-between" mt={5}>
-                <Text color="white" alignSelf="end">Order Subtotal</Text>
+                <Text color="white" alignSelf="end">
+                  Order Subtotal
+                </Text>
 
                 {percentToPay === 100 && (
                   <Text color="secondary.main">${orderTotal}</Text>
                 )}
                 {percentToPay !== 100 && (
                   <Flex direction="column">
-                    <Text id="oldPrice" color="white">${subtotal()}</Text>
+                    <Text id="oldPrice" color="white">
+                      ${subtotal()}
+                    </Text>
                     <Text color="secondary.main">${orderTotal}</Text>
                   </Flex>
                 )}
@@ -258,7 +267,12 @@ export default function Cart() {
               <Container mb={10} mt={5}>
                 <Link href="/checkout">
                   {!!cartItems.length && (
-                    <Button color="white" bgColor="primary.dark" m={3} onClick={handleCheckout}>
+                    <Button
+                      color="white"
+                      bgColor="primary.dark"
+                      m={3}
+                      onClick={handleCheckout}
+                    >
                       Checkout
                     </Button>
                   )}

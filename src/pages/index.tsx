@@ -6,15 +6,11 @@ import {
   Text,
   Flex,
   Image,
-  Divider,
-  UnorderedList,
-  ListItem,
   Button,
   Link,
   Box,
 } from "@chakra-ui/react";
 import { ArrowRightIcon } from "@chakra-ui/icons";
-import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,14 +24,12 @@ export default function Home() {
         <link rel="icon" href="/coding-muse-icon.ico" />
       </Head>
       <main>
-        {/* <Container  width="100%"> */}
         <Image
           mt={20}
           width="100%"
           src="anastasiia-beans.jpg"
           alt="coffee beans"
         />
-        {/* </Container> */}
         <Box
           width="100%"
           minHeight="md"
@@ -66,7 +60,6 @@ export default function Home() {
         <Box
           width="100%"
           minHeight="md"
-          // bgGradient="linear(to-b, primary.light, primary.dark)"
           bgColor="black"
           display="flex"
           alignItems="center"
