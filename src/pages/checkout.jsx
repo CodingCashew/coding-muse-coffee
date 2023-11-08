@@ -38,7 +38,7 @@ export default function Checkout() {
     product_name_2: "",
     product_price_2: "",
     product_id_3: null,
-    product_name_3: "",x
+    product_name_3: "",
     product_price_3: "",
     product_id_4: null,
     product_name_4: "",

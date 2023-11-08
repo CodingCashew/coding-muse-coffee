@@ -18,6 +18,15 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/checkout.jsx", "src/pages/vocab/[id].js", "src/pages/api/order.js", "src/components/NavBar.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/pages/checkout.jsx",
+    "src/pages/vocab/[id].js",
+    "src/pages/api/order.js",
+    "src/components/NavBar.jsx",
+    "src/components/randomButton.jsx"
+  ],
   "exclude": ["node_modules"]
 }

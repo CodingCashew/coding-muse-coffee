@@ -6,7 +6,6 @@ const prisma = new PrismaClient();
 const handler = async (req, res) => {
   console.log("fuckin req.bodyemail: ", req.body.email);
   const { email } = req.body;
-  console.log("fuckin email: ", email);
 
   const user = await prisma.user.findUnique({
     where: {

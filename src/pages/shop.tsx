@@ -21,7 +21,7 @@ export interface coffee {
 export async function getStaticProps() {
   const prisma = new PrismaClient();
   const coffees = await prisma.coffee.findMany();
-
+console.log('coffeess in shop', coffees)
   return {
     props: { coffees },
   };

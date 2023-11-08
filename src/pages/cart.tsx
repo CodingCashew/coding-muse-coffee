@@ -103,7 +103,7 @@ export default function Cart() {
                 </Link>
               </Container>
             )}
-            <Text color="white">percentToPay: {orderTotal}</Text>
+            {/* <Text color="white">percentToPay: {orderTotal}</Text> */}
             {cartItems &&
               cartItems.map((item) => (
                 <Container

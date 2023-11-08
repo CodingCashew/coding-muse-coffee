@@ -27,16 +27,7 @@ import { GrCart } from "react-icons/gr";
 import { BsPersonCircle, BsCart2 } from "react-icons/bs";
 import { coffee } from "@/pages/shop";
 import { PrismaClient } from "@prisma/client";
-
-// export async function getStaticProps() {
-//   console.log('in getStaticProps')
-//   const prisma = new PrismaClient();
-//   const coffeeData = await prisma.coffee.findMany();
-//   console.log('coffeeeeees', coffeeData)
-//   return {
-//     props: { coffeeData },
-//   };
-// }
+import RandomButton  from "../components/randomButton";
 
 export default function Navbar() {
   // const coffees = props;
@@ -47,25 +38,6 @@ export default function Navbar() {
   const device = useBreakpointValue({ base: "mobile", md: "tablet" });
 
   const showBrand = useBreakpointValue({ md: false, lg: true });
-
-  const { increment } = useShoppingCart();
-
-  const buyRandomCoffee = () => {
-    const index = Math.floor(Math.random() * (7 - 0 + 1));
-    console.log('coffees in buy random: --->', props);
-    const coffee = props[index];
-    // console.log("coffee: ", coffee);
-    // increment(
-    //   coffee.id,
-    //   coffee.name,
-    //   coffee.description,
-    //   coffee.roast,
-    //   coffee.region,
-    //   coffee.price,
-    //   coffee.size,
-    //   coffee.imagePath
-    // );
-  };
 
   return (
     <>
@@ -165,19 +137,13 @@ export default function Navbar() {
               <BsPersonCircle size={25} />
             </Link>
             <Link href="/cart" className="links" mr={5}>
-            <NotificationBadge count={num} effect={Effect.Custome}/>
-              <GrCart className="cart" size={25} color="red"/>
+              <NotificationBadge count={num} effect={Effect.Custome} />
+              <GrCart className="cart" size={25} color="red" />
               {/* <Text fontSize="xl" color="primary.main" className="link">
                 Cart
               </Text> */}
             </Link>
-
-            {/* <Link href="/checkout"> */}
-              {/* <Button bgColor="green.400" onClick={() => buyRandomCoffee()}>
-                <CheckIcon boxSize={35} color="white" m={2} />
-                Buy Now: Coffee.random()
-              </Button> */}
-            {/* </Link> */}
+            <RandomButton />
           </Flex>
         </Flex>
       )}
