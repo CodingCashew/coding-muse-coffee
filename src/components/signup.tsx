@@ -23,12 +23,16 @@ const initialValues = {
   email: "",
   username: "",
   password: "",
+  confirmPassword: "",
 };
 
 const prisma = new PrismaClient();
 function SignUp() {
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(!show);
+  const [show1, setShow1] = useState(false);
+  const [show2, setShow2] = useState(false);
+  const handleShow = (e:any) => {
+    e.target.value === '1' ? setShow1(!show1) : setShow2(!show2)
+  }
 
   // const [loggedIn, setLoggedIn] = useState(false);
   const [values, setValues] = useState(initialValues);
@@ -44,11 +48,24 @@ function SignUp() {
 
   const toast = useToast();
 
+  const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
   const createUser = async (e: any) => {
     if (values.password.length < 8) {
       setPasswordError("Please enter 8 or more characters.");
       return;
     }
+    // test email regex
+    if (!emailRegex.test(values.email)) {
+      setPasswordError("Please enter a valid email address.");
+      return;
+    }
+
+    if (values.password !== values.confirmPassword) {
+      setPasswordError("Password fields must match.");
+      return;
+    }
+
     if (values.email && values.password && values.username) {
       const { email, username, password } = values;
 
@@ -72,8 +89,9 @@ function SignUp() {
 
           setValues({
             email: "",
-            password: "",
             username: "",
+            password: "",
+            confirmPassword: "",
           });
           toast({
             title: "Success",
@@ -135,7 +153,7 @@ function SignUp() {
         <InputGroup size="md">
           <Input
             pr="4.5rem"
-            type={show ? "text" : "password"}
+            type={show1 ? "text" : "password"}
             placeholder="Password"
             bgColor="#F7FAFC"
             value={values.password}
@@ -146,14 +164,37 @@ function SignUp() {
             <Button
               h="1.75rem"
               size="sm"
+              value="1"
               bgColor="#E2E8F0"
               onClick={handleShow}
             >
-              {show ? "Hide" : "Show"}
+              {show1 ? "Hide" : "Show"}
             </Button>
           </InputRightElement>
         </InputGroup>
-        {passwordError && <Text>{passwordError}</Text>}
+        <InputGroup size="md">
+          <Input
+            pr="4.5rem"
+            type={show2 ? "text" : "password"}
+            placeholder="Confirm Password"
+            bgColor="#F7FAFC"
+            value={values.confirmPassword}
+            name={"confirmPassword"}
+            onChange={handleChange}
+          />
+          <InputRightElement width="4.5rem">
+            <Button
+              h="1.75rem"
+              size="sm"
+              value="2"
+              bgColor="#E2E8F0"
+              onClick={handleShow}
+            >
+              {show2 ? "Hide" : "Show"}
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+        {passwordError && <Text color="secondary.main">{passwordError}</Text>}
         <Button
           bgGradient="linear(to-br, secondary.dark,  primary.main)"
           color="white"

@@ -26,6 +26,7 @@ function Carousel({ coffeePhotoString }) {
               src={photoPath}
               alt="coffee beans"
               key={index}
+              minH="xl"
               hasMasterSpinner={true}
             />
           </Slide>

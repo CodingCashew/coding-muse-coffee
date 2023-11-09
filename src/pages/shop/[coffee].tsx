@@ -56,7 +56,7 @@ export default function Coffee({ coffees }: any) {
   return (
     <>
       {coffee.name && (
-        <Box width="100%" minH="2xl" bgColor="black" mt={20} p={10}>
+        <Box width="100%" minH="3xl" bgColor="black" mt={20} p={10}>
           <Head>
             <title>{coffee.name}</title>
             <link rel="icon" href="/coding-muse-icon.ico" />

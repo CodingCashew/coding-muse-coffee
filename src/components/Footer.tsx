@@ -17,7 +17,7 @@ import {
 
 export default function Footer() {
   return (
-    <Box className="footer" minW="100%" minH="2vh" p={5}>
+    <Box className="footer" minW="100%" minH="2vh" p={5} bgColor="#dbc1ac">
       {/* <Flex
         className="flexboxContainer"
         // maxW="8xl"
@@ -56,22 +56,22 @@ export default function Footer() {
         // p={3}
       >
         <Link href="/contact" className="footerLinks">
-          <Text fontSize="lg" className="footerText" color="secondary.dark">
+          <Text fontSize="lg" className="footerText" color="primary.dark">
             Contact
           </Text>
         </Link>
         <Link href="/return-policy" className="footerLinks">
-          <Text fontSize="lg" className="footerText" color="secondary.dark">
+          <Text fontSize="lg" className="footerText" color="primary.dark">
             Return Policy
           </Text>
         </Link>
         <Link href="/privacy-policy" className="footerLinks">
-          <Text fontSize="lg" className="footerText" color="secondary.dark">
+          <Text fontSize="lg" className="footerText" color="primary.dark">
             Privacy Policy
           </Text>
         </Link>
         <Link href="/terms-of-service" className="footerLinks">
-          <Text fontSize="lg" className="footerText" color="secondary.dark">
+          <Text fontSize="lg" className="footerText" color="primary.dark">
             Terms of Service
           </Text>
         </Link>

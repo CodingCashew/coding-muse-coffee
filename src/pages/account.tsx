@@ -27,7 +27,7 @@ export default function Account() {
   return (
     <Box bgColor="black" mt={20}>
       <Container
-        minH="2xl"
+        minH="3xl"
         maxW={{ base: "sm", sm: "2xl", md: "4xl", lg: "5xl" }}
       >
         <Head>
