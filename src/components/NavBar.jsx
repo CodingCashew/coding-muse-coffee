@@ -121,20 +121,20 @@ export default function Navbar() {
                 FAQs
               </Text>
             </Link>
+            <RandomButton />
             <Link href="/account" className="links">
               {/* <Text fontSize="xl" color="secondary.dark" className="link">
                 Account
               </Text> */}
-              <BsPersonCircle size={25} />
+              <BsPersonCircle size={30} />
             </Link>
             <Link href="/cart" className="links" mr={5}>
               <NotificationBadge count={num} effect={Effect.Custome} />
-              <GrCart className="cart" size={25} color="red" />
+              <GrCart className="cart" size={30} color="red" />
               {/* <Text fontSize="xl" color="primary.main" className="link">
                 Cart
               </Text> */}
             </Link>
-            <RandomButton />
           </Flex>
         </Flex>
       )}
